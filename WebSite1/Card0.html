@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+
+    <script type="text/javascript">
+
+        window.onload = function () {
+            var ctx = document.getElementById("imgCanvas").getContext("2d");
+            var img = new Image()
+            img.onload = function () {
+                ctx.drawImage(img, 0, 0);
+            }
+            img.src = "images/card0-0.png";
+        };
+
+        // FileReader 用于读取用户选择的Logo图片
+        oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+
+        oFReader.onload = function (oFREvent) {
+            var ctx = document.getElementById("imgCanvas").getContext("2d");
+            var img = new Image()
+            img.onload = function () {
+                ctx.drawImage(img, 77, 22, 80, 16);//在指定位置显示用户logo
+            }
+            img.src = oFREvent.target.result;
+        };
+
+        function loadImageFile() {
+            if (document.getElementById("uploadImage").files.length === 0) { return; }
+            var oFile = document.getElementById("uploadImage").files[0];
+            if (!rFilter.test(oFile.type)) {
+                alert("You must select a valid image file!"); return;
+            }
+            oFReader.readAsDataURL(oFile);
+        }
+
+        // 姓名
+        function cardNameChanged() {
+            if (event.keyCode == 13) {
+                changeCardName();
+                return false;
+            }
+        }
+
+        function changeCardName() {
+            var cN = document.getElementById("cardName");
+            var ctx = document.getElementById("imgCanvas").getContext("2d");
+            ctx.fillText(cN.value, 65, 50); //在指定位置写姓名
+        }
+
+        // Title
+        function cardTitleChanged() {
+            if (event.keyCode == 13) {
+                changeCardTitle();
+                return false;
+            }
+        }
+
+        function changeCardTitle() {
+            var cP = document.getElementById("cardTitle");
+            var ctx = document.getElementById("imgCanvas").getContext("2d");
+            ctx.fillText(cP.value, 65, 80);  //在指定位置写Title
+        }
+
+        // 提交 （仅仅显示在本地）
+        function cardSubmit() {
+            var ctx = document.getElementById("imgCanvas");
+            var imgR = document.getElementById("imgResult");
+            imgR.src = ctx.toDataURL("image/png"); 
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td><canvas id="imgCanvas" width="159" height="92" style="border:1px solid #c3c3c3;">
+                    Your browser does not support the canvas element.
+                </canvas>
+            </td>
+            <td>
+                <table>
+                    <tr><td>姓名：</td></tr>
+                    <tr><td><input type="text" id="cardName" onkeypress="return cardNameChanged();" onblur="changeCardName();" /></td></tr>
+                    <tr><td>工作职位：</td></tr>
+                    <tr><td><input type="text" id="cardTitle" onkeypress="return cardTitleChanged();" onblur="changeCardTitle();" /></td></tr>
+                    <tr><td>公司Logo：</td></tr>
+                    <tr><td><input id="uploadImage" type="file" name="myPhoto" accept="image/*" onchange="loadImageFile();" /></td></tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <p><input type="button" value="Submit" onclick="cardSubmit();" /></p>
+    <div>
+        <img id="imgResult" />
+    </div>
+</body>
+</html>
