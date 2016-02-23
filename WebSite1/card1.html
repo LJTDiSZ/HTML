@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Canvas Demo</title>
+    <meta charset="utf-8" />
+    <script src="scripts/jquery-2.2.1.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // 用户输入姓名
+            $('#cardName').keypress(function (e) {
+                if (e.keyCode == 13) {
+                    changeCardName();
+                    return false;
+                }
+            });
+
+            $('#cardName').blur(function () {
+                changeCardName();
+            });
+
+            // 用户输入职位
+            $('#cardTitle').keypress(function (e) {
+                if (event.keyCode == 13) {
+                    changeCardTitle();
+                    return false;
+                }
+            });
+
+            $('#cardTitle').blur(function () {
+                changeCardTitle();
+            });
+
+            // 用户选择Logo文件
+            $('#uploadImage').change(function () {
+                if ($('#uploadImage')[0].files.length === 0) { return; }
+                var oFile = $('#uploadImage')[0].files[0];
+                if (!rFilter.test(oFile.type)) {
+                    alert("You must select a valid image file!"); return;
+                }
+                oFReader.readAsDataURL(oFile);
+            });
+
+            // 提交 （仅仅显示在本地）
+            $('#idSubmit').click(function () {
+                var ctx = $('#imgCanvas')[0];
+                var imgR = $('#imgResult')[0];
+                imgR.src = ctx.toDataURL("image/png");
+            });
+        });
+
+        $(window).load(function () {
+            var ctx = $('#imgCanvas')[0].getContext("2d");
+            var img = new Image()
+            img.onload = function () {
+                ctx.drawImage(img, 0, 0);
+            }
+            img.src = "images/card0-0.png";
+        });
+
+        // FileReader 用于读取用户选择的Logo图片
+        oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+
+        oFReader.onload = function (oFREvent) {
+            var ctx = $('#imgCanvas')[0].getContext("2d");
+            var img = new Image()
+            img.onload = function () {
+                ctx.drawImage(img, 77, 22, 80, 16);//在指定位置显示用户logo
+            }
+            img.src = oFREvent.target.result;
+        };
+
+        // 姓名
+        function changeCardName() {
+            var cN = $('#cardName')[0];
+            var ctx = $('#imgCanvas')[0].getContext("2d");
+            ctx.fillText(cN.value, 65, 50); //在指定位置写姓名
+        }
+
+        // Title
+        function changeCardTitle() {
+            var cP = $('#cardTitle')[0];
+            var ctx = $('#imgCanvas')[0].getContext("2d");
+            ctx.fillText(cP.value, 65, 80);  //在指定位置写Title
+        }
+
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <canvas id="imgCanvas" width="159" height="92" style="border:1px solid #c3c3c3;">
+                    Your browser does not support the canvas element.
+                </canvas>
+            </td>
+            <td>
+                <table>
+                    <tr><td>姓名：</td></tr>
+                    <tr><td><input type="text" id="cardName" /></td></tr>
+                    <tr><td>工作职位：</td></tr>
+                    <tr><td><input type="text" id="cardTitle" /></td></tr>
+                    <tr><td>公司Logo：</td></tr>
+                    <tr><td><input id="uploadImage" type="file" name="myPhoto" accept="image/*" /></td></tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+    <p><input type="button" value="Submit" id="idSubmit" /></p>
+    <div>
+        <img id="imgResult" />
+    </div>
+</body>
+</html>
