@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS TEST</title>
+	<meta charset="utf-8" />
+
+    <style>
+        * {
+            -webkit-box-sizing: border-box;
+             -moz-box-sizing: border-box;
+                  box-sizing: border-box;
+        }
+
+        #main,.middle{
+            width: 600px;
+            margin: 0 auto;
+            border: dashed;
+        }
+
+        .simple {
+          width: 500px;
+          margin: 20px auto;
+          border: dashed;
+        }
+
+        .fancy {
+          width: 500px;
+          margin: 20px auto;
+          padding: 50px;
+          border-width: 10px;
+          border: dashed;
+        }
+
+        .static {
+          position: static;
+        }
+        .relative1 {
+          position: relative;
+        }
+        .relative2 {
+          position: relative;
+          top: -20px;
+          left: 20px;
+          background-color: white;
+          width: 500px;
+        }
+        .fixed {
+          position: fixed;
+          bottom: 0;
+          right: 0;
+          width: 200px;
+          background-color: white;
+        }
+
+        .container {
+          position: relative;
+        }
+        nav {
+          position: absolute;
+          left: 0px;
+          width: 200px;
+        }
+        section {
+          /* position is static by default */
+          margin-left: 200px;
+          border:dashed;
+          border-width:2px;
+          border-color:antiquewhite;
+        }
+        div.footer {
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          height: 70px;
+          background-color: white;
+          width: 100%;
+        }
+        div>p{
+        }
+        body {
+          margin-bottom: 120px;
+        }
+
+        .content img {
+          float: right;
+          margin: 0 0 1em 1em;
+        }
+
+
+        .clearfix{
+            overflow: auto;
+        }
+        .navfloat{
+            float: left;
+            width: 200px;
+        }
+
+        .navinline {
+          display: inline-block;
+          vertical-align: top;
+          width: 25%;
+        }
+        .column {
+          display: inline-block;
+          vertical-align: top;
+          width: 75%;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="main">
+        设置块级元素的 width 可以阻止它从左到右撑满容器。然后你就可以设置左右外边距为 auto 来使其水平居中。元素会占据你所指定的宽度，然后剩余的宽度会一分为二成为左右外边距。
+
+        唯一的问题是，当浏览器窗口比元素的宽度还要窄时，浏览器会显示一个水平滚动条来容纳页面。让我们再来改进下这个方案...
+    </div>
+
+    <div class="simple">我小一些...</div>
+    <div class="fancy">我比它大！</div>
+
+    <div class="container">
+        <nav>
+            <ul>
+                <li>Home</li>
+                <li>Taco Menu</li>
+                <li>Contact</li>
+            </ul>
+        </nav>
+        <section>
+            <p>section s的 margin-left 样式确保了有足够的空间容纳 nav 元素。</p>
+        </section>
+        <section>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.</p>
+        </section>
+        <section>
+            <p>注意当你调整浏览器窗口时发生了什么。效果很赞！</p>
+        </section>
+        <div class="footer">
+            <p>如果你使用了一个固定定位的页眉或页脚，确保有足够的空间来显示它们！我在 body 上面加了 margin-bottom 。</p>
+        </div>
+    </div>
+    <div class="middle">
+        <p class="content ipsum">
+            <img src="/images/card0.png" alt="An Image">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.
+        </p>
+    </div>
+    <div class="clearfix">
+        <nav class="navfloat">
+            <ul>
+                <li>Home</li>
+                <li>Taco Menu</li>
+                <li>Contact</li>
+            </ul>
+        </nav>
+        <section>
+            <p>section s的 margin-left 样式确保了有足够的空间容纳 nav 元素。</p>
+        </section>
+        <section>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.</p>
+        </section>
+    </div>
+    <div class="container">
+        <nav class="navinline">
+            <ul>
+                <li>Home</li>
+                <li>Taco Menu</li>
+                <li>Contact</li>
+            </ul>
+        </nav>
+        <div class="column">
+            section s的 margin-left 样式确保了有足够的空间容纳 nav 元素。
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus imperdiet, nulla et dictum interdum, nisi lorem egestas odio, vitae scelerisque enim ligula venenatis dolor. Maecenas nisl est, ultrices nec congue eget, auctor vitae massa. Fusce luctus vestibulum augue ut aliquet. Mauris ante ligula, facilisis sed ornare eu, lobortis in odio. Praesent convallis urna a lacus interdum ut hendrerit risus congue. Nunc sagittis dictum nisi, sed ullamcorper ipsum dignissim ac. In at libero sed nunc venenatis imperdiet sed ornare turpis. Donec vitae dui eget tellus gravida venenatis. Integer fringilla congue eros non fermentum. Sed dapibus pulvinar nibh tempor porta. Cras ac leo purus. Mauris quis diam velit.
+        </div>
+    </div>
+</body>
+</html>

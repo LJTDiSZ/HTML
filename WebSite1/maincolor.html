@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <script src="scripts/jquery-2.2.1.min.js"></script>
+    <script src="scripts/rgbaster.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var img = $('#image').get(0);
+            RGBaster.colors(img, {
+                paletteSize: 20,
+                success: function (payload) {
+                    console.log(payload.dominant);
+                    console.log(payload.secondary);
+                    console.log("palette:");
+                    payload.palette.forEach(function (color) {
+                        console.log(color);
+                        var myN = $("<div />");
+                        myN.addClass("color");
+                        myN.css("background-color", color);
+                        myN.appendTo("#palette");
+                    });
+                }
+            });
+        });
+    </script>
+    <style type="text/css">
+        body{
+            text-align: center;
+        }
+
+        #image{
+            text-align: center;
+            border: 10px solid #eee;
+            box-shadow: 0 5px 5px rgba(0,0,0,0.2);
+        }
+
+        #palette{
+            padding: 5px;
+            background: #333;
+            position: fixed; top: 10px; left: 10px;
+        }
+
+        #palette .color{
+            width: 20px; height: 20px;
+            margin: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div id="palette"></div>
+    <img id="image" src="images/测试名片-整体样版.jpg" />
+</body>
+</html>

@@ -3,7 +3,9 @@
 <head>
     <title>Canvas Demo</title>
     <meta charset="utf-8" />
+    <script src="scripts/jspdf.min.js"></script>
     <script src="scripts/jquery-2.2.1.min.js"></script>
+    <script src="scripts/rgbaster.min.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -47,15 +49,37 @@
                 var imgR = $('#imgResult')[0];
                 imgR.src = ctx.toDataURL("image/png");
             });
+
+            // 生成PDF
+            $('#savePdf').click(function () {
+                var $cn = $('#imgCanvas');
+                var pdf = new jsPDF('p', 'pt', 'a4'); pdf.hei
+                var pdfRatio = 0.57;
+                var imgR = $cn.get(0).toDataURL("image/png");
+                pdf.addImage(imgR, 'PNG', 0, 0, $cn.width() * pdfRatio, $cn.height() * pdfRatio);
+                pdf.addImage(imgR, 'PNG', 0 + $cn.height() + 1, 0, $cn.width() * pdfRatio, $cn.height() * pdfRatio);
+
+                pdf.addImage(imgR, 'PNG', 0, $cn.height() * pdfRatio + 1, $cn.width() * pdfRatio, $cn.height() * pdfRatio);
+                pdf.addImage(imgR, 'PNG', 0 + $cn.height() + 1, $cn.height() * pdfRatio + 1, $cn.width() * pdfRatio, $cn.height() * pdfRatio);
+                pdf.save("1.pdf");
+            });
         });
 
+        var scaleRatio = 0;
+
         $(window).load(function () {
-            var ctx = $('#imgCanvas')[0].getContext("2d");
             var img = new Image()
             img.onload = function () {
-                ctx.drawImage(img, 0, 0);
+                var $cn = $('#imgCanvas');
+                var ctx = $cn.get(0).getContext("2d");
+                //$cn[0].width = $cn.width();
+                scaleRatio = $cn.width() / img.width;
+                $cn[0].height = img.height * scaleRatio;
+                //alert($cn.width());
+                //alert($cn.height());
+                ctx.drawImage(img, 0, 0, $cn.width(), $cn.height());
             }
-            img.src = "images/card0-0.png";
+            img.src = "images/测试名片-正.jpg";
         });
 
         // FileReader 用于读取用户选择的Logo图片
@@ -65,7 +89,27 @@
             var ctx = $('#imgCanvas')[0].getContext("2d");
             var img = new Image()
             img.onload = function () {
-                ctx.drawImage(img, 77, 22, 80, 16);//在指定位置显示用户logo
+                ctx.drawImage(img, 90 * scaleRatio, 90 * scaleRatio, img.width * scaleRatio, img.height * scaleRatio);//在指定位置显示用户logo
+
+                // 获取logo主色（背景色）
+                RGBaster.colors(img, {
+                    paletteSize: 1,
+                    success: function (colors) {
+                        console.log(colors.dominant);
+                        console.log(colors.secondary);
+                        console.log("palette:");
+                        $("#palette").empty();
+                        colors.palette.forEach(function (color) {
+                            console.log(color);
+                            var myN = $("<span />");
+                            myN.addClass("color");
+                            myN.css("background-color", color);
+                            myN.text(color);
+                            myN.appendTo("#palette");
+                        });
+                    }
+                });
+
             }
             img.src = oFREvent.target.result;
         };
@@ -85,29 +129,52 @@
         }
 
     </script>
+
+    <style>
+        div.card{
+            width: 900px;
+            margin: 0 auto;
+        }
+        div#divCanvas{
+            float: left;
+            height: 400px;
+            padding: 30px;
+        }
+        div#divInput{
+            padding: 50px;
+            /*margin-left: 200px;*/
+            /*border:dashed;*/
+        }
+        #palette .color{
+            display: inline-block;
+            /*width: 20px; height: 20px;*/
+            margin: 3px;
+            border: solid;
+        }
+
+    </style>
 </head>
 <body>
-    <table>
-        <tr>
-            <td>
-                <canvas id="imgCanvas" width="159" height="92" style="border:1px solid #c3c3c3;">
-                    Your browser does not support the canvas element.
-                </canvas>
-            </td>
-            <td>
-                <table>
-                    <tr><td>姓名：</td></tr>
-                    <tr><td><input type="text" id="cardName" /></td></tr>
-                    <tr><td>工作职位：</td></tr>
-                    <tr><td><input type="text" id="cardTitle" /></td></tr>
-                    <tr><td>公司Logo：</td></tr>
-                    <tr><td><input id="uploadImage" type="file" name="myPhoto" accept="image/*" /></td></tr>
-                </table>
-            </td>
-        </tr>
-    </table>
-
-    <p><input type="button" value="Submit" id="idSubmit" /></p>
+    <div class="card">
+        <div id="divCanvas">
+            <canvas id="imgCanvas" width="500" style="border:1px solid #c3c3c3;">
+                Your browser does not support the canvas element.
+            </canvas>
+        </div>
+        <div id="divInput">
+            <div>姓名：</div>
+            <div><input type="text" id="cardName" /></div>
+            <div>工作职位：</div>
+            <div><input type="text" id="cardTitle" /></div>
+            <div>公司Logo：</div>
+            <div><input id="uploadImage" type="file" name="myPhoto" accept="image/*" /></div>
+            <div>Logo主色（背景色）：</div>
+            <div id="palette"></div>
+        </div>
+    </div>
+    <div></div>
+    <input type="button" value="Submit" id="idSubmit" />
+    <input id="savePdf" type="button" value="Save2Pdf" />
     <div>
         <img id="imgResult" />
     </div>
