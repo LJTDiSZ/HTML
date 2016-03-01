@@ -1,0 +1,59 @@
+#page1 .pageBackground {background:#25bfa9 url('../assets/pages/index/1/bg.png') center /cover no-repeat;/*background: #25bfa9 -webkit-gradient(linear, 0 0, 100% 100%, from(#4df06b), to(#11a6d6));background: -moz-linear-gradient(left top, #4df06b, #11a6d6);*/}
+#page1 #page1Phone {width: 100%;height: 90%;position: absolute;top: 40px;background: url('../assets/pages/index/1/phone_s.png') 50% 0px /contain no-repeat;}
+#page1 .pageContent {top: 30%;}
+#page1 #page1Light {width: 100%;height: 367px;position: absolute;background: url('../assets/pages/index/1/light.png') 0px -38px no-repeat;}
+#page1 #page1Text {position: absolute;top: 30%;color: #FFF;font-family: 'Microsoft Yahei Light', 'Microsoft Yahei';}
+
+#page2 .pageBackground{background:#f2f2f2 url('../assets/pages/index/2/phone_gold_s.png') 50% 100% no-repeat;background-size:100%;}
+#page2 .pageContent{top:20%;text-align:center;}
+#page2 .pageContent span{color:#3c3c3c;}
+#page2 .pageContent p{}
+#page2 .pageContent div span{color:#51d68f;}
+
+#page3 .pageBackground{background:#f2f2f2 url('../assets/pages/index/3/phone_s.png?v1') 100% 0px no-repeat;background-size: auto 100%;}
+#page3 .pageContent{bottom:40px;color:#3c3c3c;transform-origin:0% 0px;}
+
+#page4 .pageBackground{background:#f2f2f2 url('../assets/pages/index/4/bg_s.jpg?v=201506021758') 50% 50% /cover no-repeat;}
+#page4 .pageContent{top: 120px;margin-left: 0px;margin-top: -80px;}
+#page4 .pageContent .title{font-size:70px;color: #3c3c3c;}
+#page4 .pageContent .subTitle{color: #3c3c3c;}
+
+#page5 .pageGradientBackground{height:100%;background:#b34957;/*background:#b34957 -webkit-gradient(linear, 0 0, 0 100%, from(#9c1449), to(#b54f58)) no-repeat;background:-moz-linear-gradient(top,#9c1449,#b54f58);*/}
+/*#page5 .pageBackground{background: url('../assets/pages/index/5/phone.png') 50% 100% no-repeat;}*/
+#page5 .pageContent{top: 40px;text-align: center;color:#FFFFFF;}
+#page5 .pageContent .title{font-size:70px;}
+
+#page6 .pageBackground{}
+#page6 .pageContent{top: 40px;color: #FFFFFF;text-align: center;text-shadow: 0px 0px 10px #000;}
+#page6 .pageContent p{color: #FFFFFF;}
+
+#page7 .pageBackground{background: url('../assets/pages/index/7/bg.jpg') 50% 0px no-repeat;}
+#page7 .phone{background:url('../assets/pages/index/7/phone_gold_s.png') 50% 50% /cover no-repeat;position:absolute;width:100%;height:100%;}
+#page7 .fingerprint{background:url('../assets/pages/index/7/fingerprint.png') 50% 50% /cover no-repeat;position:absolute;width:100%;height:100%;}
+#page7 .finger{background:url('../assets/pages/index/7/finger_gold_s.png') 50% 50% /cover no-repeat;position:absolute;width:100%;height:100%;}
+#page7 .pageContent{top:60px;color: #3c3c3c;}
+#page7 .pageContent p{max-width:540px;}
+
+#page8 .pageGradientBackground{height:100%;/*background:#b34957 -webkit-gradient(linear, 0 0, 0 100%, from(#ffffff), to(#d3d3d3)) no-repeat;background:-moz-linear-gradient(top, #ffffff, #d3d3d3);*/}
+#page8 .pageBackground{background: url('../assets/pages/index/8/phone_s.png') 30% 90px no-repeat;background-size: contain;}
+#page8 .pageContent{top:300px;padding-left:590px;color: #3c3c3c;}
+#page8 .pageContent p{max-width:540px;color: #828282;}
+
+#page9 .pageBackground{background:#83b8e1 url('../assets/pages/index/9/bg_s.jpg?v=20150528142943') 0px 0px no-repeat;background-size: 70%;}
+#page9 .pageContent{bottom:20px;color: #FFFFFF;text-align: center;}
+#page9 .pageContent p{color: #FFFFFF;}
+
+#page10 .pageBackground{background:#ffffff url('../assets/pages/index/10/phone_s.png?v=20150623173027') 50% 90% no-repeat;background-size: 60%;}
+#page10 .pageContent{top:40px;color: #3c3c3c;text-align: center;}
+#page10 .pageContent p{color: #828282;}
+
+#page11 .pageBackground{background:#222222;}
+/*#page11 .image1{background:#ffffff url('../assets/pages/index/11/img1.jpg') 100% 0px no-repeat;position: absolute;top: 0px;right:50%;width: 1080px;height: 100%;}*/
+/*#page11 .image2{background:#ffffff url('../assets/pages/index/11/img2.jpg') 0px 0px no-repeat;position: absolute;top: 0px;left:50%;width: 1080px;height: 100%;}*/
+#page11 .leftText{text-align:right;width:47%;position: absolute;right: 20px;bottom: 60px;min-width: 600px;}
+#page11 .rightText{text-align:left;width:47%;position: absolute;left: 20px;bottom: 60px;min-width: 600px;}
+#page11 .point{border-radius:10px;width:15px;height:15px;background:#FFF;border:#FFF solid 1px;cursor:pointer;}
+#page11 .dark{background:none;background: #222\9;}
+#page11 .title{color: #ffffff;}
+#page11 p{color: #ffffff;}
+

@@ -1,0 +1,54 @@
+body{font-family: "Microsoft YaHei","SimHei","SimSun";background: #222;padding: 0px;margin:0px;}
+ul{padding: 0px;margin: 0px;}
+a{text-decoration: none;}
+span{display: inline-block;}
+
+.fontHuge{font-size:120px;}
+.fontLarge{font-size:60px;}
+.fontMiddle{font-size:40px;}
+.fontSmall{font-size:18px;}
+.fontTiny{font-size:14px;}
+
+.container{padding:0px;width: 1180px;margin: 0 auto;}
+.pull-left{float:left;}
+.pull-right{float: right;}
+.text-left{text-align: left;}
+.text-center{text-align: center;}
+
+.topBar{width:100%;height:40px;background:rgba(0,0,0,0.3);background-color:#444\9;position:absolute;z-index: 10;min-width: 650px;overflow: hidden;}
+.logo{height: 100%;float: left;margin-right: 120px;border:none;}
+.topBar li{list-style-type:none;float: left;color:#FFF;height: 40px;width: 75px;text-align: center;padding: 0px;padding-top: 8px;}
+.topBar li a{color:#FFF;width: 100%;height: 100%;display: block;}
+.topBar .logoR7{padding-top: 0px;width: 200px;}
+.topBar .active{background-color:#222;background: rgba(0,0,0,0.5);}
+.topBar span{color:#FFF;}
+.topBar .priceSpan{font-size: 20px;}
+.btyBtnDiv{padding:6px;}
+.btnBuy{border: #fff 1px solid;padding-left:5px;padding-right:5px;border-radius: 3px;cursor:pointer;margin-left: 30px;}
+.btn-buy{border: #fff 1px solid;padding-left:5px;padding-right:5px;border-radius: 3px;cursor:pointer;margin-left: 30px;color:#fff;display:inline-block;}
+
+.pagesContianer{height:100%;z-index: 9;display: none;}
+.page{width:100%;height:100%;background:50% 50% no-repeat;background-size: cover;}
+.pageBackground{width: 100%;height: 100%;}
+.pageContent{width:1180px;position: absolute;left: 50%;margin-left: -500px;transform-origin:50% 50%;-webkit-transform-origin:50% 50%;}
+.pageContentLeft{transform-origin:0% 50%;-webkit-transform-origin:0% 50%;}
+.pageContentBottom{transform-origin:50% 100%;-webkit-transform-origin:50% 100%;}
+.pageContentLB{transform-origin:0% 100%;-webkit-transform-origin:0% 100%;}
+.pageContentRB{transform-origin:100% 100%;-webkit-transform-origin:100% 100%;}
+.pageContentTopCenter{transform-origin:50% 0%;-webkit-transform-origin:50% 0%;}
+.pageContentTopLeft{transform-origin:0% 0%;-webkit-transform-origin:0% 0%;}
+.pageContent p{font-size: 18px;color:#828282;margin-top: 40px;line-height: 32px;}
+.warpper{vertical-align: text-bottom;border-left: 2px solid #51D68F;font-size: 72px;margin-left: 20px;margin-right: 20px;display: inline;}
+
+.title{font-size:60px;font-weight: 800;vertical-align: middle;margin-right: 30px;}
+.subTitle{font-size:56px;font-weight: 100;vertical-align: middle;}
+
+.bottomBar{width: 100%;text-align: center;padding-top: 40px;padding-bottom: 40px;font-size: 36px;position: fixed;bottom: 0px;background: #FFF;display: none;z-index: 9;}
+.bottomBarNextTitle{color:#25DFD1;text-decoration: underline;background: url('../assets/next.jpg') 100% 50% no-repeat;padding-right: 54px;}
+
+.imageDiv{width: 100%;height: 100%;background: url('../assets/pages/index/6/1.jpg') 50% 50% /cover no-repeat;position: absolute;top: 0px;left: 50%;margin-left: -50%;}
+.imagePhone{width: 100%;height: 100%;background: url('../assets/pages/index/6/phone.png') 100% 100% no-repeat;background-size: 60%;position: absolute;top: 0px;left: 50%;margin-left: -50%;}
+
+@media (max-height: 769px),(max-width: 1367px) {
+	.pageContent{transform: scale(0.8);-webkit-transform: scale(0.8);}
+}

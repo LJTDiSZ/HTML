@@ -4,6 +4,43 @@
     <title>CSS TEST</title>
 	<meta charset="utf-8" />
 
+    <script src="scripts/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#page1Light").stop(true, true);
+
+            $("#page1Light").css({
+                "background-position": "-420px -38px",
+                "opacity": "0"
+            });
+
+            $("#page1Light").animate(
+                {
+                    "opacity": 1,
+                    "background-position": "-600px -38px"
+                },
+                {
+                    step: function (value, fx) {
+                        console.log("step0: " + value);
+                        $("#page1Light").css("background-position", -600 + 300 * value + "px -38px");
+                    },
+                    duration: 1000
+                }
+            ).animate(
+                {
+                    "opacity": 0
+                },
+                {
+                    step: function (value, fx) {
+                        console.log("step1: " + value);
+                        $("#page1Light").css("background-position", -300 * value + "px -38px");
+                    },
+                    duration: 1000
+                }
+            );
+        });
+    </script>
+
     <style>
         * {
             -webkit-box-sizing: border-box;
@@ -79,6 +116,7 @@
         }
         body {
           margin-bottom: 120px;
+          background-color: cadetblue;
         }
 
         .content img {
@@ -105,6 +143,13 @@
           vertical-align: top;
           width: 75%;
         }
+
+        #page1Light {
+            width: 100%;
+            height: 367px;
+            position: absolute;
+            background: url('images/light.png') 0px -38px no-repeat;
+        }
     </style>
 </head>
 <body>
@@ -114,6 +159,7 @@
 
         唯一的问题是，当浏览器窗口比元素的宽度还要窄时，浏览器会显示一个水平滚动条来容纳页面。让我们再来改进下这个方案...
     </div>
+    <div id="page1Light"></div>
 
     <div class="simple">我小一些...</div>
     <div class="fancy">我比它大！</div>
