@@ -51,7 +51,8 @@ span{display: inline-block;}
 #page3 #enfield{float:left; width:40%;}
 #page3 li{list-style-type:none;border:1px solid #7f7f7f;border-radius:10px;background-color:#7f7f7f;color:#fff;}
 #page3 #cnfield ul{width:120px;margin-left:auto;margin-right:2px;}
-#page3 #cnfield li{height: 24px;width:96px;margin:5px;text-align:center;}
+#page3 #cnfield li{height: 24px;width:96px;margin:5px;text-align:justify;}
+#page3 #cnfield li span{display:inline-block; padding-left:100%;}
 #page3 #enfield li{height: 24px;width:180px;margin:5px;text-align:center;}
 
 #page4 .pageBackground{background-color:#ffcc66;}

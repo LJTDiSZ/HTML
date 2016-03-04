@@ -116,7 +116,7 @@
         }
         body {
           margin-bottom: 120px;
-          background-color: cadetblue;
+          background: cadetblue url('images/xiaolongnv.jpg') no-repeat right top;
         }
 
         .content img {
@@ -150,6 +150,14 @@
             position: absolute;
             background: url('images/light.png') 0px -38px no-repeat;
         }
+
+        h1 {text-align:center;}
+        p.date {text-align:right;}
+        p.main {text-align:justify;}
+
+        #csslearn ul{width:150px;}
+        #csslearn li{list-style-type:none;background:#ccc;text-align:justify;}
+        #csslearn li span{display:inline-block; padding-left:100%;}
     </style>
 </head>
 <body>
@@ -163,6 +171,19 @@
 
     <div class="simple">我小一些...</div>
     <div class="fancy">我比它大！</div>
+    <div id="csslearn">
+        <p class="date">2015 年 3 月 14 号</p>
+        <p class="main">“当我年轻的时候，我梦想改变这个世界；当我成熟以后，我发现我不能够改变这个世界，我将目光缩短了些，决定只改变我的国家；当我进入暮年以后，我发现我不能够改变我们的国家，我的最后愿望仅仅是改变一下我的家庭，但是，这也不可能。当我现在躺在床上，行将就木时，我突然意识到：如果一开始我仅仅去改变我自己，然后，我可能改变我的家庭；在家人的帮助和鼓励下，我可能为国家做一些事情；然后，谁知道呢?我甚至可能改变这个世界。”</p>
+        <p><b>注意：</b> 重置浏览器窗口大小查看 &quot;justify&quot; 是如何工作的。</p>
+        <ul>
+            <li>Home<span></span></li>
+            <li>Taco Menu<span></span></li>
+            <li>Contact<span></span></li>
+            <li>年轻的时候<span></span></li>
+            <li>我年轻<span></span></li>
+            <li>梦想<span></span></li>
+        </ul>
+    </div>
 
     <div class="container">
         <nav>

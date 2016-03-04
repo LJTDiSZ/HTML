@@ -1,0 +1,3 @@
+﻿$(function () {
+    $('.default-slider').unslider();
+});

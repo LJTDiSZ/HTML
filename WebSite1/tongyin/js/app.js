@@ -12,6 +12,8 @@ $(function () {
     //    height: window.document.body.clientHeight + "px"
     //});
 
+    $('.my-slider').unslider();
+
     yesImg.attr("src", "images/pages/index/2/yes.png");
     yesImg.css("position", "absolute");
 
