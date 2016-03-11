@@ -200,7 +200,7 @@ h5 { font-size: 1.4em; }
 #btn-close-inlinecart { width: 24px; text-align: center; font-size: 18px; }
 .inlinecart-amazon-checkout {text-align: center;}
 
-.cp-logo { display: block; background: url('//content.cafepress.com/mobile2.0/img/sprite-3-17-14v2.png') no-repeat 0 0; width: 62px; height: 40px; }
+.cp-logo { display: block; background: url('../img/sprite-3-17-14v2.png') no-repeat 0 0; width: 62px; height: 40px; }
 .header-account>a,
 .header-logo>a,
 .header-cart>a { text-decoration: none; }
@@ -386,7 +386,7 @@ div.sub-nav { position: absolute; width: 100%; border: 1px solid #ddd; border-to
 .green-button { padding: 2px 10px; margin: 0; font-size:16px; background: #79a618; color: #FFF; cursor: pointer; line-height: 27px; border: none; text-align: center; }
 #help-popup .green-button {color:#fff;}
 #help-popup i { font-size: 2.25em; }
-.triangle-down { background: url('//content.cafepress.com/mobile2.0/img/sprite-3-17-14v2.png') no-repeat -96px 2px; width: 19px; height: 19px; position: absolute; left: 40%; }
+.triangle-down { background: url('../img/sprite-3-17-14v2.png') no-repeat -96px 2px; width: 19px; height: 19px; position: absolute; left: 40%; }
 #nav-gifts .red { color: #c61b1b; }
 
 #help-popup { position: fixed; color: #999; box-shadow: 0 0 15px #CCC; left: 33%; top: 15%; border: 1px solid #ccc; width: 590px; height: 280px; background: #FFF; padding: 40px 50px; z-index: 26; font-size: 14px; display: none; }
@@ -437,7 +437,7 @@ div.sub-nav { position: absolute; width: 100%; border: 1px solid #ddd; border-to
 #moreSites li {font-size: 12px; /*float:left; width: 50%;*/ border:none;color:inherit;margin:0;padding:6px 12px 6px;}
 #moreSites li:hover {color:#333;background-color:#fff;}
 #moreSites li a {display:block;color:inherit;padding:0 6px;}
-div.flag {float:left;height:11px;width:16px;background:url('//content.cafepress.com/mobile2.0/img/sprite-3-17-14v2.png') no-repeat scroll -17px -54px transparent; padding:0px; margin-right: 3px; }
+div.flag {float:left;height:11px;width:16px;background:url('../img/sprite-3-17-14v2.png') no-repeat scroll -17px -54px transparent; padding:0px; margin-right: 3px; }
 div.flag.au, .footerAUS .flag {background-position: 0 -42px;}
 div.flag.ca, .footerCAN .flag {background-position:-17px -42px;}
 div.flag.de, .footerDE .flag {background-position:-34px -54px;}

@@ -58,7 +58,7 @@ function LoginData(){
 /*the main view model class*/
 function ViewModel(fileAddedCallback, uploadButtons, isAnonymousFlow) {
 	var self = this;
-	
+	console.log("in ViewModel 0");
 	self.isAnonymousFlow = ko.observable(isAnonymousFlow);
 	self.isTermsAccepted = ko.observable(true);
 	self.readParamFromQueryString = function(name, defaultValue, url){
@@ -371,13 +371,15 @@ function ViewModel(fileAddedCallback, uploadButtons, isAnonymousFlow) {
 		var capability = self.detectBrowserCapabilities();
 		if (capability.html5)
 		{
-			$.getScript('/content/CP2.0/js/vendor/html5uploader.js',function(){
+		    console.log("capability.html5");
+			$.getScript('content/CP2.0/js/vendor/html5uploader.js',function(){
 				callback('html5');
 			});
 		}
 		else if (capability.flash)
 		{
-			$.getScript('/content/CP2.0/js/vendor/swfobject.js', function(){
+		    console.log("capability.flash");
+			$.getScript('content/CP2.0/js/vendor/swfobject.js', function(){
 				callback('flash');
 			});
 		}
@@ -1019,7 +1021,8 @@ function ViewModel(fileAddedCallback, uploadButtons, isAnonymousFlow) {
 	};
 
 	self.getMemberId = function(callback){
-		$.post('/ws/getmemberoranonymous', {}, function(res) {
+	    //$.post('http://www.cafepress.com/ws/getmemberoranonymous', {}, function(res) {
+	    var res = { "Result": "Success", "Message": "", "Data": { "MemberId": 134101533, "IsAnonymous": true, "FolderNo": 421978057, "SecurityToken": "eb01c892c72d9865cf2e6b72775478f1" } };
 			if (res.Result == "Success"){
 				self.memberNo(res.Data.MemberId);
 				self.isMemberAnonymous(res.Data.IsAnonymous);
@@ -1034,7 +1037,7 @@ function ViewModel(fileAddedCallback, uploadButtons, isAnonymousFlow) {
 				self.track('client.cp2_0_error');
 				self.logErrorToServer(2, 'There was an error initializing the uploader.', 'DnLFlow');
 			}
-		});
+		//});
 	};
 
 	self.makeAddToCartUrlParams = function(suggestion, quantity){
@@ -1371,13 +1374,13 @@ function uploader(buttons, container, displayAnonymousTemplate){
 	var self = this;
 	self.uploaderButtons = buttons;
 	self.uploaderContainer = container;
-
+	console.log("in uploader 0");
 	buttons.each(function(index){
 		var currentId = $(this).attr('id');
 		if (!currentId)
 			$(this).attr('id', 'daUploadButton' + (index + 1));
 	});
-
+	console.log("in uploader 1");
 	/* this function is invoked once all scripts are loaded, it appends and binds the contents of the template and replaces the upload button */
 	self.templateLoaded = function(template){
 		/* knockout bindings for animated change of visibility*/
@@ -1432,7 +1435,7 @@ function uploader(buttons, container, displayAnonymousTemplate){
 			}
 		};
 
-
+		console.log("in uploader 2");
 		/* wrap the original content of the page in a wrapping div, so it can be hidden later (when a file is selected) */
 		self.uploaderContainer.wrap('<div class="uploader-container-wrapper" />');
 		/* append the template */
@@ -1455,7 +1458,7 @@ function uploader(buttons, container, displayAnonymousTemplate){
 			$('body').attr('data-bind', 'css: {gradient: !collectionVisible(), "modal-open": currentQuickViewSuggestion() != null}' );
 		ko.applyBindings(viewModel);
 	};
-
+	console.log("in uploader 3");
 	/* get the necessary scripts and styles */
 	var cssName = 'upload' + (displayAnonymousTemplate ? '-anonymous' : '') + '.css';
 	$("head").append($("<link rel='stylesheet' href='content/CP2.0/css/" + cssName + "' type='text/css' media='screen' />"));

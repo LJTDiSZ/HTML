@@ -41,14 +41,14 @@
 .listbutton {font-size: 16px; border: none; box-shadow: none; width:175px; text-align: center;}
 .cancelbutton {margin-left:10px;}
 .abutton { background: #424242;}
-.loading-spinner{position: fixed; top:0; display:none; background: rgba(255,255,255,.75);width: 100%; height: 100%; z-index: 4; background-image:url(/content/CP2.0/img/loadingdots2.gif); background-repeat:no-repeat;background-position:50% 50%;left: 0;}
+.loading-spinner{position: fixed; top:0; display:none; background: rgba(255,255,255,.75);width: 100%; height: 100%; z-index: 4; background-image:url(../img/loadingdots2.gif); background-repeat:no-repeat;background-position:50% 50%;left: 0;}
 .terms-wrap { background: none repeat scroll 0 0 #EDEDED; border: 1px solid #DDDDDD; color: #999999; left: 50%; margin: auto auto auto -299px; min-height: 105px; padding: 30px; position: absolute; top: 140px; width: 589px; z-index: 12;}
 .hideit { display: none; }
 .item {position:relative;float: left;margin: 0 -295px 0 0;padding: 10px 10px 20px; width:230px;background: white; text-align: center; border:1px solid #fff;-webkit-transition: all .15s}
 .item.gray {border: 1px solid #ddd;}
 .item p {margin:10px 0 0;padding-top:10px;border-top:1px solid #ddd;}
 .item p{height:40px;}
-.repositionbutton { background: url("/content/CP2.0/img/repositionimg.png") no-repeat; width:96px;height:26px; border:1px solid #999; cursor:pointer; margin-top:6px; margin-bottom:6px; margin-left:30px;}
+.repositionbutton { background: url("../img/repositionimg.png") no-repeat; width:96px;height:26px; border:1px solid #999; cursor:pointer; margin-top:6px; margin-bottom:6px; margin-left:30px;}
 .item:hover {border:1px solid #ddd; box-shadow: 1px 1px 8px #ccc}
 .review .item{margin: 0;margin-right:20px; width:155px; height:125px; margin-bottom:15px; padding:8px;}
 .review .item .price{border:none;float:none;padding:0;}
@@ -62,7 +62,7 @@
 .design-wrap .item-wrap .hover a {color:black;text-decoration:underline;}
 .design-wrap .item-wrap:hover .views img {opacity: .5; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; filter: alpha(opacity=50);-webkit-transition: opacity 500ms ease-out;-moz-transition: opacity 500ms ease-out;-o-transition: opacity 500ms ease-out;-ms-transition: opacity 500ms ease-out;transition: opacity 500ms ease-out;}
 .design-wrap .item-wrap:hover .hover {opacity: 1; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)"; filter: alpha(opacity=100);-webkit-transition: opacity 500ms ease-in;-moz-transition: opacity 500ms ease-in;-o-transition: opacity 500ms ease-in;-ms-transition: opacity 500ms ease-in;transition: opacity 500ms ease-in;}
-.uploader-container-wrapper .footer {font-size: 14px; margin-top:40px;background: url("/content/CP2.0/img/cream_dust_darker.jpg") repeat scroll 0 0 transparent;padding: 20px 0;position: absolute;bottom:0; width: 100%;left:0;}
+.uploader-container-wrapper .footer {font-size: 14px; margin-top:40px;background: url("../img/cream_dust_darker.jpg") repeat scroll 0 0 transparent;padding: 20px 0;position: absolute;bottom:0; width: 100%;left:0;}
 .uploader-container-wrapper .footer .block{ text-align: center; }
 .uploader-container-wrapper .footer ul { display: inline-block; }
 .uploader-container-wrapper .footer li{float:left; border-right:1px solid #999; padding-right:10px;margin-right:10px;}
@@ -90,14 +90,14 @@
 .review .example-container {position:relative;}
 .review .example-text {position: absolute;top: 95px;font-size: 14px;vertical-align:middle;padding-left:40px;float:left;}
 .review .example-img {float:right;margin-top: 20px;margin-right:30px;width: 180px;height: 180px;cursor: pointer;}
-.review .fill-img {margin-right:55px;background: url("/content/CP2.0/img/FillLightBox.png") no-repeat;}
+.review .fill-img {margin-right:55px;background: url("../img/FillLightBox.png") no-repeat;}
 .review .fill-img.disabled {pointer-events: none;}
-.review .fit-img {background: url("/content/CP2.0/img/FitLightBox.png") no-repeat;}
+.review .fit-img {background: url("../img/FitLightBox.png") no-repeat;}
 .review .fit-img.disabled {pointer-events: none;}
 .review .buttons{margin-left:125px;position:absolute;width:130px;bottom:110px; padding: 5px;}
-.review .buttons.disabled { background: url("/content/CP2.0/img/repositioncurrent.png") no-repeat;pointer-events: none; width:135px; height:20px; margin-bottom: 5px; margin-left: 130px;}
+.review .buttons.disabled { background: url("../img/repositioncurrent.png") no-repeat;pointer-events: none; width:135px; height:20px; margin-bottom: 5px; margin-left: 130px;}
 .review .buttons-fill{margin-left:135px;}
-.review .buttons-fill.disabled { background: url("/content/CP2.0/img/repositioncurrent.png") no-repeat;pointer-events: none; width:135px; height:20px; margin-bottom: 5px; margin-left: 135px;}
+.review .buttons-fill.disabled { background: url("../img/repositioncurrent.png") no-repeat;pointer-events: none; width:135px; height:20px; margin-bottom: 5px; margin-left: 135px;}
 .review .buttons.disabled p.disabled { display:none;}
 .review .buttons-fill.disabled p.disabled { display:none;}
 /*end reposition*/
