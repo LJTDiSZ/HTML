@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        .preview-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background-color: #eee;
+        }
+
+            .preview-container img {
+                display: none;
+                position: absolute;
+            }
+    </style>
+</head>
+<body>
+    <input type="file">
+    <div class="preview-container">
+        <img>
+    </div>
+    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        var previewrWidth = 200;
+        var previewrHeight = 200;
+
+        var $img = $('img');
+        $('input[type=file]').change(function() {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                $img.prop('src', e.target.result);
+            }
+            reader.readAsDataURL(this.files[0]);
+
+            $('img').load(function () {
+                console.log(this.naturalWidth + ":::" + this.width);
+                console.log(this.naturalHeight + ":::" + this.height);
+                var size = autoSize(this.naturalWidth, this.naturalHeight);
+                $(this).css({
+                    width: size.width,
+                    height: size.height,
+                    top: (previewrHeight - size.height) / 2,
+                    left: (previewrWidth - size.width) / 2
+                }).show();
+            });
+        });
+
+        function autoSize(width, height) {
+            var scale = width / height;
+            if (scale >= previewrWidth / previewrHeight) {
+                height = previewrWidth / scale;
+                width = previewrWidth;
+            } else {
+                width = previewrHeight * scale;
+                height = previewrHeight;
+            }
+            return {
+                width: width,
+                height: height
+            }
+        }
+    </script>
+</body>
+</html>
