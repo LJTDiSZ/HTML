@@ -1,0 +1,481 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>CardOnly</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="css/bootstrap.min.css" rel="stylesheet" />
+    <!-- <link href="/css/jquery.fullpage.min.css" rel="stylesheet" /> -->
+    <link href="css/unslider.css" rel="stylesheet" />
+    <link href="css/unslider-dots.css" rel="stylesheet" />
+    <!-- <link href="css/main.css" rel="stylesheet" /> -->
+    <style type="text/css" media="screen">
+        html {
+            min-height: 100%;
+            position: relative;
+        }
+
+        body {
+            color: #999;
+            font-family: 'Roboto Condensed', sans-serif;
+        }
+
+        .container-fluid {
+            padding: 0px;
+        }
+
+        .row {
+            margin: 0px;
+        }
+
+        .col-md-12 {
+            padding: 0px;
+        }
+
+        .wrapper {
+            margin: 0 auto;
+            overflow: hidden;
+        }
+
+        .section {
+            border-top: 1px solid #ddd;
+        }
+
+            .section:first-child {
+                border: none;
+            }
+
+        .logo {
+            position: fixed;
+            z-index: 11;
+            padding: 10px;
+        }
+
+            .logo img {
+                width: 78px;
+                height: 50px;
+            }
+        /*.story {width: 974px; margin: auto; position: relative;}*/
+
+        /*#first, #second, #third, #fourth {margin: 0 auto; padding: 100px 0; overflow: hidden; width: 100%; position: relative;}*/
+
+        #first .story {
+            margin: auto;
+            position: relative;
+            overflow: hidden;
+            height: 900px;
+        }
+
+        #first .banner div {
+            width: 100%;
+            height: 600px;
+        }
+
+        #first .banner #mySlider1 {
+            background-image: url('images/default/首页轮播图1.jpg');
+            background-size: 100% 100%;
+        }
+
+        #first .banner #mySlider2 {
+            background-image: url('images/default/首页轮播图2.jpg');
+            background-size: 100% 100%;
+        }
+
+        #first .desc {
+            position: relative;
+            top: -550px;
+            margin: 0 auto;
+            width: 35%;
+            color: #fff;
+        }
+
+        #first .bottomM {
+            position: relative;
+            top: -280px;
+        }
+
+            #first .bottomM .pull-left {
+                width: 20%;
+                height: 180px;
+                padding: 5px;
+            }
+
+                #first .bottomM .pull-left img {
+                    width: 100%;
+                    height: 100%;
+                }
+
+        #first #startP {
+            background: #067A43 url('images/default/上传icon.png') no-repeat center;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+            #first #startP div {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                margin: 0 auto;
+                color: #FFF;
+            }
+
+            #first #startP img {
+                z-index: -1;
+                position: fixed;
+            }
+
+        #second {
+            height: 700px;
+            clear: both;
+        }
+
+            #second .story {
+                width: 974px;
+                margin: auto;
+                position: relative;
+            }
+
+            #second .section-title {
+                margin: 125px auto 0;
+            }
+
+        .second-info {
+            float: left;
+            width: 200px;
+            margin: 85px 0 0;
+            display: none;
+        }
+
+        .info2 {
+            float: right;
+        }
+
+        .section-title {
+            font-size: 28px;
+            margin: 0 auto;
+            width: 500px;
+            text-align: center;
+        }
+
+        .section2-bg {
+            background: url('images/default/引擎icon.png') no-repeat 0 0;
+            display: block;
+            width: 500px;
+            height: 320px;
+            position: absolute;
+            left: 237px;
+            margin-top: -20px;
+            background-size: 100% 100%;
+            padding-top: 100px;
+        }
+        /*.section2-bg2 {opacity: 0; background: url(../img/prodmatch_bg3.png) no-repeat 50.1% 0; display: block; width: 100%; height: 1000px; position:fixed; top: 400px; left: 0; z-index: -1; }*/
+        /*#second .bottomM {position: relative;clear: both;width: 80%;margin: 0 auto;padding-top: 180px;}*/
+        #second .bottomM {
+            opacity: 0;
+            display: block;
+            width: 100%;
+            height: 1000px;
+            position: fixed;
+            top: 400px;
+            left: 0;
+            z-index: -1;
+        }
+
+            #second .bottomM .pull-left {
+                width: 33%;
+                height: 180px;
+                padding: 5px;
+            }
+
+                #second .bottomM .pull-left img {
+                    width: 100%;
+                    height: 100%;
+                }
+
+        #third {
+            height: 700px;
+            clear: both;
+            background: url(images/default/pw_maze_white.png);
+            box-shadow: 0px 0px 8px #ccc;
+        }
+
+            #third .story {
+                width: 974px;
+                margin: auto;
+                position: relative;
+            }
+
+            #third .topM {
+                position: relative;
+                clear: both;
+                width: 80%;
+                margin: 0 auto;
+                padding-top: 80px;
+            }
+
+                #third .topM .pull-left {
+                    width: 33%;
+                    height: 180px;
+                    padding: 5px;
+                }
+
+                    #third .topM .pull-left img {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+        .third-info {
+            clear: both;
+            width: 50%;
+            margin: 0 auto;
+            padding: 20px 30px;
+        }
+
+        #third .bottomM {
+            position: relative;
+            clear: both;
+        }
+
+            #third .bottomM .pull-left {
+                width: 20%;
+                height: 130px;
+                padding: 5px;
+            }
+
+                #third .bottomM .pull-left img {
+                    width: 100%;
+                    height: 100%;
+                }
+
+        #fourth {
+            height: 625px;
+            clear: both;
+            background: url(images/default/diagonal-noise.png);
+        }
+
+            #fourth .story {
+                width: 600px;
+                margin: auto;
+                position: relative;
+                text-align: center;
+                padding-top: 200px;
+            }
+
+            #fourth .row {
+                margin-top: 100px;
+            }
+
+
+        footer * {
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            font-family: Roboto Condensed, sans-serif;
+        }
+
+        footer {
+            background: #777;
+            color: #FFF;
+            padding: 1.5em 12%;
+        }
+
+            footer .wrapper {
+                max-width: 974px;
+            }
+    </style>
+</head>
+<body>
+    <section class="wrapper">
+        <div class="logo">
+            <img src="images/default/LOGO.png"></a>
+        </div>
+        <article id="first">
+            <div class="story">
+                <div class="banner">
+                    <ul>
+                        <li><div id="mySlider1"></div></li>
+                        <li><div id="mySlider2"></div></li>
+                    </ul>
+                </div>
+                <div class="desc text-center">
+                    <h1>让你的“设计”更上一层楼。</h1>
+                    <h4>创建一个创意名片定制产品只需四步。</h4>
+                    <h4>上传任何LOGO,我们会立即创建一个与我们产品搭配后形成的名片展示效果。很容易和自由!</h4>
+                </div>
+                <div class="bottomM">
+                    <div class="pull-left">
+                        <img src="images/default/名片.png" alt="">
+                    </div>
+                    <div class="pull-left">
+                        <img src="images/default/名片2.png" alt="">
+                    </div>
+                    <div class="pull-left">
+                        <div id="startP" class="text-center">
+                            <div class="h3">上传LOGO</div>
+                            <img src="images/default/LOGO.png" alt="" id="example-design">
+                        </div>
+                    </div>
+                    <div class="pull-left">
+                        <img src="images/default/名片3.png" alt="">
+                    </div>
+                    <div class="pull-left">
+                        <img src="images/default/名片4.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article id="second">
+            <div class="story">
+                <div class="section2-bg">
+                    <h1 class="section-title">Product Matching Engine</h1>
+                </div>
+                <div class="section2-bg2"></div>
+                <div class="second-info">当你上传一个设计时，通过我们的智能图像分析，应用于最适合它的产品。</div>
+                <div class="second-info info2">它是自动设定尺寸\位置\大小，我们减少了繁琐的设计工作。</div>
+                <div class="bottomM">
+                    <div class="pull-left">
+                        <img src="images/default/名片.png" alt="">
+                    </div>
+                    <div class="pull-left">
+                        <img src="images/default/名片3.png" alt="">
+                    </div>
+                    <div class="pull-left">
+                        <img src="images/default/名片4.png" alt="">
+                    </div>
+                    <div class="pull-left">
+                        <img src="images/default/名片.png" alt="">
+                    </div>
+                    <div class="pull-left">
+                        <img src="images/default/名片3.png" alt="">
+                    </div>
+                    <div class="pull-left">
+                        <img src="images/default/名片4.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article id="third">
+            <div class="story">
+                <div class="topM">
+                    <div class="pull-left">
+                        <img src="images/default/名片.png" alt="">
+                    </div>
+                    <div class="pull-left">
+                        <img src="images/default/名片3.png" alt="">
+                    </div>
+                    <div class="pull-left">
+                        <img src="images/default/名片4.png" alt="">
+                    </div>
+                    <div class="pull-left">
+                        <img src="images/default/名片.png" alt="">
+                    </div>
+                    <div class="pull-left">
+                        <img src="images/default/名片3.png" alt="">
+                    </div>
+                    <div class="pull-left">
+                        <img src="images/default/名片4.png" alt="">
+                    </div>
+                </div>
+                <div class="third-info">我们的产品组合能给每个设计者提供所需。不管你要用来设计服装，文具，或者设计其它的一些，我们目录中的高品质产品能挑到符合你所需的设计。</div>
+                <div class="bottomM">
+                    <div class="pull-left">
+                        <img src="images/default/名片2.png" alt="">
+                    </div>
+                    <div class="pull-left">
+                        <img src="images/default/名片2.png" alt="">
+                    </div>
+                    <div class="pull-left">
+                        <img src="images/default/名片2.png" alt="">
+                    </div>
+                    <div class="pull-left">
+                        <img src="images/default/名片2.png" alt="">
+                    </div>
+                    <div class="pull-left">
+                        <img src="images/default/名片2.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article id="fourth">
+            <div class="story">
+                <button type="button" class="btn btn-success btn-lg">上传LOGO</button>
+                <div class="row">
+                    <div class="col-md-4">“Cardonly有很多伟大的设计师,他们不断激发新设计和想法!”</div>
+                    <div class="col-md-4">“我上传一整年的设计，流畅的整个过程让我感到震惊。”</div>
+                    <div class="col-md-4">“我爱Cardonly设计，这是个伟大的创新!”</div>
+                </div>
+            </div>
+        </article>
+    </section>
+    <footer class="bb">
+        <div class="wrapper">
+            <div class="container-fluid">
+                <div class="row">&nbsp</div>
+                <div class="row">
+                    <div class="col-md-1">
+
+                    </div>
+                    <div class="col-md-2">
+                        我的账户
+                    </div>
+                    <div class="col-md-2">
+                        cardonly是谁
+                    </div>
+                    <div class="col-md-2">
+                        隐私政策
+                    </div>
+                    <div class="col-md-2">
+                        商家入住
+                    </div>
+                    <div class="col-md-2">
+                        联系我们
+                    </div>
+                    <div class="col-md-1">
+
+                    </div>
+                </div>
+                <div class="row">&nbsp</div>
+                <div class="row">&nbsp</div>
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p>All Content Copyright © 2016 Cardonly Inc.</p>
+                        <p>粤公安网安备 11010500896 粤ICP备10214630</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script type="text/javascript"  src="content/CP2.0/js/vendor/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript"  src="js/bootstrap.min.js"></script>
+    <!-- <script src="/js/jquery.fullpage.min.js"></script> -->
+    <script type="text/javascript"  src="js/unslider-min.js"></script>
+    <!-- <script src="js/app.js"></script> -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.banner').unslider({
+                speed: 500,               //  滚动速度
+                delay: 3000,              //  动画延迟
+                complete: function () { },  //  动画完成的回调函数
+                keys: true,               //  启动键盘导航
+                dots: true,               //  显示点导航
+                fluid: false,              //  支持响应式设计
+                arrows: false,
+                autoplay: true
+            });
+            alert("ready");
+            //apply the class "inview" to a section that is in the viewport
+            $('#second, #third, #fourth').bind('inview', function (event, visible) {
+                alert("inView bind");
+                if (visible == true) {
+                    $(this).addClass("inview");
+                } else {
+                    $(this).removeClass("inview");
+                }
+            });
+        });
+    </script>
+    <script type="text/javascript"  src="content/CP2.0/js/dnl/jquery.inview.js"></script>
+</body>
+</html>
