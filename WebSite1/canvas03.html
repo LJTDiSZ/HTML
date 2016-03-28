@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <canvas id="canvas1" width="1100" height="700"></canvas>
+    <button class="btn btn-success" id="btnRemove">Remove</button>
+    <button class="btn btn-success" id="btnSave">Save</button>
+    <div>
+        <img id="imgResult" />
+    </div>
+
+    <script src="scripts/jquery-2.2.1.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/jcanvas.min.js"></script>
+    <script type="text/javascript">
+        var $can = $('#canvas1');
+    	$(function(){
+    	    //$can.width(400);
+    	    //$can.height(400);
+    	    $can.attr("width", 400);
+    	    $can.attr("height", 400);
+
+    	    $can.drawImage({
+    	        layer: true,
+    	        source: 'images/测试名片-正.jpg',
+    	        fromCenter: false
+    	    });
+            
+    	    $can.drawArc({
+    	        layer: true,
+    	        fillStyle: 'black',
+    	        x: 100, y: 100,
+    	        radius: 50
+    	    })
+            .drawArc({
+                layer: true,
+                fillStyle: '#36b',
+                x: 300, y: 150,
+                radius: 50
+            });
+
+    	    $can.addLayer({
+    	        type: 'rectangle',
+    	        fillStyle: '#585',
+    	        x: 100, y: 100,
+    	        width: 100, height: 50
+    	    });//.drawLayers();
+
+    	    $('canvas').drawRect({
+    	        layer: true,
+    	        name: 'myBox',
+    	        fillStyle: '#585',
+    	        x: 1, y: 1,
+    	        width: 100, height: 50
+    	    });
+
+    	    $can.drawLayers();
+    	});
+
+    	$('#btnRemove').click(function () {
+    	    $can.removeLayer(0);
+    	    $can.drawLayers();
+    	});
+
+    	$('#btnSave').click(function () {
+    	    $('#imgResult').attr("src", $can.getCanvasImage());
+    	    //var image = $can.getCanvasImage().replace("image/png", "image/octet-stream");
+    	    //window.location.href = image;
+    	});
+    </script>
+</body>
+</html>
