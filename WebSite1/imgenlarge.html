@@ -1,0 +1,146 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        html{height:100%;width:100%;}
+        body{width:100%;height:5500px;min-height:100%;}
+        .container-fluid{padding: 0px;}
+        .row{margin: 0px;}
+        div[class^="col-md-"]{border: 1px solid blue;padding:0px;}
+
+        .ccc{border: 1px dashed red;margin:0 auto;
+             width:calc(100% - 20px);
+             height:calc(100% - 50px);}
+
+        .row{height:500px;}
+        .imgBox{width:90px;position:fixed;top:50%;left:50%;margin-left:-45px;}
+        .imgBox img{width:100%;}
+
+        .nothing{height:500px;}
+        .imgBoxT{width:600px;margin:0 auto;}
+        .imgBoxT img{width:100%;}
+    </style>
+</head>
+<body>
+    <div class="ccc">
+        <button class="btn btn-success" id="btnRemove">Remove</button>
+        <button class="btn btn-success" id="btnSave">Save</button>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="imgBox">
+                    <div class="col-md-4"><img src="images/VI P1.png" /></div>
+                    <div class="col-md-4"><img src="images/VI P2.png" /></div>
+                    <div class="col-md-4"><img src="images/VI P3.png" /></div>
+                </div>
+            </div>
+        </div>
+        <div class="nothing">CSS3 用户界面
+在 CSS3 中, 增加了一些新的用户界面特性来调整元素尺寸，框尺寸和外边框。
+在本章中，您将了解以下的用户界面属性：
+resize
+box-sizing
+outline-offset</div>
+        <div class="targetI">
+            <div class="imgBoxT">
+                <div class="col-md-4"><img src="images/VI P1.png" /></div>
+                <div class="col-md-4"><img src="images/VI P2.png" /></div>
+                <div class="col-md-4"><img src="images/VI P3.png" /></div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/jquery-2.2.1.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        var $window = $(window);
+        var minWidth = 90;
+        var maxWidth = 800;
+        var offsetO = 0;
+        var offsetT = 0;
+        $(function () {
+            minWidth = $('.imgBox').width();
+            maxWidth = $('.imgBoxT').width();
+            console.log($('.imgBoxT').position());
+            console.log($('.imgBoxT').offset());
+            offsetO = $('.imgBox').offset().top;
+            offsetT = $('.imgBoxT').offset().top;
+            $window.bind('scroll', function (e) { //when the user is scrolling...
+                //console.log(e);
+                Move(); //move the background images in relation to the movement of the scrollbar
+            });
+        });
+
+        //function that is called for every pixel the user scrolls. Determines the position of the background
+        /*arguments:
+            x = horizontal position of background
+            windowHeight = height of the viewport
+            pos = position of the scrollbar
+            adjuster = adjust the position of the background
+            inertia = how fast the background moves in relation to scrolling
+        */
+        function newPos(x, windowHeight, pos, adjuster, inertia){
+            return x + "% " + (-((windowHeight + pos) - adjuster) * inertia)  + "px";
+        }
+
+        //function to be called whenever the window is scrolled or resized
+        function Move() {
+            if (typeof Move.x == 'undefined') {
+                Move.x = window.pageXOffset;
+                Move.y = window.pageYOffset;
+            }
+            var diffX = Move.x - window.pageXOffset;
+            var diffY = Move.y - window.pageYOffset;
+            var toDown = 0;
+            if (diffX < 0) {
+                // Scroll right
+            } else if (diffX > 0) {
+                // Scroll left
+            } else if (diffY < 0) {
+                toDown = 1;
+                // Scroll down
+            } else if (diffY > 0) {
+                toDown = -1;
+                // Scroll up
+            } else {
+                // First scroll event
+            }
+            Move.x = window.pageXOffset;
+            Move.y = window.pageYOffset;
+
+            var pos = $window.scrollTop(); //position of the scrollbar
+            console.log(pos);
+            if (toDown == 1) {
+                if (pos > 460) {
+                    if (pos > 2000) {
+                        $('.imgBox').css('opacity', '0');
+                    } else {
+                        var newWidth = $('.imgBox').width() + 10;
+                        if (newWidth > maxWidth) { newWidth = maxWidth; }
+                        $('.imgBox').width(newWidth);
+                        $('.imgBox').css("margin-left", "-" + $('.imgBox').width() / 2 + "px");
+
+                        $('.imgBox').css('opacity', '1');
+                    }
+                } else {
+                    $('.imgBox').css('opacity', '1');
+                }
+            } else if (toDown == -1) {
+                if (pos > 460) {
+                    if (pos > 2000) {
+                        $('.imgBox').css('opacity', '0');
+                    } else {
+                        var newWidth = $('.imgBox').width() - 10;
+                        if (newWidth < minWidth) { newWidth = minWidth; }
+                        $('.imgBox').width(newWidth);
+                        $('.imgBox').css("margin-left", "-" + $('.imgBox').width() / 2 + "px");
+
+                        $('.imgBox').css('opacity', '1');
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>
