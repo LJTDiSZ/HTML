@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Canvas Demo</title>
+    <meta charset="utf-8" />
+
+    <style>
+        div.card{  width: 900px;  margin: 0 auto;  }
+        div#divCanvas{  float: left;  height: 400px;  padding: 30px;  }
+        div#divInput{  padding: 50px; /*margin-left: 200px;*/ /*border:dashed;*/  }
+        #palette .color{  display: inline-block; /*width: 20px; height: 20px;*/  margin: 3px;  border: solid;  }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div id="divCanvas">
+            <canvas id="imgCanvas" width="500" style="border:1px solid #c3c3c3;">
+                Your browser does not support the canvas element.
+            </canvas>
+        </div>
+        <div id="divInput">
+            <div>姓名：</div>
+            <div><input type="text" id="cardName" /></div>
+            <div>工作职位：</div>
+            <div><input type="text" id="cardTitle" /></div>
+            <div>公司Logo：</div>
+            <div><input id="uploadImage" type="file" name="myPhoto" accept="image/*" /></div>
+            <div>Logo主色（背景色）：</div>
+            <div id="palette"></div>
+        </div>
+    </div>
+    <div></div>
+    <input type="button" value="Submit" id="idSubmit" />
+    <input id="savePdf" type="button" value="Save2Pdf" />
+    <div>
+        <img id="imgResult" />
+    </div>
+
+
+    <script src="scripts/jspdf.min.js"></script>
+    <script src="scripts/jquery-2.2.1.min.js"></script>
+    <script src="scripts/rgbaster.min.js"></script>
+    <script src="scripts/jcanvas.min.js"></script>
+    <script type="text/javascript">
+        var $can = $('#imgCanvas');
+
+        $(document).ready(function () {
+            // 用户输入姓名
+            $('#cardName').keypress(function (e) {
+                if (e.keyCode == 13) {
+                    changeCardName();
+                    return false;
+                }
+            });
+
+            $('#cardName').blur(function () {
+                changeCardName();
+            });
+
+            // 用户输入职位
+            $('#cardTitle').keypress(function (e) {
+                if (event.keyCode == 13) {
+                    changeCardTitle();
+                    return false;
+                }
+            });
+
+            $('#cardTitle').blur(function () {
+                changeCardTitle();
+            });
+
+            // 用户选择Logo文件
+            $('#uploadImage').change(function () {
+                if ($('#uploadImage')[0].files.length === 0) { return; }
+                var oFile = $('#uploadImage')[0].files[0];
+                if (!rFilter.test(oFile.type)) {
+                    alert("You must select a valid image file!"); return;
+                }
+                oFReader.readAsDataURL(oFile);
+            });
+
+            // 提交 （仅仅显示在本地）
+            $('#idSubmit').click(function () {
+                var ctx = $('#imgCanvas')[0];
+                var imgR = $('#imgResult')[0];
+                imgR.src = ctx.toDataURL("image/png");
+            });
+
+            // 生成PDF
+            $('#savePdf').click(function () {
+                var $cn = $('#imgCanvas');
+                var pdf = new jsPDF('p', 'pt', 'a4');
+                var pdfRatio = 0.57;
+                var imgR = $cn.get(0).toDataURL("image/png");
+                pdf.addImage(imgR, 'PNG', 0, 0, $cn.width() * pdfRatio, $cn.height() * pdfRatio);
+                pdf.addImage(imgR, 'PNG', 0 + $cn.height() + 1, 0, $cn.width() * pdfRatio, $cn.height() * pdfRatio);
+
+                pdf.addImage(imgR, 'PNG', 0, $cn.height() * pdfRatio + 1, $cn.width() * pdfRatio, $cn.height() * pdfRatio);
+                pdf.addImage(imgR, 'PNG', 0 + $cn.height() + 1, $cn.height() * pdfRatio + 1, $cn.width() * pdfRatio, $cn.height() * pdfRatio);
+                pdf.save("1.pdf");
+            });
+        });
+
+        var scaleRatio = 0;
+
+        $(window).load(function () {
+            var img = new Image()
+            img.onload = function () {
+//                var $cn = $('#imgCanvas');
+//                var ctx = $cn.get(0).getContext("2d");
+//                //$cn[0].width = $cn.width();
+//                scaleRatio = $cn.width() / img.width;
+//                $cn[0].height = img.height * scaleRatio;
+//                //alert($cn.width());
+//                //alert($cn.height());
+//                ctx.drawImage(img, 0, 0, $cn.width(), $cn.height());
+
+                scaleRatio = $can.width() / img.width;
+                $can[0].height = img.height * scaleRatio;
+                $can.drawImage({
+//                    layer: true,
+//                    source: 'images/测试名片-正.jpg',
+                    source: img,
+                    x: 0, y: 0,
+                    width:$can.width(),height:$can.height(),
+                    fromCenter: false
+                });
+            }
+            img.src = "images/测试名片-正.jpg";
+        });
+
+        // FileReader 用于读取用户选择的Logo图片
+        oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+
+        oFReader.onload = function (oFREvent) {
+            var ctx = $('#imgCanvas')[0].getContext("2d");
+            var img = new Image()
+            img.onload = function () {
+                ctx.drawImage(img, 90 * scaleRatio, 90 * scaleRatio, img.width * scaleRatio, img.height * scaleRatio);//在指定位置显示用户logo
+
+                // 获取logo主色（背景色）
+                RGBaster.colors(img, {
+                    paletteSize: 10,
+                    success: function (colors) {
+                        console.log(colors.dominant);
+                        console.log(colors.secondary);
+                        console.log("palette:");
+                        $("#palette").empty();
+                        colors.palette.forEach(function (color) {
+                            console.log(color);
+                            var myN = $("<span />");
+                            myN.addClass("color");
+                            myN.css("background-color", color);
+                            myN.text(color);
+                            myN.appendTo("#palette");
+                        });
+                    }
+                });
+
+            }
+            img.src = oFREvent.target.result;
+        };
+
+        // 姓名
+        function changeCardName() {
+            var cN = $('#cardName')[0];
+            var ctx = $('#imgCanvas')[0].getContext("2d");
+            ctx.font = "20px Verdana";
+            ctx.clearRect(scaleRatio * 849, scaleRatio * 249, scaleRatio * 150, scaleRatio * 50)
+            ctx.fillText(cN.value, scaleRatio * 850, scaleRatio * 300); //在指定位置写姓名
+        }
+
+        // Title
+        function changeCardTitle() {
+            var cP = $('#cardTitle')[0];
+            var ctx = $('#imgCanvas')[0].getContext("2d");
+            ctx.font = "20px Georgia";
+            ctx.fillText(cP.value, scaleRatio * 700, scaleRatio * 400);  //在指定位置写Title
+        }
+
+    </script>
+</body>
+</html>

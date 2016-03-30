@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        html{height:100%;width:100%;}
+        body{width:100%;height:100%;min-height:100%;}
+        .ccc{border: 1px dashed red;margin:0 auto;
+            width:calc(100% - 20px);
+            height:calc(100% - 50px);}
+        #canvas1{border: 1px dashed blue;}
+        .ccc div{height:calc(100% - 500px);}
+    </style>
+</head>
+<body>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="ccc">
+                <canvas id="canvas1" width="500" height="200"></canvas>
+                <p></p>
+                <button class="btn btn-success" id="btnRemove">Remove</button>
+                <button class="btn btn-success" id="btnSave">Save</button>
+                <div>
+                    <img id="imgResult" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div id="divCan">
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="scripts/jquery-2.2.1.min.js"></script>
+    <script src="scripts/bootstrap.min.js"></script>
+    <script src="scripts/kinetic.min.js"></script>
+    <script type="text/javascript">
+        var $can = $('#canvas1');
+        $(function () {
+            console.log($('html').height());
+            console.log($('body').height());
+            console.log($('.ccc').height());
+            console.log($('.ccc div').height());
+            //$can.width(400);
+            //$can.height(400);
+            //$can.attr("width", 500);
+            //$can.attr("height", 500);
+//            $can.attr("width", 1090);
+//            $can.attr("height", 665);
+
+            //创建Kinetic舞台，绑定我们添加的<div>容器
+            var stage = new Kinetic.Stage({
+                container: "divCan",//<div>的id
+                width : 600, //创建的舞台宽度
+                height : 400 //创建的舞台高度
+            });
+            //创建Kinetic用户层
+            var layer = new Kinetic.Layer();
+            //创建一个Kinetic矩形对象
+            var rect = new Kinetic.Rect({
+                x : 200, //矩形左上角x坐标
+                y : 150, //矩形左上角y坐标
+                width : 200, //矩形的宽度
+                height : 100, //矩形的高度
+                fill : "red", //矩形的填充色
+                stroke : "black", //矩形边缘线的颜色
+                strokeWidth : 4 //矩形边缘线的宽度
+            });
+            //向用户层中添加上面的矩形
+            layer.add(rect);
+            //将上面的用户层添加到舞台上
+//            stage.add(layer);
+//            stage.draw();
+
+            //创建config参数
+            var config = {
+                x: 200,
+                y: 300,
+                width: 200,
+                height: 100,
+                //填充色
+                fill : "green",
+                //边缘线颜色
+                stroke : "black",
+                //边缘线宽度
+                strokeWidth : 4
+            };
+            //创建Shape对象
+            var rectShape = new Kinetic.Rect(config);
+            //把Shape对象添加到层里
+            layer.add(rectShape);
+
+
+            var t= new Kinetic.Text({ x: 50, y: 30,fill:'blue', text: 'Chinese ehre'});
+            layer.add(t);
+
+
+            //将层添加到舞台中
+            stage.add(layer);
+            stage.draw();
+        });
+
+        $('#btnRemove').click(function () {
+
+        });
+
+        $('#btnSave').click(function () {
+            $('#imgResult').attr("src", $can.getCanvasImage());
+            //var image = $can.getCanvasImage().replace("image/png", "image/octet-stream");
+            //window.location.href = image;
+        });
+    </script>
+</body>
+</html>

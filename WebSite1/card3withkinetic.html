@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Canvas Demo</title>
+    <meta charset="utf-8" />
+
+    <style>
+        .card{  width: 900px;  margin: 0 auto;  }
+        #divCanvas{ float: left; border:1px solid #c3c3c3;}
+        #divInput{  padding: 50px; /*margin-left: 200px;*/ /*border:dashed;*/  }
+        #palette .color{  display: inline-block; /*width: 20px; height: 20px;*/  margin: 3px;  border: solid;  }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div id="divCanvas">
+        </div>
+        <div id="divInput">
+            <div>姓名：</div>
+            <div><input type="text" id="cardName" /></div>
+            <div>工作职位：</div>
+            <div><input type="text" id="cardTitle" /></div>
+            <div>公司Logo：</div>
+            <div><input id="uploadImage" type="file" name="myPhoto" accept="image/*" /></div>
+            <div>Logo主色（背景色）：</div>
+            <div id="palette"></div>
+        </div>
+    </div>
+    <div></div>
+    <input type="button" value="Submit" id="idSubmit" />
+    <input id="savePdf" type="button" value="Save2Pdf" />
+    <div>
+        <img id="imgResult" />
+    </div>
+
+
+    <script src="scripts/jspdf.min.js"></script>
+    <script src="scripts/jquery-2.2.1.min.js"></script>
+    <script src="scripts/rgbaster.min.js"></script>
+    <script src="scripts/kinetic.min.js"></script>
+    <script type="text/javascript">
+        var $can = $('#imgCanvas');
+
+        $(document).ready(function () {
+            // 用户输入姓名
+            $('#cardName').keypress(function (e) {
+                if (e.keyCode == 13) {
+                    changeCardName();
+                    return false;
+                }
+            });
+
+            $('#cardName').blur(function () {
+                changeCardName();
+            });
+
+            // 用户输入职位
+            $('#cardTitle').keypress(function (e) {
+                if (event.keyCode == 13) {
+                    changeCardTitle();
+                    return false;
+                }
+            });
+
+            $('#cardTitle').blur(function () {
+                changeCardTitle();
+            });
+
+            // 用户选择Logo文件
+            $('#uploadImage').change(function () {
+                if ($('#uploadImage')[0].files.length === 0) { return; }
+                var oFile = $('#uploadImage')[0].files[0];
+                if (!rFilter.test(oFile.type)) {
+                    alert("You must select a valid image file!"); return;
+                }
+                oFReader.readAsDataURL(oFile);
+            });
+
+            // 提交 （仅仅显示在本地）
+            $('#idSubmit').click(function () {
+                stage.toDataURL({
+                    mimeType: "image/png",
+                    quality: 1.0,
+                    callback: function(dataUrl) {
+                        $('#imgResult').attr("src", dataUrl);
+                    }
+                });
+            });
+
+            // 生成PDF
+            $('#savePdf').click(function () {
+                var $cn = $('#imgCanvas');
+                var pdf = new jsPDF('p', 'pt', 'a4');
+                var pdfRatio = 0.57;
+                var imgR = $cn.get(0).toDataURL("image/png");
+                pdf.addImage(imgR, 'PNG', 0, 0, $cn.width() * pdfRatio, $cn.height() * pdfRatio);
+                pdf.addImage(imgR, 'PNG', 0 + $cn.height() + 1, 0, $cn.width() * pdfRatio, $cn.height() * pdfRatio);
+
+                pdf.addImage(imgR, 'PNG', 0, $cn.height() * pdfRatio + 1, $cn.width() * pdfRatio, $cn.height() * pdfRatio);
+                pdf.addImage(imgR, 'PNG', 0 + $cn.height() + 1, $cn.height() * pdfRatio + 1, $cn.width() * pdfRatio, $cn.height() * pdfRatio);
+                pdf.save("1.pdf");
+            });
+        });
+
+        var scaleRatio = 0;
+
+        //创建Kinetic舞台，绑定我们添加的<div>容器
+        var stage = new Kinetic.Stage({
+            container: "divCanvas",//<div>的id
+            width : 500, //创建的舞台宽度
+            height : 400 //创建的舞台高度
+        });
+
+        $(window).load(function () {
+            var img = new Image()
+            img.onload = function () {
+                //创建Kinetic用户层
+                var layer = new Kinetic.Layer();
+                scaleRatio = 500 / img.width;
+                var theight = img.height * scaleRatio;
+                var i= new Kinetic.Image({ x: 0, y: 0, width: 500, height: theight,image: img});
+                //向用户层中添加上面的矩形
+                layer.add(i);
+                //将上面的用户层添加到舞台上
+                stage.add(layer);
+                stage.draw();
+            }
+            img.src = "images/测试名片-正.jpg";
+        });
+
+        // FileReader 用于读取用户选择的Logo图片
+        oFReader = new FileReader(), rFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+
+        oFReader.onload = function (oFREvent) {
+            var img = new Image()
+            img.onload = function () {
+                var layer = new Kinetic.Layer();
+                var t= new Kinetic.Image({ x: 90 * scaleRatio, y: 90 * scaleRatio,
+                    width: img.width * scaleRatio, height: img.height * scaleRatio,
+                    image: img});
+                layer.add(t);
+                stage.add(layer);
+
+                // 获取logo主色（背景色）
+                RGBaster.colors(img, {
+                    paletteSize: 10,
+                    success: function (colors) {
+                        console.log(colors.dominant);
+                        console.log(colors.secondary);
+                        console.log("palette:");
+                        $("#palette").empty();
+                        colors.palette.forEach(function (color) {
+                            console.log(color);
+                            var myN = $("<span />");
+                            myN.addClass("color");
+                            myN.css("background-color", color);
+                            myN.text(color);
+                            myN.appendTo("#palette");
+                        });
+                    }
+                });
+
+            }
+            img.src = oFREvent.target.result;
+        };
+
+        // 姓名
+        function changeCardName() {
+            var cN = $('#cardName')[0];
+
+            var layer = new Kinetic.Layer();
+            var t= new Kinetic.Text({ x: scaleRatio * 850, y: scaleRatio * 300, fontSize: 20,fontFamily: "Verdana",
+                text: cN.value, fill:'black'});
+            layer.add(t);
+            stage.add(layer);
+        }
+
+        // Title
+        function changeCardTitle() {
+            var cP = $('#cardTitle')[0];
+
+            var layer = new Kinetic.Layer();
+            var t= new Kinetic.Text({ x: scaleRatio * 700, y: scaleRatio * 400, fontSize: 20,fontFamily: "Georgia",
+                text: cP.value, fill:'blue'});
+            layer.add(t);
+            stage.add(layer);
+        }
+
+    </script>
+</body>
+</html>
