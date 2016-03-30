@@ -135,7 +135,7 @@ outline-offset</div>
                 if (pos > 700) {
                     $('.imgBox').css('opacity', '0');
                 } else if (pos > 400) {
-                    var newWidth = step;
+                    var newWidth = minWidth + step;
                     console.log(newWidth);
                     if (newWidth < minWidth) { newWidth = minWidth; }
                     $('.imgBox').width(newWidth);
