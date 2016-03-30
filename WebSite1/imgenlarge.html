@@ -64,6 +64,7 @@ outline-offset</div>
             maxWidth = $('.imgBoxT').width();
             console.log($('.imgBoxT').position());
             console.log($('.imgBoxT').offset());
+            console.log(minWidth + ":" + maxWidth);
             offsetO = $('.imgBox').offset().top;
             offsetT = $('.imgBoxT').offset().top;
             $window.bind('scroll', function (e) { //when the user is scrolling...
@@ -110,34 +111,39 @@ outline-offset</div>
             Move.y = window.pageYOffset;
 
             var pos = $window.scrollTop(); //position of the scrollbar
-            console.log(pos);
+            var step = (maxWidth - minWidth) * (pos - 400) / 300;
+            console.log(pos + ";" + step);
             if (toDown == 1) {
-                if (pos > 460) {
-                    if (pos > 2000) {
+                if (pos > 700) {
+                    $('.imgBox').css('opacity', '0');
+                } else if (pos > 400) {
+                    var newWidth = minWidth + step;
+                    console.log(newWidth);
+                    if (newWidth > maxWidth) { newWidth = maxWidth; }
+                    $('.imgBox').width(newWidth);
+                    $('.imgBox').css("margin-left", "-" + $('.imgBox').width() / 2 + "px");
+
+                    if ($('.imgBox').offset().top > offsetT) {
                         $('.imgBox').css('opacity', '0');
                     } else {
-                        var newWidth = $('.imgBox').width() + 10;
-                        if (newWidth > maxWidth) { newWidth = maxWidth; }
-                        $('.imgBox').width(newWidth);
-                        $('.imgBox').css("margin-left", "-" + $('.imgBox').width() / 2 + "px");
-
                         $('.imgBox').css('opacity', '1');
                     }
                 } else {
                     $('.imgBox').css('opacity', '1');
                 }
             } else if (toDown == -1) {
-                if (pos > 460) {
-                    if (pos > 2000) {
-                        $('.imgBox').css('opacity', '0');
-                    } else {
-                        var newWidth = $('.imgBox').width() - 10;
-                        if (newWidth < minWidth) { newWidth = minWidth; }
-                        $('.imgBox').width(newWidth);
-                        $('.imgBox').css("margin-left", "-" + $('.imgBox').width() / 2 + "px");
+                if (pos > 700) {
+                    $('.imgBox').css('opacity', '0');
+                } else if (pos > 400) {
+                    var newWidth = step;
+                    console.log(newWidth);
+                    if (newWidth < minWidth) { newWidth = minWidth; }
+                    $('.imgBox').width(newWidth);
+                    $('.imgBox').css("margin-left", "-" + $('.imgBox').width() / 2 + "px");
 
-                        $('.imgBox').css('opacity', '1');
-                    }
+                    $('.imgBox').css('opacity', '1');
+                } else {
+
                 }
             }
         }
