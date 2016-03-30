@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>CafePress</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="MobileOptimized" content="320">
+    <link rel="stylesheet" href="content/mobile2.0/css/global.css" />
+    <link rel="stylesheet" href="content/CP2.0/css/dnl.css">
+</head>
+
+<body>
+
+<section class="wrapper">
+    <div class="logo"><a onclick="location.href='http://'+document.domain" href="#"><img src="content/CP2.0/img/cplogo.png"></a></div>
+    <ul id="nav">
+        <li><a href="#first" title="Next Section">&#9679;</a></li>
+        <li><a href="#second" title="Next Section">&#9679;</a></li>
+        <li><a href="#third" title="Next Section">&#9679;</a></li>
+        <li><a href="#fourth" title="Next Section">&#9679;</a></li>
+        <li><a href="#fifth" title="Next Section">&#9679;</a></li>
+    </ul>
+    <article id="first">
+        <div class="story">
+            <h1 class="slogan">Take your [ <span class="insertKeyword">photos</span> ] to the next level.</h1>
+            <div class="keyword">
+                <span>photo</span>
+                <span>graphic</span>
+                <span>design</span>
+                <span>logo</span>
+                <span>creativity</span>
+                <span>artwork</span>
+            </div>
+            <p class="description">Create a sale-ready collection of custom products in just a few clicks.</p>
+            <p class="description">Upload any image and we'll instantly create a collection from your image and our awesome catalog of products. It's easy and free!</p>
+            <a class="cta upload">Try it out</a>
+            <div class="example-design">
+                <img src="content/CP2.0/img/hokusai.jpg">
+                <div class="example-holder">Example Designs</div>
+            </div>
+        </div>
+    </article>
+    <!-- end first -->
+    <article id="second">
+        <div class="story">
+            <div class="section2-bg">
+                <h1 class="section-title">Product Matching Engine</h1>
+            </div>
+            <div class="section2-bg2"></div>
+            <div class="second-info">When you upload a design it goes through our smart image analysis and is applied to the products that suit it best.</div>
+            <div class="second-info info2">It's auto-magically cropped, positioned and scaled! We cut out the tedious work of making the design fit.</div>
+        </div>
+    </article> <!-- end second -->
+    <article id="third">
+        <div class="story">
+            <div class="section3-bg2"></div>
+            <div class="section3-bg"></div>
+            <div class="section3-bg4"></div>
+            <div class="section3-bg3">
+                <div class="third-info">
+                    <h1 class="section-title">Diversity + Quality</h1>
+                    <p>Our product portfolio has something for every designer. Whether you design for apparel, stationery, or home something from our catalog of quality products will be suitable for your designs.</p>
+                </div>
+            </div>
+        </div>
+    </article> <!-- end third -->
+    <article id="fourth">
+        <div class="story">
+            <div class="section4-bg"></div>
+            <div class="section4-bg2"></div>
+            <div class="fourth-info">
+                <div class="bubble">
+                    <h1 class="section-title">Vibrant Community</h1>
+                </div>
+                <div class="bubble bubble-info">
+                    <p>Thousands of interactions happen between members of our community every day. Now you can see all your likes, comments, sales and more. Follow your favorite designers & build your own following!</p>
+                </div>
+            </div>
+        </div>
+    </article> <!-- end fourth -->
+    <article id="fifth">
+        <div class="story">
+
+            <div class="fifth-info">
+
+                <h1 class="section-title">Get Started Today!</h1>
+                <a class="cta upload">Upload your first design</a>
+
+                <div class="quotes-container">
+                    <div class="quotes">
+                        <blockquote>"There are so many great designers on CafePress, they constantly inspire new designs and ideas!"</blockquote>
+                        <blockquote>"I uploaded an entire year's worth of designs. I was shocked at how smooth the whole process was."</blockquote>
+                        <blockquote>"I love designing for Cafepress. So many great products and it's so easy!"</blockquote>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </article> <!-- end fifth -->
+</section> <!-- end wrapper -->
+<script type="text/javascript" src="content/CP2.0/js/vendor/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="content/CP2.0/js/dnl/jquery.inview.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        function keywordPicker() {
+            var random = Math.floor(Math.random()*10);
+            var keyword = $('.keyword span').eq(random).html();
+            var keywordElement = $('.slogan .insertKeyword');
+            keywordElement.html(keyword).fadeIn();
+        }
+        setInterval(keywordPicker, 2000);
+
+
+        //save selectors as variables to increase performance
+        var $window = $(window);
+        var $firstBG = $('#first');
+        var $secondBG = $('#second');
+        var $thirdBG = $('#third');
+        var $fourthBG = $('#fourth');
+        var $fifthBG = $('#fifth');
+
+        var windowHeight = 803; //get the height of the window
+
+
+        //apply the class "inview" to a section that is in the viewport
+        $('#intro, #second, #third, #fourth, #fifth').bind('inview', function (event, visible) {
+            if (visible == true) {
+                $(this).addClass("inview");
+            } else {
+                $(this).removeClass("inview");
+            }
+        });
+
+        //function that is called for every pixel the user scrolls. Determines the position of the background
+        /*arguments:
+         x = horizontal position of background
+         windowHeight = height of the viewport
+         pos = position of the scrollbar
+         adjuster = adjust the position of the background
+         inertia = how fast the background moves in relation to scrolling
+         */
+
+        function newPos(x, windowHeight, pos, adjuster, inertia){
+            return x + "% " + (-((windowHeight + pos) - adjuster) * inertia)  + "px";
+        }
+
+        //function to be called whenever the window is scrolled or resized
+        function Move(){
+
+            var pos = $window.scrollTop(); //position of the scrollbar
+
+            //if the second section is in view...
+            if($secondBG.hasClass("inview")){
+                //switch design to match-products
+                if(pos > 460){
+                    $('.section2-bg2').css('opacity','1');
+                    $('.example-design').css('opacity', '0');
+                    $('.second-info').fadeIn();
+                } else {
+                    $('.section2-bg2').css('opacity','0');
+                    $('.example-design').css('opacity', '1');
+                    $('.second-info').fadeOut();
+                }
+            }
+
+
+
+            //if the third section is in view...
+            if($thirdBG.hasClass("inview")) {
+                //keep design on top when moving to third slide
+                if (pos > 784) {
+                    $('.section2-bg2').css('z-index', '10');
+                } else {
+                    $('.section2-bg2').css('z-index', '-1');
+                }
+
+
+                //replace fixed position design with unfixed copy
+                if (pos > 1153){
+                    $('.section2-bg2').hide();
+                    $('.section3-bg4').show();
+                } else {
+                    $('.section2-bg2').show();
+                    $('.section3-bg4').hide();
+                }
+
+                //once products are gathered, stop parallax effect and show information
+                if (pos > 1321) {
+                    $('.third-info').fadeIn();
+                } else {
+                    $('.third-info').fadeOut();
+                    $thirdBG.find('.section3-bg2').css({'backgroundPosition': newPos(44, windowHeight, pos, 2300, 0.5)});
+                    $thirdBG.find('.section3-bg').css({'backgroundPosition': newPos(42, windowHeight, pos, 2225, 0.9)});
+                    $thirdBG.find('.section3-bg3').css({'backgroundPosition': newPos(46, windowHeight, pos, 2400, 0.8)});
+                }
+            }
+
+
+
+            //if the fourth section is in view...
+            if($fourthBG.hasClass("inview")){
+                //once community elements are gathered, stop parallax effect and show information
+                if (pos > 2000) {
+                    $('.fourth-info').fadeIn();
+                } else {
+                    $('.fourth-info').fadeOut();
+                    $fourthBG.css({'backgroundPosition': newPos(50, windowHeight, pos, 5500, 0.1)});
+                    $('.section4-bg').css({'backgroundPosition': newPos(50, windowHeight, pos, 3200, 0.2)});
+                    $('.section4-bg2').css({'backgroundPosition': newPos(50, windowHeight, pos, 2900, 0.4)});
+                }
+            }
+
+
+
+            //if the fifth section is in view...
+
+            if($fifthBG.hasClass("inview")){
+
+            }
+
+
+
+        }
+
+
+        $window.resize(function(){ //if the user resizes the window...
+            Move(); //move the background images in relation to the movement of the scrollbar
+        });
+
+        $window.bind('scroll', function(){ //when the user is scrolling...
+            Move(); //move the background images in relation to the movement of the scrollbar
+        });
+
+    });//end doc ready
+</script>
+
+
+<footer class="bb">
+    <div class="wrapper">
+        <form id="emailSignupForm" method="post" action="http://www.cafepress.com/ws/registeremail" autocomplete="off">
+            <label for="email">Get Exclusive Offers:</label>
+            <div class="email-wrap">
+                <input type="email" placeholder="Email Address" class="inputText signUpEmail" name="email" required>
+                <button class="button uc" type="submit">Subscribe</button>
+                <div class="email-checkbox">
+                    <div id="emailSuccess"></div>
+                    <input type="checkbox" name="age" required>
+                    <label class="agBoxInfo">By checking this box I certify that as of today I am at least 13 years of age</label>
+                </div>
+                <div class="info"></div>
+            </div>
+        </form>
+        <div class="footer-social">
+            Follow CafePress:
+            <div class="fs-links-wrap">
+                <a href="https://www.facebook.com/cafepress" target="_blank" alt="facebook"><i class="icon-facebook"></i></a>
+                <a href="https://twitter.com/cafepress" target="_blank" alt="twitter"><i class="icon-twitter"></i></a>
+                <a href="http://pinterest.com/cafepressinc/" target="_blank" alt="pinterest"><i class="icon-pinterest"></i></a>
+            </div>
+        </div>
+        <div class="footer-ribbon-wrap clearfix">
+            <ul>
+                <h4 class="uc"><i class="icon-question-sign"></i>Help</h4>
+                <div class="footer-list-wrap">
+                    <li><a href="http://www.cafepress.com/help/trackorder">Track Order</a></li>
+                    <li><a href="http://www.cafepress.com/cp/info/help/">FAQs</a></li>
+                    <li><a href="http://help.cafepress.com/hc/s-74058960/cmd/kbresource/kb-1969659929527487589/view_results!PAGETYPE?category=25">Returns</a></li>
+                    <li><a href="http://www.cafepress.com/cp/info/help/index.aspx?page=shipping.aspx">Shipping</a></li>
+                    <li><a href="http://help.cafepress.com/hc/s-74058960/cmd/kbresource/kb-328079215619249773/escalate!PAGETYPE?VisitorProfile=cafepress">Contact Us</a></li>
+                </div>
+            </ul>
+            <ul>
+                <h4 class="uc"><i class="icon-group"></i>About</h4>
+                <div class="footer-list-wrap">
+                    <li><a href="http://www.cafepress.com/cp/info/about/" rel="nofollow">About CafePress</a></li>
+                    <li><a href="http://blog.cafepress.com/">Blog</a></li>
+                    <li><a href="http://www.cafepress.com/cp/info/help/index.aspx?page=privacy_policy.aspx">Privacy Policy</a></li>
+                    <li><a href="http://www.cafepress.com/cp/info/help/index.aspx?page=iprights.aspx">Intellectual Property Policy</a></li>
+                    <li><a href="http://www.cafepress.com/cp/info/help/index.aspx?page=cup.aspx">Content Usage Policy</a></li>
+                    <li><a href="http://www.cafepress.com/cp/sitemap/">Sitemap</a></li>
+                    <li><a href="http://www.cafepress.com/cp/tags/">Tags</a></li>
+                    <li><a href="http://www.cafepress.com/+all+gifts">Products</a></li>
+                </div>
+            </ul>
+            <ul>
+                <h4 class="uc"><i class="icon-globe"></i>International</h4>
+                <div class="footer-list-wrap">
+                    <li class="footerAUS">
+                        <div class="flag"></div>
+                        <a href="http://www.cafepress.com.au">Australia</a>
+                    </li>
+                    <li class="footerCAN">
+                        <div class="flag"></div>
+                        <a href="http://www.cafepress.ca">Canada</a>
+                    </li>
+                    <li class="footerUK">
+                        <div class="flag"></div>
+                        <a href="http://www.cafepress.co.uk">United Kingdom</a>
+                    </li>
+                    <li class="footerUS">
+                        <div class="flag"></div>
+                        <a href="http://www.cafepress.com">United States &amp; Worldwide</a>
+                    </li>
+                </div>
+            </ul>
+
+
+        </div>
+        <div class="feedback-icon"><a alt="feedback">+</a></div>
+
+        <div class="feedback">
+
+            <form id="feedback-form-template" class="feedback-form" action="javascript:cafepress.globalHeader.feedbackModuleHandler();">
+                <h3>Help us improve CafePress!</h3>
+                <p>Send us your feedback, comments and questions below:</p>
+                <div class="form-row">
+                    <select required id="feedback-category" class="green">
+                        <option value="">*Select a Category</option>
+                        <option value="Question">Question</option>
+                        <option value="Bug">Report a Bug</option>
+                        <option value="General Feedback">General Feedback</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <label for="email" class="green">*Email:</label>
+                    <input type="text" id="feedback-email" name="feedback-email" class="email" placeholder="Your email address" required>
+                </div>
+
+                <textarea class="feedback-textarea" rows="6" max-length="500" name="feedback-message" placeholder="Write your message here" required></textarea>
+
+                <input type="submit" value="SEND" class="button send">
+                <div class="error-msg">Please fill in all fields</div>
+            </form>
+
+
+        </div>
+
+        <div class="copyright">
+            All Content Copyright &copy; 1999-
+            <script type="text/javascript">var d = new Date();document.write(d.getFullYear());</script> CafePress Inc. Use of this web site constitutes acceptance of the <a onclick="window.open(&quot;http://www.cafepress.com/cp/popup/index.aspx?page=terms_policies&quot;, &quot;myWindow&quot;, &quot;height = 450, width = 925, scrollbars=1&quot;)" target="_blank" rel="nofollow" class="pointer" style="text-decoration: underline; cursor:pointer">Terms of Service.</a>
+        </div>
+        <div id="scanalert"><a href="javascript:void(window.open('https://www.scanalert.com/RatingVerify?ref=www.cafepress.com'));"><img width="115" height="30" border="0" src="images/32.gif" alt="HACKER SAFE certified sites prevent over 99.9% of hacker crime." oncontextmenu="alert('Copying Prohibited  by Law - HACKER SAFE is a Trademark of ScanAlert'); return false;"></a></div>
+    </div>
+</footer>
+
+</body>
+
+</html>
