@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <title>Canvas Demo</title>
@@ -33,7 +33,7 @@
     <input type="button" value="Submit" id="idSubmit" />
     <input id="savePdf" type="button" value="Save2Pdf" />
     <div>
-        <img id="imgResult" />
+        <img id="imgResult" width="500" />
     </div>
 
 
@@ -115,14 +115,25 @@
 //                //alert($cn.height());
 //                ctx.drawImage(img, 0, 0, $cn.width(), $cn.height());
 
-                scaleRatio = $can.width() / img.width;
-                $can[0].height = img.height * scaleRatio;
+//                scaleRatio = $can.width() / img.width;
+//                $can[0].height = img.height * scaleRatio;
+//                $can.drawImage({
+////                    layer: true,
+////                    source: 'images/测试名片-正.jpg',
+//                    source: img,
+//                    x: 0, y: 0,
+//                    width:$can.width(),height:$can.height(),
+//                    fromCenter: false
+                //                });
+
+                $can[0].height = img.height;
+                $can[0].width = img.width
                 $can.drawImage({
 //                    layer: true,
 //                    source: 'images/测试名片-正.jpg',
                     source: img,
                     x: 0, y: 0,
-                    width:$can.width(),height:$can.height(),
+                    //width:$can.width(),height:$can.height(),
                     fromCenter: false
                 });
             }
@@ -164,10 +175,12 @@
         // 姓名
         function changeCardName() {
             var cN = $('#cardName')[0];
-            var ctx = $('#imgCanvas')[0].getContext("2d");
-            ctx.font = "20px Verdana";
-            ctx.clearRect(scaleRatio * 849, scaleRatio * 249, scaleRatio * 150, scaleRatio * 50)
-            ctx.fillText(cN.value, scaleRatio * 850, scaleRatio * 300); //在指定位置写姓名
+            //var ctx = $('#imgCanvas')[0].getContext("2d");
+            //ctx.font = "20px Verdana";
+            //ctx.clearRect(scaleRatio * 849, scaleRatio * 249, scaleRatio * 150, scaleRatio * 50)
+            //ctx.fillText(cN.value, scaleRatio * 850, scaleRatio * 300); //在指定位置写姓名
+
+            $can.drawText({ x: 850, y: 300, text: cN.value, fontSize: 20, fontFamily: 'Verdana' });
         }
 
         // Title

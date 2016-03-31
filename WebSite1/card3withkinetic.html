@@ -1,12 +1,12 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <title>Canvas Demo</title>
     <meta charset="utf-8" />
 
     <style>
-        .card{  width: 900px;  margin: 0 auto;  }
-        #divCanvas{ float: left; border:1px solid #c3c3c3;}
+        .card{  width: 900px;  margin: 0 auto;  border:1px solid red;}
+        #divCanvas{ float: left; border:1px solid #c3c3c3;/*display:none;*/}
         #divInput{  padding: 50px; /*margin-left: 200px;*/ /*border:dashed;*/  }
         #palette .color{  display: inline-block; /*width: 20px; height: 20px;*/  margin: 3px;  border: solid;  }
     </style>
@@ -30,7 +30,7 @@
     <input type="button" value="Submit" id="idSubmit" />
     <input id="savePdf" type="button" value="Save2Pdf" />
     <div>
-        <img id="imgResult" />
+        <img id="imgResult" width="500" />
     </div>
 
 
@@ -107,23 +107,29 @@
         //创建Kinetic舞台，绑定我们添加的<div>容器
         var stage = new Kinetic.Stage({
             container: "divCanvas",//<div>的id
-            width : 500, //创建的舞台宽度
-            height : 400 //创建的舞台高度
+            width : 300, //创建的舞台宽度
+            height : 40 //创建的舞台高度
         });
+        //创建Kinetic用户层
+        var layer = new Kinetic.FastLayer();
 
         $(window).load(function () {
             var img = new Image()
             img.onload = function () {
-                //创建Kinetic用户层
-                var layer = new Kinetic.Layer();
-                scaleRatio = 500 / img.width;
-                var theight = img.height * scaleRatio;
-                var i= new Kinetic.Image({ x: 0, y: 0, width: 500, height: theight,image: img});
-                //向用户层中添加上面的矩形
+                //scaleRatio = 500 / img.width;
+                //var theight = img.height * scaleRatio;
+                //var i= new Kinetic.Image({ x: 0, y: 0, width: 500, height: theight,image: img});
+                ////向用户层中添加上面的矩形
+                //layer.add(i);
+                ////将上面的用户层添加到舞台上
+                //stage.add(layer);
+                ////stage.draw();
+
+                stage.width(img.width);
+                stage.height(img.height);
+                var i = new Kinetic.Image({ x: 0, y: 0, image: img });
                 layer.add(i);
-                //将上面的用户层添加到舞台上
                 stage.add(layer);
-                stage.draw();
             }
             img.src = "images/测试名片-正.jpg";
         });
@@ -134,12 +140,10 @@
         oFReader.onload = function (oFREvent) {
             var img = new Image()
             img.onload = function () {
-                var layer = new Kinetic.Layer();
                 var t= new Kinetic.Image({ x: 90 * scaleRatio, y: 90 * scaleRatio,
                     width: img.width * scaleRatio, height: img.height * scaleRatio,
                     image: img});
                 layer.add(t);
-                stage.add(layer);
 
                 // 获取logo主色（背景色）
                 RGBaster.colors(img, {
@@ -168,22 +172,22 @@
         function changeCardName() {
             var cN = $('#cardName')[0];
 
-            var layer = new Kinetic.Layer();
-            var t= new Kinetic.Text({ x: scaleRatio * 850, y: scaleRatio * 300, fontSize: 20,fontFamily: "Verdana",
-                text: cN.value, fill:'black'});
+            var t = stage.get('#name')[0];
+            if (t) { t.remove(); }
+            t= new Kinetic.Text({ x: 850, y: 300, fontSize: 20,fontFamily: "Verdana",
+                text: cN.value, fill:'black', id: 'name'});
             layer.add(t);
-            stage.add(layer);
+            //layer.draw();
         }
 
         // Title
         function changeCardTitle() {
             var cP = $('#cardTitle')[0];
 
-            var layer = new Kinetic.Layer();
-            var t= new Kinetic.Text({ x: scaleRatio * 700, y: scaleRatio * 400, fontSize: 20,fontFamily: "Georgia",
-                text: cP.value, fill:'blue'});
+            var t= new Kinetic.Text({ x: 700, y: 400, fontSize: 20,fontFamily: "Georgia",
+                text: cP.value, fill:'blue', id: 'title'});
             layer.add(t);
-            stage.add(layer);
+            //layer.draw();
         }
 
     </script>
