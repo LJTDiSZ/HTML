@@ -9,6 +9,10 @@
         #divCanvas{ float: left; border:1px solid #c3c3c3;/*display:none;*/}
         #divInput{  padding: 50px; /*margin-left: 200px;*/ /*border:dashed;*/  }
         #palette .color{  display: inline-block; /*width: 20px; height: 20px;*/  margin: 3px;  border: solid;  }
+        .leftheader{background: #d9d9d9;writing-mode:tb-rl;height:200px;}
+
+        p.image-container {width: 100%;height: 0;padding:20% 20px 50%;overflow: hidden;border:1px solid red;}
+        p.image-container img {width: 100%;border:1px dashed blue;}
     </style>
 </head>
 <body>
@@ -32,6 +36,12 @@
     <div>
         <img id="imgResult" width="500" />
     </div>
+    <div class="leftheader">
+        基本信息
+    </div>
+    <p class="image-container">
+        <img src="images/测试名片-正.jpg" />x.png">
+    </p>
 
 
     <script src="scripts/jspdf.min.js"></script>
@@ -40,6 +50,8 @@
     <script src="scripts/kinetic.min.js"></script>
     <script type="text/javascript">
         var $can = $('#imgCanvas');
+        console.log($('p.image-container').offset().top);
+        console.log($('p.image-container img').offset().top);
 
         $(document).ready(function () {
             // 用户输入姓名
