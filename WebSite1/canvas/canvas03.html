@@ -42,36 +42,49 @@
 
     	    $can.drawImage({
     	        layer: true,
-    	        source: 'images/测试名片-正.jpg',
+    	        source: '../images/测试名片-正.jpg',
     	        fromCenter: false
     	    });
             
     	    $can.drawArc({
-    	        layer: true,
+    	        layer: true, draggable: true,
     	        fillStyle: 'black',
     	        x: 100, y: 100,
     	        radius: 50
     	    })
             .drawArc({
-                layer: true,
+                layer: true, draggable: true,
                 fillStyle: '#36b',
                 x: 300, y: 150,
                 radius: 50
             });
 
     	    $can.addLayer({
-    	        type: 'rectangle',
+    	        type: 'rectangle', draggable: true,
     	        fillStyle: '#585',
     	        x: 100, y: 100,
     	        width: 100, height: 50
     	    });//.drawLayers();
 
     	    $('canvas').drawRect({
-    	        layer: true,
+    	        layer: true,draggable:true,
     	        name: 'myBox',
     	        fillStyle: '#585',
     	        x: 1, y: 1,
     	        width: 100, height: 50
+    	    });
+
+    	    $can.drawText({
+    	        layer: true, draggable: true,fromCenter: false,
+    	        fillStyle: '#9cf',
+    	        strokeStyle: '#25a',
+    	        strokeWidth: 2,
+    	        x: 2,
+    	        y: 30,
+    	        text: "Hello sfghsdfgasdfgsdfgsdfgsd",
+    	        fontSize: 36,
+                
+    	        fontFamily: 'Verdana'
     	    });
 
     	    $can.drawLayers();

@@ -129,8 +129,8 @@
                 //$can[0].height = img.height;
                 //$can[0].width = img.width
                 $can.drawImage({
-//                    layer: true,
-//                    source: 'images/测试名片-正.jpg',
+                    layer: true,
+                    //source: 'images/测试名片-正.jpg',
                     source: img,
                     x: 0, y: 0,
                     width:$can.width(),height:$can.height(),
@@ -189,15 +189,39 @@
             //ctx.clearRect(scaleRatio * 849, scaleRatio * 249, scaleRatio * 150, scaleRatio * 50)
             //ctx.fillText(cN.value, scaleRatio * 850, scaleRatio * 300); //在指定位置写姓名
 
-            $can.drawText({ x: 850 * scaleRatio, y: 300 * scaleRatio, text: cN.value, fontSize: 20, fontFamily: 'Verdana' });
+            $can.drawText({
+                layer: true, draggable: true, fromCenter: false,
+                fillStyle: '#9cf',
+                strokeStyle: '#25a',
+                strokeWidth: 2,
+                x: 850 * scaleRatio,
+                y: 300 * scaleRatio,
+                text: cN.value,
+                fontSize: 20,
+                fontFamily: 'Verdana'
+            });
         }
 
         // Title
         function changeCardTitle() {
             var cP = $('#cardTitle')[0];
-            var ctx = $('#imgCanvas')[0].getContext("2d");
-            ctx.font = "20px Georgia";
-            ctx.fillText(cP.value, scaleRatio * 700, scaleRatio * 400);  //在指定位置写Title
+            //var ctx = $('#imgCanvas')[0].getContext("2d");
+            //ctx.font = "20px Georgia";
+            //ctx.fillText(cP.value, scaleRatio * 700, scaleRatio * 400);  //在指定位置写Title
+
+            $can.drawText({
+                layer: true, draggable: true, fromCenter: false,
+                fillStyle: '#9cf',
+                strokeStyle: '#25a',
+                strokeWidth: 2,
+                x: 700 * scaleRatio,
+                y: 400 * scaleRatio,
+                text: cP.value,
+                fontSize: 20,
+                fontFamily: 'Georgia'
+            });
+
+            $can.drawLayers();
         }
 
     </script>
