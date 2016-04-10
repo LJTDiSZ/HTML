@@ -203,6 +203,10 @@
             var t= new Kinetic.Text({ x: 700 * scaleRatio, y: 400 * scaleRatio, fontSize: 20, fontFamily: "Georgia",
                 text: cP.value, fill: 'blue', id: 'title', draggable: true
             });
+            t.on('dblclick', function(evt) {
+                this.setText(prompt('New Text:'));
+                layer.draw(); //redraw the layer containing the textfield
+            });
             layer.add(t);
             layer.draw();
         }

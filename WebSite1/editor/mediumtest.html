@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <link rel="stylesheet" href="../libs/mediumeditor/css/medium-editor.min.css" />
+    <link rel="stylesheet" href="../libs/mediumeditor/css/themes/default.css" />
+    <link rel="stylesheet" href="../libs/font-awesome-4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="../libs/mediumeditorinsertplugin/css/medium-editor-insert-plugin.min.css" />
+</head>
+<body>
+    <div class="editable"></div>
+
+    <script src="../scripts/jquery-2.2.1.min.js"></script>
+    <script src="../libs/mediumeditor/js/medium-editor.min.js"></script>
+    <script src="../libs/handlebars.runtime-v4.0.5.js"></script>
+    <script src="../libs/jquery-sortable-min.js"></script>
+
+    <!-- Unfortunately, jQuery File Upload Plugin has a few more dependencies itself -->
+    <script src="../libs/jquery.fileupload/vendor/jquery.ui.widget.js"></script>
+    <script src="../libs/jquery.fileupload/jquery.iframe-transport.js"></script>
+    <script src="../libs/jquery.fileupload/jquery.fileupload.js"></script>
+
+    <script src="../libs/mediumeditorinsertplugin/js/medium-editor-insert-plugin.min.js"></script>
+
+    <script type="text/javascript">
+        var editor = new MediumEditor('.editable');
+
+        //$(function () {
+        //    $('.editable').mediumInsert({
+        //        editor: editor
+        //    });
+        //});
+    </script>
+</body>
+</html>

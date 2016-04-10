@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Tiny MCE test</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <style>
+        /*.row{border: 1px solid red;}*/
+        div[class^="col-md-"]{border: 1px solid blue;}
+        #editorDiv{width:348.48px; height:212.16px;border:50px solid red;background:#ccc;padding:50px 0 0;}
+        #editorDiv2{width:10cm; height:10cm;border:1px solid blue;background:#ccc;padding:0;}
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>TinyMCE Quick Start Guide</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <form method="post">
+                    <textarea id="mytextarea">Hello, World!</textarea>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5">
+                <textarea id="myTextarea2">Hello,Jun rld!</textarea>
+            </div>
+            <div class="col-md-7">
+                <h2>Form</h2>
+                <form enctype="multipart/form-data" id="form_file" style="width:0px; height:0px; overflow:hidden">
+                    <input id="file_name" name="file" type="file" />
+                </form>
+                <input type="hidden" id="field_name" value="" />
+                <button id="setC">Set Content</button>
+                <button id="getC">Get Content</button>
+                <div id="editorDiv">editor</div>
+                <div id="editorDiv2">editor</div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../scripts/jquery-2.2.1.min.js"></script>
+    <script src="../scripts/bootstrap.min.js"></script>
+    <script src='../libs/tinymce/js/tinymce/tinymce.min.js'></script>
+    <script>
+        tinymce.init({
+            selector: '#mytextarea',
+            automatic_uploads: true,
+            plugins: ['image paste'],
+            file_browser_callback: function(field_name, url, type, win){
+                //win.document.getElementById(field_name).value = "My Browser Value";
+                if(type=='image') $('#file_name').click(); $('#field_name').val(field_name);
+            },
+            file_browser_callback_types: 'image'
+        });
+
+        tinymce.init({
+            selector: '#myTextarea2',
+            theme: 'modern',
+            width: 540,
+            height: 250,
+            plugins: [
+                'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                'save table contextmenu directionality emoticons template paste textcolor'
+            ],
+//            content_css: 'css/content.css',
+            toolbar: 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons'
+        });
+
+
+        $('#setC').click(function(){
+            tinymce.get(1).setContent('<span>some</span> html');
+        });
+
+        $('#getC').click(function(){
+            console.log(tinymce.get(1).getContent({format:"html"}));
+        });
+
+        function setCursorPosition(editor, index) {
+            //get the content in the editor before we add the bookmark...
+            //use the format: html to strip out any existing meta tags
+            var content = editor.getContent({format: "html"});
+
+            //split the content at the given index
+            var part1 = content.substr(0, index);
+            var part2 = content.substr(index);
+
+            //create a bookmark... bookmark is an object with the id of the bookmark
+            var bookmark = editor.selection.getBookmark(0);
+
+            //this is a meta span tag that looks like the one the bookmark added... just make sure the ID is the same
+            var positionString = '<span id="'+bookmark.id+'_start" data-mce-type="bookmark" data-mce-style="overflow:hidden;line-height:0px"></span>';
+            //cram the position string inbetween the two parts of the content we got earlier
+            var contentWithString = part1 + positionString + part2;
+
+            //replace the content of the editor with the content with the special span
+            //use format: raw so that the bookmark meta tag will remain in the content
+            editor.setContent(contentWithString, ({format: "raw"}));
+
+            //move the cursor back to the bookmark
+            //this will also strip out the bookmark metatag from the html
+            editor.selection.moveToBookmark(bookmark);
+
+            //return the bookmark just because
+            return bookmark;
+        }
+
+        var tmpNode = document.createElement("DIV");
+        tmpNode.style.cssText = "width:1000cm;height:10000mm;position:absolute;left:0px;top:0px;z-index:99;visibility:hidden";
+        document.body.appendChild(tmpNode);
+        console.log("dpiw=" + tmpNode.offsetWidth);
+        console.log("dpih=" + tmpNode.offsetHeight);
+    </script>
+</body>
+</html>
