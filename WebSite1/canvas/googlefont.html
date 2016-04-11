@@ -1,0 +1,64 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <script type="text/javascript">
+        WebFontConfig = {
+            google: { families: [ 'Hanalei::latin' ] }
+        };
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
+</head>
+<body>
+    <button id="getInfo">Get Info</button>
+    <div id="container"></div>
+
+    <script src="../scripts/jquery-2.2.1.min.js"></script>
+    <script src="../scripts/kinetic.min.js"></script>
+    <script defer="defer">
+        var stage = new Kinetic.Stage({
+            container: 'container',
+            width: 578,
+            height: 600
+        });
+        var layer = new Kinetic.Layer();
+
+        function doCanvas() {
+            var text1 = new Kinetic.Text({
+                x: 100,
+                y: 100,
+                text: 'Test Kinetic.Text',
+                fontSize: 20,
+                fontFamily: 'Hanalei',
+                fill: 'black',
+                draggable: true
+            });
+            var text2 = new Kinetic.Text({
+                x: 100,
+                y: 300,
+                text: 'Test Kinetic.Text 相信很多朋友经常用',
+                fontSize: 20,
+                fontFamily: 'LiSu, PMingLiU',
+                fill: 'black',
+                draggable: true
+            });
+
+            layer.add(text1);
+            layer.add(text2);
+            stage.add(layer);
+        }
+
+        setTimeout(doCanvas, 500);
+
+        $('#getInfo').click(function () {
+            console.log(layer);
+        });
+    </script>
+</body>
+</html>

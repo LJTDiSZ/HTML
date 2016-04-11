@@ -6,7 +6,8 @@
 <body>
     <div id="container"></div>
     <div id="features">  
-  		<button id="addtextbutton">Add Text</button>  
+  		<button id="addtextbutton">Add Text</button>
+        <button id="getInfo">Get Info</button>  
 	</div>
 	<div id="textedit">
         Text:<br/>
@@ -16,6 +17,40 @@
             <option>Arial</option>
             <option>Verdana</option>
             <option>Calibri</option>
+
+            <option>Microsoft YaHei</option>
+            <option>Microsoft JhengHei</option>
+            <option>FangSong</option>
+            <option>SimHei</option>
+            <option>SimSun</option>
+            <option>NSimSun</option>
+            <option>KaiTi</option>
+            <option>PMingLiU</option>
+            <option>MingLiU</option>
+            <option>DFKai-SB</option>
+            <option>KaiTi_GB2312</option>
+            <option>FangSong_GB2312</option>
+
+            <option>STXihei</option>
+            <option>STHeiti Light</option>
+            <option>STHeiti</option>
+            <option>STKaiti</option>
+            <option>STSong</option>
+            <option>STFangsong</option>
+            <option>LiHei Pro Medium</option>
+            <option>LiSong Pro Light</option>
+            <option>BiauKai</option>
+            <option>Apple LiGothic Medium</option>
+            <option>Apple LiSung Light</option>
+
+
+            <option>FZDaBiaoSong-B06S</option>
+            <option>FZZongYi-M05S</option>
+            <option>FZXiHei</option>
+            <option>STXinwei</option>
+            <option>LiSu</option>
+            <option>ººÕæ¹ã±ê</option>
+            <option>·ÂËÎ</option>
         </select></br>
         Font Size:</br>
         <input id="textedit_fontsize"></br>
@@ -26,5 +61,10 @@
     <script src="jquery.js"></script>
     <script src="kinetic.js"></script>  
     <script src="main.js" defer="defer"></script>
+    <script type="text/javascript">
+        $('#getInfo').click(function () {
+            console.log(current.layer);
+        });
+    </script>
 </body>
 </html>
