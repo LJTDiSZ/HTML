@@ -33,7 +33,8 @@ function AddText(args){
     fontFamily: fontFamily,
     draggable: true,
     fill: 'green',
-    padding: 10,
+    stroke: 'red',
+    //padding: 10,
     align: align,
     x: x,
     y: y
@@ -59,7 +60,7 @@ function init(){
   textoptions['width'] = 1000;  
   textoptions['fontFamily'] = 'Calibri';  
   textoptions['fontSize'] = 50;  
-  textoptions['align'] = 'center';  
+  textoptions['align'] = 'left';
   heading = AddText(textoptions);  
   render_element(heading,stage,layer);  
   //blank addition over  

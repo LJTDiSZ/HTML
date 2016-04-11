@@ -1,48 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="41b84e46-5241-45cf-a16f-0cf0180f39b5" name="Default" comment="test KineticJs">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/images/color-picker.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/images/darth-vader.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/images/yoda.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/images/ui-bg_diagonals-thick_18_b81900_40x40.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/images/ui-bg_diagonals-thick_20_666666_40x40.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/images/ui-bg_flat_10_000000_40x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/images/ui-bg_glass_100_f6f6f6_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/images/ui-bg_glass_100_fdf5ce_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/images/ui-bg_glass_65_ffffff_1x400.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/images/ui-bg_gloss-wave_35_f6a828_500x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/images/ui-bg_highlight-soft_100_eeeeee_1x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/images/ui-bg_highlight-soft_75_ffe45c_1x100.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/images/ui-icons_222222_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/images/ui-icons_228ef1_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/images/ui-icons_ef8c08_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/images/ui-icons_ffd27a_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/images/ui-icons_ffffff_256x240.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/canvas/colorpicker.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/README.md" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/kinetic.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/main.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/style.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/canvas/resize.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/canvas/resizewithratio.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/editor/mediumtest.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/editor/tinymce01.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/external/jquery/jquery.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/index.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/jquery-ui.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/jquery-ui.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/jquery-ui.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/jquery-ui.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/jquery-ui.structure.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/jquery-ui.structure.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/jquery-ui.theme.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/jquery-ui.theme.min.css" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/WebSite1/mediumtest.html" afterPath="" />
+    <list default="true" id="41b84e46-5241-45cf-a16f-0cf0180f39b5" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebSite1/canvas/card3withkinetic.html" afterPath="$PROJECT_DIR$/WebSite1/canvas/card3withkinetic.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/index.html" afterPath="$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/main.js" afterPath="$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/main.js" />
     </list>
     <ignored path="HTML.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -62,83 +24,7 @@
     <favorites_list name="HTML" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.375">
-              <caret line="23" column="10" selection-start-line="10" selection-start-column="4" selection-end-line="23" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="resizewithratio.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebSite1/canvas/resizewithratio.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="6.6666665">
-              <caret line="287" column="0" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
-              <folding>
-                <element signature="e#3495#8294#0" expanded="false" />
-                <element signature="e#8342#9967#0" expanded="false" />
-                <element signature="e#10015#11349#0" expanded="false" />
-                <element signature="e#11397#11913#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jquery-ui.theme.min.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/jquery-ui.theme.min.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jquery-ui.theme.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/jquery-ui.theme.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jquery-ui.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/WebSite1/libs/jquery-ui-1.11.4/jquery-ui.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="style.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/style.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.875">
-              <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="69" column="47" selection-start-line="69" selection-start-column="47" selection-end-line="69" selection-end-column="47" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -168,9 +54,10 @@
         <option value="$PROJECT_DIR$/WebSite1/canvas/resize.html" />
         <option value="$PROJECT_DIR$/WebSite1/canvas/colorpicker.html" />
         <option value="$PROJECT_DIR$/WebSite1/canvas/resizewithratio.html" />
-        <option value="$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/index.html" />
         <option value="$PROJECT_DIR$/WebSite1/canvas/card3withkinetic.html" />
         <option value="$PROJECT_DIR$/WebSite1/editor/tinymce01.html" />
+        <option value="$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/index.html" />
+        <option value="$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/main.js" />
       </list>
     </option>
   </component>
@@ -208,7 +95,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -255,7 +141,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
+              <option name="myItemId" value="canvas" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -273,57 +159,27 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
+              <option name="myItemId" value="canvas" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="jquery-ui-1.11.4" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTML" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTML" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebSite1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="font-awesome-4.5.0" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTML" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HTML" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WebSite1" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="examples" />
+              <option name="myItemId" value="kineticjs-text-tool-master" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -419,7 +275,13 @@
       <option name="project" value="LOCAL" />
       <updated>1459348889278</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="jquery ui &#10;editor&#10;canvas">
+      <created>1460301654795</created>
+      <option name="number" value="00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1460301654795</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -471,7 +333,8 @@
     </ignored-roots>
     <MESSAGE value="open in web storm" />
     <MESSAGE value="test KineticJs" />
-    <option name="LAST_COMMIT_MESSAGE" value="test KineticJs" />
+    <MESSAGE value="jquery ui &#10;editor&#10;canvas" />
+    <option name="LAST_COMMIT_MESSAGE" value="jquery ui &#10;editor&#10;canvas" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -731,9 +594,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-106.25">
           <caret line="186" column="30" selection-start-line="186" selection-start-column="21" selection-end-line="186" selection-end-column="30" />
-          <folding>
-            <element signature="e#2836#3288#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -741,7 +601,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-2.199074">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -749,10 +608,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7222222">
           <caret line="114" column="43" selection-start-line="114" selection-start-column="43" selection-end-line="114" selection-end-column="43" />
-          <folding>
-            <element signature="n#style#0;n#form#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#3462#4909#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -760,7 +615,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -768,7 +622,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4212963">
           <caret line="197" column="0" selection-start-line="197" selection-start-column="0" selection-end-line="197" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -776,9 +629,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -786,39 +636,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.375">
-          <caret line="23" column="10" selection-start-line="10" selection-start-column="4" selection-end-line="23" selection-end-column="10" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/style.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.875">
-          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/main.js">
-      <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="69" column="47" selection-start-line="69" selection-start-column="47" selection-end-line="69" selection-end-column="47" />
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="26" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WebSite1/canvas/resizewithratio.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="6.6666665">
+        <state vertical-scroll-proportion="-52.5">
           <caret line="287" column="0" selection-start-line="287" selection-start-column="0" selection-end-line="287" selection-end-column="0" />
           <folding>
             <element signature="e#3495#8294#0" expanded="false" />
@@ -849,6 +680,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44186047">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WebSite1/canvas/kineticjs-text-tool-master/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.9444444">
+          <caret line="84" column="40" selection-start-line="84" selection-start-column="40" selection-end-line="84" selection-end-column="40" />
           <folding />
         </state>
       </provider>

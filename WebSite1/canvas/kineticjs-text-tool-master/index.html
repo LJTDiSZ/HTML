@@ -49,8 +49,8 @@
             <option>FZXiHei</option>
             <option>STXinwei</option>
             <option>LiSu</option>
-            <option>∫∫’Êπ„±Í</option>
-            <option>∑¬ÀŒ</option>
+            <option>ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ</option>
+            <option>ÔøΩÔøΩÔøΩÔøΩ</option>
         </select></br>
         Font Size:</br>
         <input id="textedit_fontsize"></br>
@@ -63,7 +63,30 @@
     <script src="main.js" defer="defer"></script>
     <script type="text/javascript">
         $('#getInfo').click(function () {
-            console.log(current.layer);
+//            console.log(current.layer);
+            var cr = current.layer.getChildren();
+            console.log(cr[0].getWidth() + ":" + cr[0].getHeight());
+            console.log(cr[0].getTextWidth() + ":" + cr[0].getTextHeight());
+            console.log(cr[0]);
+
+            var textoptions = [];
+            textoptions['text'] = '‰∏≠Âçé‰∫∫Ê∞ëÂÖ±ÂíåÂõΩ';
+            textoptions['width'] = 999;
+            textoptions['fontFamily'] = 'Arial';
+            textoptions['fontSize'] = 35;
+            textoptions['x'] = cr[0].x();
+            textoptions['y'] = cr[0].y() + cr[0].getHeight();
+            textadd = AddText(textoptions);
+            render_element(textadd,current.stage,current.layer);
+
+            textoptions['text'] = '‰∏≠Âçé‰∫∫Ê∞ëÂÖ±ÂíåÂõΩ';
+            textoptions['width'] = 999;
+            textoptions['fontFamily'] = 'Arial';
+            textoptions['fontSize'] = 50;
+            textoptions['x'] = cr[0].x() + cr[0].getTextWidth();
+            textoptions['y'] = cr[0].y();
+            textadd = AddText(textoptions);
+            render_element(textadd,current.stage,current.layer);
         });
     </script>
 </body>
