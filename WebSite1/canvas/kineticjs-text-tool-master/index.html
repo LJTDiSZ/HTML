@@ -64,6 +64,8 @@
     <script type="text/javascript">
         $('#getInfo').click(function () {
             console.log(current.layer);
+            current.stage.setScale({ x: 0.5, y: 0.5 });
+            current.stage.draw();
         });
     </script>
 </body>
