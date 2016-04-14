@@ -66,6 +66,36 @@
             console.log(current.layer);
             current.stage.setScale({ x: 0.5, y: 0.5 });
             current.stage.draw();
+
+            var cr = current.layer.getChildren();
+            console.log(cr[0].getWidth() + ":" + cr[0].getHeight());
+            console.log(cr[0].getTextWidth() + ":" + cr[0].getTextHeight());
+            console.log(cr[0]);
+
+            var textoptions = [];
+            textoptions['text'] = '中华人民共和国';
+            textoptions['width'] = 999;
+            textoptions['fontFamily'] = 'Arial';
+            textoptions['fontSize'] = 35;
+            textoptions['x'] = cr[0].x();
+            textoptions['y'] = cr[0].y() + cr[0].getHeight();
+            textadd = AddText(textoptions);
+            render_element(textadd, current.stage, current.layer);
+
+            textoptions['text'] = '中华人民共和国';
+            textoptions['width'] = 999;
+            textoptions['fontFamily'] = 'Arial';
+            textoptions['fontSize'] = 50;
+            textoptions['x'] = cr[0].x() + cr[0].getTextWidth();
+            textoptions['y'] = cr[0].y();
+            textadd = AddText(textoptions);
+            render_element(textadd, current.stage, current.layer);
+
+            current.layer.getChildren().forEach(function (element, index, array) {
+                console.log(element.getWidth() + ":" + element.getHeight());
+                console.log(element.getTextWidth() + ":" + element.getTextHeight());
+                console.log(element);
+            });
         });
     </script>
 </body>

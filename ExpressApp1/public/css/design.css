@@ -1,0 +1,106 @@
+		html{height:100%;width:100%;}
+		body{width:100%;height:100%;min-height:100%;}
+        body{font-family: "Microsoft YaHei","SimHei","SimSun";/*background: #7F7F7F;*/padding: 0px;margin:0px;}
+        ul{padding: 0px;margin: 0px;}
+        a{text-decoration: none;}
+        span{display: inline-block;}
+    	h1{	font-size: 5em;font-family: arial,helvetica;color: #fff;margin:0;padding:0;	}
+    	.imgopacity{filter:alpha(opacity=50);opacity: 0.5;}
+		/*.intro p{color: #fff;}*/
+		#fullpage{height: 100%;}
+		.section{text-align:center;clear: both;height: 100%;}
+		div[class^="col-md-"]{/*border: 1px solid red;*/padding: 0px;}
+		.row{margin: 0px;}
+		/*.pageTitle{border: 1px solid blue;}*/
+
+		#header{position:fixed;height: 40px;display:block;width: 100%;background:rgba(0,0,0,0.3);background-color:#7F7F7F;z-index:9;text-align:center;top:0px;}
+        .container{padding:0px;width: 1180px;margin: 0 auto;}
+        .topBar{width:100%;height:40px;background:rgba(0,0,0,0.3);background-color:#0C7A4C;position:absolute;z-index: 10;min-width: 650px;overflow: hidden;}
+        .topBar li{list-style-type:none;float: left;color:#FFF;height: 40px;text-align: center;padding: 0px;padding-top: 5px;}
+        .topBar li a{color:#FFF;width: 160px;height: 100%;display: inline-block; font-size: 20px;}
+        .topBar span.logoCO{float:left; font-size: 32px; color: #FFF;padding-top: 0px;width: 200px;}
+        .topBar span.logoCO img{height: 37px;margin-top:-13px;}
+        .topBar .active{background-color:#222;background: rgba(0,0,0,0.5);}
+        .topBar li a.navbar-link{width:60px;font-size: 16px;}
+        .topBar ul.pull-right li{padding-top: 10px;}
+
+		#section0{background: url(/images/default/pw_maze_white.png);}
+		#section0 .content{width: 90%;/*height:calc(100% - 40px);*/margin: 40px auto 0;/*border: 1px solid blue;*/}
+		#section0 #showpanel{height: 450px;/*height: calc(100% - 200px);*/width: 100%;/*border: 1px dashed red;*/}
+		#section0 #showpanel .template{height: 100%;}
+		#section0 #showpanel .template .preview-container{width: 100%;height: 49.5%;background:url('/images/default/gray logo icon.png') no-repeat center;background-size: contain;text-align: center;padding-top: 100px;font-size: 24px;}
+		#section0 #showpanel .template .preview-container img{width: 100%;height: 100%;}
+		#section0 #showpanel .template .preview-container:first-child{margin-bottom: 5px;}
+		#section0 .intro p{text-align: right;color: red;}
+		#section0 #uploadDiv{height: 120px;width:90px;position:relative;/*border: 2px solid white;*/margin:0 auto;}
+		/*#section0 #uploadDiv{float: left;}*/
+		#section0 #uploadDiv .preview-container{width: 100%;height: 90px;background: url(/images/default/小灰色LOGO.png) no-repeat center;background-size: contain;position: relative;}
+		#section0 #uploadDiv img{width: 100%;height: 100%;color: #fff;/*background: #067A43;*/position: absolute;left:0;}
+		#section0 #uploadDiv button{position:absolute;bottom:0;}
+		#section0 input[type=file] {display: none;}
+		#section0 #nextDiv{margin:0 auto;/*border: 2px solid white;*/}
+		/*#section0 #nextDiv button:last-child{position: absolute;bottom: 0;}*/
+		#section0 .pageTitle>div>img{height: 120px;}
+
+		#section1{background: url(/images/default/diagonal-noise.png);}
+		#section1 .content{width: 90%;height: 600px;margin: 40px auto 0;/*border: 1px solid blue;*/}
+		#section1 .content .template{height: 450px;margin-top:0px;}
+		#section1 div[class^="col-md-"]{/*border: 1px solid red;*/height: 100%;}
+		#section1 .preview-container{width: 100%;height: 49.5%;background:url('/images/default/gray logo icon.png') no-repeat center;background-size: contain;text-align: center;padding-top: 100px;font-size: 24px;}
+		#section1 .preview-container:first-child{margin-bottom: 5px;}
+		#section1 .h1{background: #3c8c93;width: 40%;}
+		#section1 ul li a{height: 30px; width: 100px;font-size: 16px; padding-top: 2px;margin-top: 0px;}
+		#section1 ul li.panetab{background: #ccc;}
+		#section1 ul span{font-size: 12px;display: inline-block;color: red; margin:5px 0 0 10px;background: none;}
+		.tab-content{height:410px;}
+		.tab-content .tab-pane{height: 100%;}
+		.tab-content .tab-pane .personInfo{opacity: 0.2;}
+		/*.tab-content .tab-pane .row{height: 30%%;}*/
+		#section1 .leftheader{background: #d9d9d9;writing-mode:vertical-lr;-webkit-writing-mode:vertical-lr;height: 200px;width:100%;font-size:16px;margin-top:5px;padding-left: calc(50% - 8px);}
+		#section1 .inputInfo{background: #d9d9d9;height: 200px;/*border: 1px solid #0C7A4C;*//*margin: 0 auto;*//*width: 90%;*/text-align: left;margin-left: 5px;margin-top:5px;padding-top: 5px;}
+		#section1 .inputInfo fieldset{position:relative;}
+		#section1 .inputInfo label{display:inline-block;width:100px;text-align:right;}
+		#section1 .inputInfo input{width:calc(95% - 100px);}
+		#section1 .intro p{text-align: left;color: red;margin: 0 auto;width: 90%;}
+		/*#section1 .pageTitle{text-align: left;}*/
+		#section1 .pageTitle>div>img{height: 120px;}
+		#section1 input + span{color: red;}
+		/*#section1 .forbtn{text-align: left;position: absolute;bottom: 0;}*/
+
+		#section2{background: url(/images/default/pw_maze_white.png);}
+		#section2 .content{width: 80%;margin: 40px auto 0;/*border: 1px solid blue;*/}
+		#section2 .row{margin: 0px;}
+		/*#section2 div[class^="col-md-"]{border: 1px solid red;}*/
+		#section2 .template{height: 450px;}
+		#section2 .preview-container{width: 100%;height: 49.5%;background:url('/images/default/gray logo icon.png') no-repeat center;background-size: contain;text-align: center;padding-top: 100px;font-size: 24px;}
+		#section2 .preview-container:first-child{margin-bottom: 5px;}
+		#section2 .h1{width:200px;margin: 0 auto;background: #3c8c93;/*border: 1px solid blue;*/}
+		#section2 .intro{width:20%;margin:-30px 0 0 48.5%;text-align:left;padding:0;/*border: 1px solid white;*/}
+		/*#section2 .pageTitle{text-align: left;}*/
+		#section2 .pageTitle>div>img{height: 120px;}
+		#section2 #div2d{padding-top: 25%;}
+
+		#section3{background: url(/images/default/diagonal-noise.png);}
+		#section3 .content{width: 90%;height: 450px;margin: 40px auto 0;/*border: 1px solid blue;*/}
+		#section3 div[class^="col-md-"]{/*border: 1px solid red;*/height: 100%;}
+		#section3 .preview-container{width: 100%;height: 49.5%;background:url('/images/default/placeholder.png') no-repeat center;background-size: contain;text-align: center;padding-top: 100px;font-size: 24px;}
+		#section3 .preview-container:first-child{margin-bottom: 5px;}
+		#section3 .h1{background: #3c8c93;}
+        #section3 .sku{background: #ccc;}
+        #section3 .sku .btn-group .btn{margin: 5px 5px;background: #3c8c93;}
+        #section3 .sku .btn-group .btn.active{border: 1px solid red;background: #9c8c93 url(/images/default/chosen.png) no-repeat 100% 100%;}
+
+		#section4{background: url(/images/default/pw_maze_white.png);}
+
+		#section5{background: url(/images/default/diagonal-noise.png);}
+
+		#editor, #editor .modal-dialog, #editor .modal-content{width: 1200px;}
+		#editor .modal-header{background: #ccc;height: 30px;padding: 0 0 0 10px;}
+		#editor .modal-title{font-weight:bold;}
+		#editor .modal-body{max-height: 800px;}
+		#editor .modal-content .modal-body{margin: 0; padding: 0; position: relative;}
+		#editor #editorDiv{margin: 0 auto;}
+
+		#textedit { position: absolute; right: 0; top: 0; width: 200px;padding-left: 5px; display: none; z-index: 2; background-color: #e0e0e0;}  
+		#textedit_textfield { width:95%; height: 150px; }
+		#exittextedit{  width: 50px;  text-align: center;  margin-top: 5px;  margin-bottom: 5px;  background-color: #6D6666;  }

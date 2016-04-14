@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-		<!--<meta charset="utf-8" />-->
+		<meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 	<title>Bootstrap & Fullpage</title>
 
@@ -24,6 +24,10 @@
         .pagesContainer{height:100%;z-index: 9;top:64px;}
         .myTest{background-color: rgba(86,61,124,.15);border: 1px solid rgba(86,61,124,.2);}
         .banner { margin:10px;}
+        .leftheader{background: #d9d9d9;
+                    writing-mode:tb-lr;-webkit-writing-mode:vertical-lr;-ms-writing-mode:tb-lr;
+                    height: 200px;width:300px;font-size:16px;margin-top:5px;border:1px solid blue;}
+        div[class="col-md-1"]{border:1px solid red;}
     </style>
 </head>
 <body>
@@ -56,6 +60,9 @@
         </div>
         <div class="section">
             <h3>第二屏</h3>
+            <div class="tab-pane fade in active" id="foreside">
+                    <div class="leftheader">公司信息</div>
+            </div>
         </div>
         <div class="section">
             <div class="slide">第三屏的第一屏</div>

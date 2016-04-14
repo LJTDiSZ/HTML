@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CardOnly</title>
+	<meta charset="utf-8" />
+	<link href="/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/jquery.fullpage.min.css" rel="stylesheet" />
+    <!-- <link href="/css/jquery-ui.min.css" rel="stylesheet"/> -->
+<!--     <link href="css/unslider.css" rel="stylesheet" />
+    <link href="css/unslider-dots.css" rel="stylesheet" /> -->
+    <link href="/css/design.css" rel="stylesheet" />
+</head>
+<body>
+	<div id="header">
+        <div class="topBar">
+            <div class="container">
+            	<a href="index.html"><span class="logoCO"><img src="/images/default/CO1 LOGO.png"></span></a>
+            	<a href="/index.html"><span class="logoCO"></span></a>
+                <ul class="pull-left">
+                    <li class="active"><a href="#">商务名片</a></li>
+                    <li><a href="#">电子名片</a></li>
+                </ul>
+                <ul class="pull-right">
+                    <li><a href="#" data-toggle="modal" data-target="#signupModal" class="navbar-link">注册</a><span>&nbsp;|&nbsp;</span></li>
+                    <li><a href="#" data-toggle="modal" data-target="#loginModal" class="navbar-link">登录</a></li>
+                </ul>
+            </div>
+        </div>
+        <div style="display:none;" id="cardCanvas"></div>
+        <div style="display:none;" id="cardCanvasE"></div>
+    </div>
+    <div id="signupModal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form method="post" action="/user/signup">
+            <div class="modal-header">注册</div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="signupName">用户名</label>
+                <input id="signupName" name="user[name]" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="signupPassword">密码</label>
+                <input id="signupPassword" name="user[password]" type="password" class="form-control">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" data-dismiss="modal" class="btn btn-defaul">关闭</button>
+              <button type="submit" class="btn btn-success">提交</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="loginModal" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <form method="post" action="/user/login">
+            <div class="modal-header">登录</div>
+            <div class="modal-body">
+              <div class="form-group">
+                <label for="loginName">用户名</label>
+                <input id="loginName" name="user[name]" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="loginPassword">密码</label>
+                <input id="loginPasword" name="user[password]" type="password" class="form-control">
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" data-dismiss="modal" class="btn btn-defaul">关闭</button>
+              <button type="submit" class="btn btn-success">提交      </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+	<div id="fullpage">
+		<div class="section" id="section0">
+			<div class="content">
+				<div class="pageTitle">
+					<div class="col-md-3">
+					</div>
+					<div class="col-md-6">
+						<img src="/images/default/1icon.png" />请检阅我们的设计，并选择您喜爱的设计进入下一步
+					</div>
+					<div class="col-md-3">
+						<div id="uploadDiv">
+							<div class="preview-container">
+								<img src="" alt="LOGO">
+							</div>
+							<input type="file" accept="image/*">
+							<button class="btn btn-block btn-sm">重新上传</button>
+						</div>
+					</div>
+				</div>
+				<div id="showpanel">
+					<div class="col-md-4 template">
+						<div class="preview-container">
+							<p></p>
+						</div>
+						<div class="preview-container">
+							<p></p>
+						</div>
+					</div>
+					<div class="col-md-4 template">
+						<div class="preview-container">
+							<p></p>
+						</div>
+						<div class="preview-container">
+							<p></p>
+						</div>
+					</div>
+					<div class="col-md-4 template">
+						<div class="preview-container">
+							<p></p>
+						</div>
+						<div class="preview-container">
+							<p></p>
+						</div>
+					</div>
+				</div>
+				<!-- <div class="intro"><p>● 请选择您喜欢的设计并进入下一步</p></div> -->
+				<div id="nextDiv">
+					<button class="btn btn-sm" id="prevBatch">&nbsp;&nbsp;&nbsp;&nbsp;前一批&nbsp;&nbsp;&nbsp;&nbsp;</button>
+					<button class="btn btn-sm" id="nextBatch">&nbsp;&nbsp;&nbsp;&nbsp;换一批&nbsp;&nbsp;&nbsp;&nbsp;</button><br/>
+					<button class="btn btn-sm btn-success nextstep">&nbsp;&nbsp;&nbsp;&nbsp;下一步&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				</div>
+			</div>
+		</div>
+		<div class="section" id="section1">
+			<div class="content">
+				<div class="row pageTitle">
+					<div class="col-md-12">
+						<img src="/images/default/2icon.png" />请输入您的企业详细信息，并进入下一步
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-5">
+						<div class="template">
+							<div class="preview-container">
+								<p></p>
+							</div>
+							<div class="preview-container">
+								<p></p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-7">
+						<!-- <div class="h1">名片信息</div> -->
+						<ul class="nav nav-pills">
+							<li class="active panetab"><a href="#foreside" data-toggle="pill">正面</a>
+							<li class="panetab"><a href="#backside" data-toggle="pill">反面</a>
+							<li><span>● 注意！您的名片反面还未填写，是否继续下一步？</span></li>
+						</ul>
+						<div class="tab-content">
+							<div class="tab-pane fade in active" id="foreside">
+								<div class="row">
+									<div class="col-md-1"><div class="leftheader">公司信息</div></div>
+									<div class="col-md-10">
+										<div class="inputInfo">
+											<fieldset class="fore">
+												<p><label>公司名称：</label><input type="text" class="required" id="cCompanyName" name="company" placeholder="例：深圳通印网投资有限公司" /></p>
+												<p><label>地址：</label><input type="text" class="textblock" data-label="地址：" placeholder="例：深圳市宝安区27区" /></p>
+												<p><label>电话：</label><input type="text" class="textblock" data-label="电话：" placeholder="例：0755-88888888" /></p>
+												<p><label>传真：</label><input type="text" class="textblock" data-label="传真：" placeholder="例：0755-88888888" /></p>
+												<p><label>网址：</label><input type="text" class="textblock" data-label="网址：" placeholder="例：www.cardonly.com" /></p>
+											</fieldset>
+										</div>
+									</div>
+								</div><p></p>
+								<div class="row personInfo">
+									<div class="col-md-1"><div class="leftheader">个人信息</div></div>
+									<div class="col-md-10">
+										<div class="inputInfo">
+											<fieldset class="fore">
+												<p><label>姓名：</label><input type="text" class="required" id="cName" name="name" placeholder="例：罗鹏" /></p>
+												<p><label>手机号：</label><input type="text" class="required" id="cCell" name="mobile" placeholder="例：+86-13823373292" /></p>
+												<p><label>职务：</label><input type="text" class="required" id="cTitle" name="title" placeholder="例：产品" /></p>
+												<p><label>邮箱：</label><input type="text" class="textblock" name="email" data-label="邮箱：" placeholder="例：roy@giveyou.cn" /></p>
+												<p><label>其它：</label><input type="text" class="textblock no-label" name="extra" data-label="其它：" placeholder="例：QQ：398812779" /></p>
+											</fieldset>
+										</div>
+									</div>
+								</div>
+							</div>
+	  						<div class="tab-pane fade" id="backside">
+								<div class="row">
+									<div class="col-md-1"><div class="leftheader">Company information</div></div>
+									<div class="col-md-10">
+										<div class="inputInfo">
+											<fieldset class="back">
+												<p><label>Company Name：</label><input type="text" class="required" id="eCompanyName" name="eCompany" placeholder="Example：Shenzhen Tongyin Investment co., Ltd." /></p>
+												<p><label>Addr：</label><input type="text" class="textblock" data-label="Addr:" placeholder="Example：No2,Onelane,three Road Xinan,Baoan,Shenzhen" /></p>
+												<p><label>Tel：</label><input type="text" class="textblock" data-label="Tel:" placeholder="Example：0755-88888888" /></p>
+												<p><label>Fax：</label><input type="text" class="textblock" data-label="Fax:" placeholder="Example：0755-88888888" /></p>
+												<p><label>http://</label><input type="text" class="textblock" data-label="http://" placeholder="Example：www.cardonly.com" /></p>
+											</fieldset>
+										</div>
+									</div>
+								</div><p></p>
+								<div class="row personInfo">
+									<div class="col-md-1"><div class="leftheader">My information</div></div>
+									<div class="col-md-10">
+										<div class="inputInfo">
+											<fieldset class="back">
+												<p><label>Name：</label><input type="text" class="required" id="eName" name="eName" placeholder="Example：Roy Luo" /></p>
+												<p><label>Mobile：</label><input type="text" class="required" id="eCell" name="eMobile" placeholder="Example：+86-13823373292" /></p>
+												<p><label>Title:</label><input type="text" class="required" id="eTitle" name="eTitle" placeholder="Example：PM" /></p>
+												<p><label>Email：</label><input type="text" class="textblock" name="eEmail" data-label="Email:" placeholder="Example：roy@giveyou.cn" /></p>
+												<p><label>Extra：</label><input type="text" class="textblock no-label" name="eExtra" data-label="Extra:" placeholder="Example：QQ：398812779" /></p>
+											</fieldset>
+										</div>
+									</div>
+								</div>
+	  						</div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-5 intro"><p>● 请仔细确认您的名片详细信息</p></div>
+					<div class="col-md-7 personbtn">
+						<button id="prevPerson" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-chevron-left"></span></button>
+						<button id="addPerson" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-plus"></span>增加名片</button>
+						<button id="nextPerson" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-chevron-right"></span></button>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 forbtn">
+						<button class="btn btn-success btn-sm nextstep">&nbsp;&nbsp;&nbsp;&nbsp;下一步&nbsp;&nbsp;&nbsp;&nbsp;</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="section" id="section2">
+			<div class="content">
+				<div class="row pageTitle">
+					<div class="col-md-12">
+						<img src="/images/default/3icon.png" /><span class="h2">效果预览</span>
+						<div class="intro"><p>这是我们为您设计的名片，请检查内容是否正确，并进入下一步。</p></div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-7 template">
+						<div class="preview-container">
+							<p></p>
+						</div>
+						<div class="preview-container">
+							<p></p>
+						</div>
+					</div>
+					<div class="col-md-5">
+						<div id="div2d">
+							<img src="/images/default/二维码.jpg" />
+							<p>扫一扫二维码可获取您的电子名片</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-7 personbtn">
+						<button id="pPerson" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-chevron-left"></span></button>
+						<button id="editPerson" class="btn btn-default btn-xs">修改</button>
+						<button id="nPerson" class="btn btn-default btn-xs"><span class="glyphicon glyphicon-chevron-right"></span></button>
+					</div>
+					<div class="col-md-5">
+					</div>
+				</div>
+				<div class="row">
+					<button id="pdfSave" class="btn btn-success btn-sm">&nbsp;&nbsp;&nbsp;&nbsp;下一步&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				</div>
+			</div>
+		</div>
+<!-- 		<div class="section" id="section3">
+			<div class="content">
+				<div class="col-md-5 template">
+					<div class="preview-container">
+						<p>正面</p>
+					</div>
+					<div class="preview-container">
+						<p>反面</p>
+					</div>
+				</div>
+				<div class="col-md-7 text-left">
+					<div class="h1">商务型名片（荷兰白纸）</div>
+                    <div class="sku">
+                        <div>产品尺寸：
+                            <div class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-default active">
+                                    <input type="radio" name="skuSize" value="1" id="option1" autocomplete="off" checked>95*54
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="skuSize" value="2" id="option2" autocomplete="off">90*45
+                                </label>
+                                <label class="btn btn-default">
+                                    <input type="radio" name="skuSize" value="3" id="option3" autocomplete="off">90*108
+                                </label>
+                            </div>
+                        </div>
+                        <div>单盒数量：1*100张/盒</div>
+                        <div>材质与印刷方式：荷兰白纸双面彩印</div>
+                        <div>单价：￥38.00</div>
+                    </div>
+					<button class="btn btn-success btn-lg">加入购物车</button>
+				</div>
+			</div>
+		</div>
+		<div class="section" id="section4">
+			<div class="intro">
+				<h1>确认结算</h1>
+			</div>
+		</div>
+		<div class="section" id="section5">
+			<div class="intro">
+				<h1>支付</h1>
+			</div>
+		</div> -->
+	</div>
+
+	<div class="modal fade" id="alertModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel">模态框（Modal）标题</h4>
+				</div>
+				<div class="modal-body">
+					在这里添加一些文本
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<!-- <button type="button" class="btn btn-primary">提交更改</button> -->
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="editor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" id="editorModalDlg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<span class="modal-title" id="myModalLabel">编辑名片</span>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button id="addtextbutton">添加文本</button>&nbsp;&nbsp;&nbsp;&nbsp;
+					<button id="savebutton">&nbsp;&nbsp;&nbsp;&nbsp;保存&nbsp;&nbsp;&nbsp;&nbsp;</button>
+				</div>
+				<div class="modal-body">
+					<div id="textedit">
+				        Text:<br/>
+				        <textarea id="textedit_textfield"></textarea><br/>
+				        Font:<br/>
+				        <select id="textedit_fontfield">
+				            <option>Arial</option>
+				            <option>Verdana</option>
+				            <option>Calibri</option>
+				            <option>Microsoft YaHei</option>
+							<option>FangSong</option>
+							<option>SimHei</option>
+							<option>SimSun</option>
+							<option>NSimSun</option>
+							<option>KaiTi</option>
+							<option>PMingLiU</option>
+							<option>MingLiU</option>
+				        </select><br/>
+				        Font Size:<br/>
+				        <input id="textedit_fontsize"><br/>
+				        <button id="deletetext">Delete</button>
+				        <p id="exittextedit" style="display: inline-block;">EXIT</p>
+				    </div>
+					<div id="editorDiv" style="border: 1px dashed blue;"></div>
+				</div>
+				<!-- <div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+					<button type="button" class="btn btn-primary">提交更改</button>
+				</div> -->
+			</div>
+		</div>
+	</div>
+
+    <script src="/js/jquery-2.2.1.min.js"></script>
+    <script src="/js/jquery.fullpage.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/kinetic.min.js"></script>
+    <script src="/js/jspdf.min.js"></script>
+    <!-- <script src="js/unslider-min.js"></script> -->
+    <script src="/js/design.js"></script>
+</body>
+</html>

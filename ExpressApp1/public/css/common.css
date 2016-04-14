@@ -1,0 +1,76 @@
+html,body{height:100%;width:100%;}
+body{font-family: "Microsoft YaHei","SimHei","SimSun";/*background: #7F7F7F;*/padding: 0px;margin:0px;}
+.text-left{text-align: left;}
+.text-center{text-align: center;}
+.text-right{text-align: right;}
+
+ul{padding: 0px;margin: 0px;}
+a{text-decoration: none;}
+span{display: inline-block;}
+h1{	font-size: 5em;font-family: arial,helvetica;color: #fff;margin:0;padding:0;	}
+.imgopacity{filter:alpha(opacity=50);opacity: 0.5;}
+
+.container-fluid{padding: 0px;}
+
+/*.header{width:100%;height:40px;background:rgba(0,0,0,0.3);background-color:#0C7A4C;min-width: 650px;}
+.header span{font-size: 32px; color: #FFF;padding-top: 0px;width: 200px;}*/
+.container{padding:0px;width: 1180px;margin: 0 auto;}
+.topBar{width:100%;height:40px;background:rgba(0,0,0,0.3);background-color:#0C7A4C;position:absolute;z-index: 10;min-width: 650px;overflow: hidden;}
+.topBar li{list-style-type:none;float: left;color:#FFF;height: 40px;text-align: center;padding: 0px;padding-top: 5px;}
+.topBar li a{color:#FFF;width: 160px;height: 100%;display: inline-block; font-size: 20px;}
+.topBar span.logoCO{float:left; font-size: 32px; color: #FFF;padding-top: 0px;width: 200px;}
+.topBar span.logoCO img{height: 37px;margin-top:-13px;}
+.topBar .active{background-color:#222;background: rgba(0,0,0,0.5);}
+.topBar li a.navbar-link{width:60px;font-size: 16px;}
+.topBar ul.pull-right li{padding-top: 10px;}
+
+.pagecontent{padding-top:40px;clear: both;}
+
+.cell{margin:5px;/*border: 1px solid red;height: 100%;*/}
+/*.row,.col-md-6{height:100%;border: 1px solid blue;height: 100%;}*/
+
+.panel-heading .accordion-toggle:after {
+    /* symbol for "opening" panels */
+    font-family: 'Glyphicons Halflings';  /* essential for enabling glyphicon */
+    content: "\e114";    /* adjust as needed, taken from bootstrap.css */
+    float: right;        /* adjust as needed */
+    color: grey;         /* adjust as needed */
+}
+.panel-heading .accordion-toggle.collapsed:after {
+    /* symbol for "collapsed" panels */
+    content: "\e080";    /* adjust as needed, taken from bootstrap.css */
+}
+.panel-heading span{font-size: 12px;}
+.tab-content{padding-top: 10px;}
+
+.preview-container {position: relative;width: 100%;height: 100%;background-color: #eee;}
+.preview-container img {display: none;position: absolute;}
+
+.row{margin: 0px;}
+.col-md-12{padding: 0px;}
+.panel-body{padding: 0px;}
+
+.table{width: 80%; margin: 0 auto;}
+
+#userlogin{clear:both;padding-top:60px;background: url(/images/登录图.png) no-repeat center;background-size: 100% 100%;height: 100%;width: 100%;}
+#userlogin .login-form{width: 60%;margin:20% auto 0;background: #fff;color:#aaa;position: relative;}
+#userlogin .login-form .login-box .mt > span {display: inline-block;float: left;}
+#userlogin .login-form .login-box .mt .extra-r{float: right;display: inline-block;}
+#userlogin .login-form .login-box .mc {clear: both;}
+#userlogin .login-form .coagent > h5{ display: inline-block; float: left; }
+#userlogin .login-form .coagent span{ display: inline-block; float: right; }
+#userlogin .login-form .coagent img{ height: 25px; }
+#userlogin .login-form .coagent ul{ list-style: none; clear: both;padding: 5px 0 0;}
+#userlogin .login-form .coagent ul li{ display: inline-block; width: 15%;}
+#userlogin .login-box .mt,.login-box .coagent{padding: 0 15px 5px;}
+
+#userlogin .login-form .qrcode-login {display: none;text-align: center;}
+
+.login-form .btn-2login, .login-form .btn-2qrcode {display: block;width: 60px;height: 60px;line-height: 99em;position: absolute;right: 0;bottom: 0;
+overflow: hidden;background: url(/images/login-qricon-01.png) no-repeat;-webkit-transition: background-position .2s cubic-bezier(0.25,.5,.5,.9);-moz-transition: background-position .2s cubic-bezier(0.25,.5,.5,.9);
+transition: background-position .2s cubic-bezier(0.25,.5,.5,.9);}
+.login-form .btn-2qrcode {background-position: -60px 0;}
+.login-form .btn-2login {background-position: 0 -60px;}
+
+#usersignup{clear:both;padding-top:60px;height: 100%;width: 30%;min-width: 300px;max-width: 500px;}
+

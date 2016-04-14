@@ -1,0 +1,88 @@
+        html { min-height: 100%; position: relative; }
+        body { color:#999; font-family: 'Roboto Condensed', sans-serif; }
+        .container-fluid{padding: 0px;}
+        .row{margin: 0px;}
+        .col-md-12{padding: 0px;}
+
+        body{font-family: "Microsoft YaHei","SimHei","SimSun";/*background: #7F7F7F;*/padding: 0px;margin:0px;}
+        ul{padding: 0px;margin: 0px;}
+        a{text-decoration: none;}
+        span{display: inline-block;}
+    	/*h1{	font-size: 5em;font-family: arial,helvetica;color: #fff;margin:0;padding:0;	}	*/
+
+		#header{position:fixed;height: 40px;display:block;width: 100%;background:rgba(0,0,0,0.3);background-color:#0C7A4C;z-index:9;text-align:center;top:0px;}
+        .container{padding:0px;width: 1180px;margin: 0 auto;}
+        .topBar{width:100%;height:40px;background:rgba(0,0,0,0.3);background-color:#0C7A4C;position:absolute;z-index: 10;min-width: 650px;overflow: hidden;}
+        .topBar li{list-style-type:none;float: left;color:#FFF;height: 40px;text-align: center;padding: 0px;padding-top: 5px;}
+        .topBar li a{color:#FFF;width: 160px;height: 100%;display: inline-block; font-size: 20px;}
+        .topBar span.logoCO{float:left; font-size: 32px; color: #FFF;padding-top: 0px;width: 200px;}
+        .topBar span.logoCO img{height: 37px;margin-top:-14px;}
+        .topBar .active{background-color:#222;background: rgba(0,0,0,0.5);}
+        .topBar li a.navbar-link{width:60px;font-size: 16px;}
+        .topBar ul.pull-right li{padding-top: 10px;}
+
+        .wrapper { margin: 0 auto; overflow: hidden; }
+        .section { border-top: 1px solid #ddd; }
+        .section:first-child { border: none; }
+        .logo {position: fixed; z-index: 11; padding: 50px 10px 10px 10px;color: #fff;}
+        /*.story {width: 974px; margin: auto; position: relative;}*/
+
+        /*#first, #second, #third, #fourth {margin: 0 auto; padding: 100px 0; overflow: hidden; width: 100%; position: relative;}*/
+
+        #first .story {margin: auto; position: relative;overflow: hidden;height: 900px;min-width: 974px;}
+        #first .banner div{width: 100%;height: 600px;}
+        #first .banner #mySlider1{background-image:url('/images/default/首页轮播图1.jpg');background-size:100% 100%;}
+        #first .banner #mySlider2{background-image:url('/images/default/首页轮播图2.jpg');background-size:100% 100%;}
+        #first .desc{position: relative;top:-540px;margin: 0 auto; width: 480px;color: #fff;}
+        #first .bottomM {position: absolute;top:510px;}
+        #first .bottomM .pull-left{width: 20%;height: 0; padding: 1px 1px 11.9%;overflow: hidden;}
+        #first .bottomM .pull-left img{width: 100%;height: auto;}
+        #first #uploadDiv{width: 20%;height: 0;padding: 1px 1px 11.9%;margin-left: -10%;left:50%;top:510px;position: absolute;overflow: hidden;}
+        #first #startP{background: #067A43 url('/images/default/上传icon.png') no-repeat center;position: relative;width: 100%;height: 0;z-index: 1;padding: 0 0 59.8%;overflow: hidden;}
+        #first #startP div{position:absolute;bottom:0;width: 100%;margin: 0 auto;color: #FFF;}
+        .example-design{width: 20%;height: 0;padding: 1px 1px 11.9%;margin:0 auto;/*position: relative;top:-645px;*/position: fixed;top:500px;left: 50%;margin-left: -10%;z-index: -1;overflow: hidden;}
+        .example-design img{width: 100%;height: auto;}
+        /*.example-design img {-webkit-transform: rotate(-4deg); box-shadow: 1px 2px 6px #999; position: fixed; display: block; margin: auto;}*/
+        #first input[type=file] {display: none;}
+
+        #second {height: 700px;clear: both;background: url(/images/default/pw_maze_white.png); /*box-shadow: 0px 0px 8px #ccc;*/}
+        #second .story {width: 80%; margin: auto; position: relative;}
+        #second .section-title {margin:125px auto 0;}
+        .second-info {float: left; width: 200px; margin: 85px 0 0; display: none;}
+        .info2 {float: right;}
+        .section-title {font-size: 28px; margin: 0 auto; width: 500px; text-align: center;}
+        .section2-bg {background: url('/images/default/引擎icon.png') no-repeat 0 0; display: block; width: 52%; height: 320px; position: absolute; left: 24%; /*margin-top: -20px;*/background-size:100% 100%;padding-top: 100px;}
+        /*.section2-bg2 {opacity: 0; background: url(../img/prodmatch_bg3.png) no-repeat 50.1% 0; display: block; width: 100%; height: 1000px; position:fixed; top: 400px; left: 0; z-index: -1; }*/
+        /*#second .bottomM {position: relative;clear: both;width: 80%;margin: 0 auto;padding-top: 180px;}*/
+        /*#second .bottomM {opacity: 0;display: block; width: 100%; height: 1000px; position:fixed; top: 400px; left: 0; z-index: -1;}*/
+        #second .bottomM {position: fixed; width: 33.6%;top:600px;left:50%;margin-left:-16.8%;opacity: 0;}
+        #second .bottomM .pull-left{width: 33.3%;/*height: 180px;*/ padding: 0px 5%;}
+        #second .bottomM .pull-left img{width: 100%;height: auto;}
+
+        #third {height: 700px;clear: both;background: }
+        #third .story {width: 960px; margin: auto; position: relative;}
+        #third .topM{position: relative;clear: both;width: 100%;margin: 0 auto;padding-top: 80px;}
+        #third .topM .pull-left{width: 320px;height: 180px; padding-left: 20px; padding-right: 20px; padding-top: 10px;}
+        #third .topM .pull-left img{width: auto;height: 100%;}
+        .third-info{clear: both;width: 60%;margin: 0 auto; padding: 20px 30px;}
+        #third .bottomM{position: relative;clear: both;}
+        #third .bottomM .pull-left{width: 25%;height: 150px; padding: 5px;}
+        #third .bottomM .pull-left img{width: 100%;height: 100%;}
+
+        #fourth {height: 625px;clear: both; background: url(/images/default/diagonal-noise.png)}
+        #fourth .story {width: 600px; margin: auto; position: relative;text-align: center;padding-top: 200px;}
+        #fourth .row{margin-top: 100px;}
+
+
+        footer * {-moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; font-family: Roboto Condensed, sans-serif; }
+        footer { background: #777; color: #FFF; padding: 1.5em 12%; }
+        footer .wrapper { max-width: 974px; }
+
+        @media only screen and (min-height: 900px) {
+            #first .story{height: 1300px;}
+            #first .banner div{height: 850px;}
+            #first .bottomM,#first #uploadDiv {top:750px;}
+            .example-design{top:600px;}
+
+            #third {height: 750px;}
+        }
