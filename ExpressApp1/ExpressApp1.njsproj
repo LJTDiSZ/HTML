@@ -31,6 +31,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="app\dbHelper.js" />
+    <Compile Include="app\models.js" />
     <Compile Include="public\js\admin.js" />
     <Compile Include="public\js\angular.min.js" />
     <Compile Include="public\js\app.js" />
@@ -47,6 +49,7 @@
     <Compile Include="public\js\jspdf.min.js" />
     <Compile Include="public\js\kinetic.min.js" />
     <Compile Include="public\js\unslider-min.js" />
+    <Compile Include="routes\card.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\users.js" />
     <Compile Include="bin\www" />
@@ -123,12 +126,15 @@
     <Content Include="public\css\unslider-dots.css" />
     <Content Include="public\css\unslider.css" />
     <Content Include="README.md" />
+    <Content Include="views\cdview.jade" />
+    <Content Include="views\cdhome.jade" />
     <Content Include="views\index.jade" />
     <Content Include="views\layout.jade" />
     <Content Include="views\error.jade" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />
+    <Folder Include="app\" />
     <Folder Include="public\" />
     <Folder Include="public\fonts\" />
     <Folder Include="public\images\" />
