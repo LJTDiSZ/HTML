@@ -18,10 +18,11 @@ router.get('/:id', function (req, res) {
 router.get('/:id/fore', function (req, res) {
     //var bgfileSample = "D:\\Work\\Tongyi\\gitlab\\cardserver\\design\\1\\1.sample.jpg";
     var bgfileSample = "/Users/Jun/Documents/WEB/gitlab/cardserver/design/1/1.sample.jpg";
+    var logofile = "/Users/Jun/Documents/WEB/LOGO.jpg";
 
     var Image = Canvas.Image, canvas = new Canvas(800, 500), ctx = canvas.getContext('2d');
     var img = new Image;
-    img.src = bgfileSample;
+    img.src = logofile;
     ctx.drawImage(img, 0, 0, 800, 500);
     res.setHeader('Content-Type', 'image/png');
     canvas.pngStream().pipe(res);
