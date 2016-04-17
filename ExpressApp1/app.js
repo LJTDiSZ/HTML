@@ -16,7 +16,9 @@ var dbURL = 'mongodb://cardserver:CardServer2016#$!@db.cardonly.com:27017/cards'
 mongoose.set('debug', true);
 
 global.dbHelper = require('./app/dbHelper');
-global.db = mongoose.connect(dbURL);
+//global.db = mongoose.connect(dbURL);
+
+global.appRoot = path.resolve(__dirname);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
