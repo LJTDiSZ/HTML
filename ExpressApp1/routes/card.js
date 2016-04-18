@@ -17,9 +17,16 @@ router.get('/:id', function (req, res) {
 
 router.get('/:id/fore', function (req, res) {
     //var bgfileSample = "D:\\Work\\Tongyi\\gitlab\\cardserver\\design\\1\\1.sample.jpg";
-    var bgfileSample = "/home/jun/Documents/design/1/1.sample.jpg";
-    var logofile = "/home/jun/Documents/design/LOGO.jpg";
-    var tmpfile = "/home/jun/Documents/design/tmp.jpg";
+    
+    //MAC
+    var bgfileSample = "/Users/Jun/Documents/WEB/gitlab/cardserver/design/1/1.sample.jpg";
+    var logofile = "/Users/Jun/Documents/WEB/LOGO.jpg";
+    var tmpfile = "/Users/Jun/Documents/WEB/tmp.jpg";
+    
+    //Ubuntu
+    // var bgfileSample = "/home/jun/Documents/design/1/1.sample.jpg";
+    // var logofile = "/home/jun/Documents/design/LOGO.jpg";
+    // var tmpfile = "/home/jun/Documents/design/tmp.jpg";
 
     // var Image = Canvas.Image, canvas = new Canvas(800, 500), ctx = canvas.getContext('2d');
     // var img = new Image;
@@ -123,22 +130,31 @@ router.get('/:id/fore', function (req, res) {
     // .in("/home/jun/Documents/design/l3.jpg")
     // .in("/home/jun/Documents/design/l2.jpg")
     
-    gm(bgfileSample)
-        .composite(logofile)
-        .geometry('+500+150')
-        .write(tmpfile, function(err) {
-            if (err) {
-                console.log("failed to write tmpfile.");
-                return;
-            }
-            
-            gm(tmpfile)
-                .font("MingLiU").fontSize(48).fill("red").drawText(20, 72, "grap方正硬笔行书简体hics")
-                .font("微软雅黑").fontSize(24).fill("blue").drawText(204, 72, " mag中华人民共和国ick")
-                .quality(100)
-                .stream('jpeg').pipe(res);
-        });
-
+    gm(logofile).resize(100, 100, "!").write(tmpfile, function(er){
+        if (er){
+            console.log("failed to resize logo");
+            console.log(er);
+        }    
+    
+        gm(bgfileSample)
+            .composite(tmpfile)
+            .geometry('+500+180')
+            .write(tmpfile, function(err) {
+                if (err) {
+                    console.log("failed to write tmpfile.");
+                    console.log(err);
+                    return;
+                }
+                
+                gm(tmpfile)
+                    .font("MingLiU").fontSize(48).fill("red").drawText(400, 72, "grap方正硬笔行书简体hics")
+                    .font("msyh").fontSize(24).fill("blue").drawText(400, 120, " mag中华人民共和国ick")
+                    .font("simkai").fontSize(36).fill("blue").drawText(400, 144, " mag中华人董事长民共和国ick")
+                    .font("sursong").fontSize(48).fill("red").drawText(400, 180, "grap方正硬笔行书简体hics")
+                    .quality(100)
+                    .stream('jpeg').pipe(res);
+            });
+    });
     //var cardDesign = global.dbHelper.getModel('carddesign');
     //cardDesign.findOne({ _id: req.params.id }, "logo cardJson", function (error, cd) {
     //    //console.log(cd.template);
