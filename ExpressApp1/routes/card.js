@@ -186,10 +186,16 @@ router.get('/:id/fore', function (req, res) {
     //});
 });
 router.get('/:id/back', function (req, res) {
-    //var cardDesign = global.dbHelper.getModel('carddesign');
-    //cardDesign.findOne({ _id: req.params.id }, function (error, cd) {
-    //    console.log(cd.template);
-    //});
+    var cardDesign = global.dbHelper.getModel('carddesign');
+    cardDesign.findOne({ _id: req.params.id }, function (error, cd) {
+       console.log(cd.template);console.log(cd._id);
+       var lgdata = cd.logo.fore.file.replace(/^data:image\/\w+;base64,/, '');
+       var lgbuf = new Buffer(lgdata, 'base64');
+       var gm = require('gm');
+       gm(lgbuf)
+        .quality(100)
+        .stream('jpeg').pipe(res);
+    });
 
     //var Canvas = require('canvas'), Image = Canvas.Image, canvas = new Canvas(200, 200), ctx = canvas.getContext('2d');
     //ctx.font = '30px Impact';
@@ -220,21 +226,21 @@ router.get('/:id/back', function (req, res) {
     //     res.setHeader('Content-Type', 'image/jpeg');
     //     canvas.jpegStream().pipe(res);
     
-    var bgfileSample = "/home/jun/Documents/design/1/1.sample.jpg";
-    var logofile = "/home/jun/Documents/design/LOGO.jpg";
-    var gm = require('gm');//.subClass({imageMagick: true});
-    // gm(bgfileSample)
-    gm(525, 400, "#fff")
-       .fontSize(48)
-       //.font("Arial.ttf")
-       .stroke("#efe", 2)
-       .fill("#555")
-       .drawText(20, 72, "graphics")
-       .fill("#fa0")
-       .drawText(204, 72, " magick")
-       .draw('image Over 100,100 0,0 ' + logofile)
-       .quality(100)
-       .stream('jpeg').pipe(res);
+    // var bgfileSample = "/home/jun/Documents/design/1/1.sample.jpg";
+    // var logofile = "/home/jun/Documents/design/LOGO.jpg";
+    // var gm = require('gm');//.subClass({imageMagick: true});
+    // // gm(bgfileSample)
+    // gm(525, 400, "#fff")
+    //    .fontSize(48)
+    //    //.font("Arial.ttf")
+    //    .stroke("#efe", 2)
+    //    .fill("#555")
+    //    .drawText(20, 72, "graphics")
+    //    .fill("#fa0")
+    //    .drawText(204, 72, " magick")
+    //    .draw('image Over 100,100 0,0 ' + logofile)
+    //    .quality(100)
+    //    .stream('jpeg').pipe(res);
 });
 
 module.exports = router;

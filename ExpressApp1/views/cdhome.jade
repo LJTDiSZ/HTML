@@ -23,6 +23,6 @@ block content
 								td #{item.user}
 								td #{item.template.designId}
 								td #{moment(item.updateAt).format('MM/DD/YYYY h:mm:ss a')}
-								td: a(target="_blank", href="card/#{item._id}")  查看
+								td: a(target="_blank", href="#{item._id}")  查看
 			- else
 				p You don't have any cards!
