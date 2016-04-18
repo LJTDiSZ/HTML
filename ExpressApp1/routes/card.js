@@ -17,15 +17,17 @@ router.get('/:id', function (req, res) {
 
 router.get('/:id/fore', function (req, res) {
     //var bgfileSample = "D:\\Work\\Tongyi\\gitlab\\cardserver\\design\\1\\1.sample.jpg";
-    var bgfileSample = "/Users/Jun/Documents/WEB/gitlab/cardserver/design/1/1.sample.jpg";
-    var logofile = "/Users/Jun/Documents/WEB/LOGO.jpg";
+    var bgfileSample = "/home/jun/Documents/design/1/1.sample.jpg";
+    var logofile = "/home/jun/Documents/design/LOGO.jpg";
+    var tmpfile = "/home/jun/Documents/design/tmp.jpg";
 
-    var Image = Canvas.Image, canvas = new Canvas(800, 500), ctx = canvas.getContext('2d');
-    var img = new Image;
-    img.src = logofile;
-    ctx.drawImage(img, 0, 0, 800, 500);
-    res.setHeader('Content-Type', 'image/png');
-    canvas.pngStream().pipe(res);
+    // var Image = Canvas.Image, canvas = new Canvas(800, 500), ctx = canvas.getContext('2d');
+    // var img = new Image;
+    // img.src = logofile;
+    // ctx.drawImage(img, 0, 0, 800, 500);
+    // res.setHeader('Content-Type', 'image/png');
+    // canvas.pngStream().pipe(res);
+    
     //
     //fs.readFile(bgfileSample, function(err, data){
     //    if (err) throw err;
@@ -95,16 +97,19 @@ router.get('/:id/fore', function (req, res) {
             //    //res.end(jpeg);
             //});
     //
-    //var gm = require('gm');//.subClass({imageMagick: true});
-    ////gm(bgfileSample)
-    //gm(525, 400, "#ccc")
-    //    .fontSize(48)
-    //    //.font("Arial.ttf")
-    //    .stroke("#efe", 2)
-    //    .fill("#555")
-    //    .drawText(20, 72, "graphics")
-    //    .fill("#fa0")
-    //    .drawText(204, 72, " magick")
+    var gm = require('gm');//.subClass({imageMagick: true});
+    // gm(bgfileSample)
+    //     .geometry('+500+150')
+    //     .composite(logofile)
+    // // gm(525, 400, "#ccc")
+    // //    .fontSize(48)
+    // //    //.font("Arial.ttf")
+    // //    .stroke("#efe", 2)
+    // //    .fill("#555")
+    // //    .drawText(20, 72, "graphics")
+    // //    .fill("#fa0")
+    // //    .drawText(204, 72, " magick")
+    // //    .draw('image over 500,100 0,0 ' + logofile)
     //    //.write(global.appRoot + '/public/imgs/new.png', function(err){
     //    //    if (err) return console.dir(arguments)
     //    //    console.log(this.outname + ' created  :: ' + arguments[3])
@@ -112,7 +117,27 @@ router.get('/:id/fore', function (req, res) {
     //    //});
     //    .quality(100)
     //    .stream('jpeg').pipe(res);
-
+    
+    // gm().command("composite")
+    // .in("-gravity", "center")
+    // .in("/home/jun/Documents/design/l3.jpg")
+    // .in("/home/jun/Documents/design/l2.jpg")
+    
+    gm(bgfileSample)
+        .composite(logofile)
+        .geometry('+500+150')
+        .write(tmpfile, function(err) {
+            if (err) {
+                console.log("failed to write tmpfile.");
+                return;
+            }
+            
+            gm(tmpfile)
+                .font("MingLiU").fontSize(48).fill("red").drawText(20, 72, "grap方正硬笔行书简体hics")
+                .font("微软雅黑").fontSize(24).fill("blue").drawText(204, 72, " mag中华人民共和国ick")
+                .quality(100)
+                .stream('jpeg').pipe(res);
+        });
 
     //var cardDesign = global.dbHelper.getModel('carddesign');
     //cardDesign.findOne({ _id: req.params.id }, "logo cardJson", function (error, cd) {
@@ -164,20 +189,36 @@ router.get('/:id/back', function (req, res) {
     //}).pipe(res);
 
 
-    var Image = Canvas.Image, canvas = new Canvas(200, 200), ctx = canvas.getContext('2d');
-        ctx.font = '30px Impact';
-        ctx.rotate(.1);
-        ctx.fillText("Awesome!", 50, 100);
+    // var Image = Canvas.Image, canvas = new Canvas(200, 200), ctx = canvas.getContext('2d');
+    //     ctx.font = '30px Impact';
+    //     ctx.rotate(.1);
+    //     ctx.fillText("Awesome!", 50, 100);
         
-        //var te = ctx.measureText('Awesome!');
-        //ctx.strokeStyle = 'rgba(0,0,0,0.5)';
-        //ctx.beginPath();
-        //ctx.lineTo(50, 102);
-        //ctx.lineTo(50 + te.width, 102);
-        //ctx.stroke();
+    //     //var te = ctx.measureText('Awesome!');
+    //     //ctx.strokeStyle = 'rgba(0,0,0,0.5)';
+    //     //ctx.beginPath();
+    //     //ctx.lineTo(50, 102);
+    //     //ctx.lineTo(50 + te.width, 102);
+    //     //ctx.stroke();
 
-        res.setHeader('Content-Type', 'image/jpeg');
-        canvas.jpegStream().pipe(res);
+    //     res.setHeader('Content-Type', 'image/jpeg');
+    //     canvas.jpegStream().pipe(res);
+    
+    var bgfileSample = "/home/jun/Documents/design/1/1.sample.jpg";
+    var logofile = "/home/jun/Documents/design/LOGO.jpg";
+    var gm = require('gm');//.subClass({imageMagick: true});
+    // gm(bgfileSample)
+    gm(525, 400, "#fff")
+       .fontSize(48)
+       //.font("Arial.ttf")
+       .stroke("#efe", 2)
+       .fill("#555")
+       .drawText(20, 72, "graphics")
+       .fill("#fa0")
+       .drawText(204, 72, " magick")
+       .draw('image Over 100,100 0,0 ' + logofile)
+       .quality(100)
+       .stream('jpeg').pipe(res);
 });
 
 module.exports = router;
