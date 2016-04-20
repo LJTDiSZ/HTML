@@ -1,4 +1,6 @@
-﻿module.exports = {
+﻿var mongoose = require('mongoose');
+
+module.exports = {
     carddesign: {
         user: String, //the login user id
         
@@ -283,6 +285,42 @@
         updateAt: {
             type: Date,
             default: Date.now()
+        }
+    },
+    company: {
+        name: {
+            unique: true,
+            type: String
+        },
+        password: String,
+        role: {
+            type: String,
+            default: "CompanyAdmin"
+        },
+        cname: String,
+        ename: String,
+        tel: String,
+        fax: String,
+        address: String,
+        website: String,
+        logo: Buffer,
+
+        parent: {
+            type: mongoose.Schema.Types.ObjectId,
+            default: null
+        },
+
+        members: [mongoose.Schema.Types.ObjectId],
+
+        meta: {
+            createAt: {
+                type: Date,
+                default: Date.now()
+            },
+            updateAt: {
+                type: Date,
+                default: Date.now()
+            }
         }
     }
 };

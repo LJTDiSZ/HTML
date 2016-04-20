@@ -16,12 +16,15 @@ router.get('/:id', function (req, res) {
 });
 
 router.get('/:id/fore', function (req, res) {
-    //var bgfileSample = "D:\\Work\\Tongyi\\gitlab\\cardserver\\design\\1\\1.sample.jpg";
+    // Office Windows
+    var bgfileSample = "D:\\Work\\Tongyi\\gitlab\\cardserver\\design\\1\\1.sample.jpg";
+    var logofile = "D:\\Work\\Tongyi\\income\\模版1\\LOGO.jpg";
+    var tmpfile = "D:\\Work\\Tongyi\\income\\模版1\\tmp.jpg";
     
     //MAC
-    var bgfileSample = "/Users/Jun/Documents/WEB/gitlab/cardserver/design/1/1.sample.jpg";
-    var logofile = "/Users/Jun/Documents/WEB/LOGO.jpg";
-    var tmpfile = "/Users/Jun/Documents/WEB/tmp.jpg";
+    //var bgfileSample = "/Users/Jun/Documents/WEB/gitlab/cardserver/design/1/1.sample.jpg";
+    //var logofile = "/Users/Jun/Documents/WEB/LOGO.jpg";
+    //var tmpfile = "/Users/Jun/Documents/WEB/tmp.jpg";
     
     //Ubuntu
     // var bgfileSample = "/home/jun/Documents/design/1/1.sample.jpg";
@@ -186,10 +189,21 @@ router.get('/:id/fore', function (req, res) {
     //});
 });
 router.get('/:id/back', function (req, res) {
-    var cardDesign = global.dbHelper.getModel('carddesign');
-    cardDesign.findOne({ _id: req.params.id }, function (error, cd) {
-       console.log(cd.template);console.log(cd._id);
-       var lgdata = cd.logo.fore.file.replace(/^data:image\/\w+;base64,/, '');
+    var bgfileSample = "D:\\Work\\Tongyi\\gitlab\\cardserver\\design\\1\\1.sample.jpg";
+    // var cardDesign = global.dbHelper.getModel('carddesign');
+    // cardDesign.findOne({ _id: req.params.id }, function (error, cd) {
+    //    console.log(cd.template);console.log(cd._id);
+    //    var lgdata = cd.logo.fore.file.replace(/^data:image\/\w+;base64,/, '');
+    //    var lgbuf = new Buffer(lgdata, 'base64');
+    //    var gm = require('gm');
+    //    gm(lgbuf)
+    //     .quality(100)
+    //     .stream('jpeg').pipe(res);
+    // });
+    var company = global.dbHelper.getModel('company');
+    company.findOne({ _id: '5715d27e984838e830f07f1f' }, function (error, c) {
+       console.log(c.cname);console.log(c._id);
+       var lgdata = c.logo;
        var lgbuf = new Buffer(lgdata, 'base64');
        var gm = require('gm');
        gm(lgbuf)
