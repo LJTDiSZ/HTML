@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+	<meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <style>
+        html,body,div{width: 100%;height: 100%;padding: 0;margin: 0;}
+        .musicswitch{width: 40px;height:40px;position:absolute;right:2%;top:1%;z-index:99;border-radius: 50%;border: 1px solid #000;background: url(images/co/music.png) no-repeat center;background-size: contain;}
+        .arrow-up{height:auto;width:25px;position:absolute;left:50%;top:92%;margin-left:-12px;z-index:99;}
+        .pt-page-moveIconUp {-webkit-animation: moveIconUp ease 1.5s both infinite;animation: moveToBottom ease 1.5s both infinite;}
+        @-webkit-keyframes moveToBottom {
+            from { }
+            to { -webkit-transform: translateY(100%); }
+        }
+        @keyframes moveToBottom {
+            from { }
+            to { -webkit-transform: translateY(100%); transform: translateY(100%); }
+        }
+        @-webkit-keyframes moveIconUp {
+            0% { -webkit-transform: translateY(100%); opacity:0;}
+            50% { -webkit-transform: translateY(0%); opacity:1;}
+            100% { -webkit-transform: translateY(-100%); opacity:0;}
+        }
+        @keyframes moveIconUp {
+            0% { -webkit-transform: translateY(100%); transform: translateY(100%); opacity:0;}
+            50% { -webkit-transform: translateY(0%); transform: translateY(0%); opacity:1;}
+            100% { -webkit-transform: translateY(-100%); transform: translateY(-100%); opacity:0;}
+        }
+
+        .ui-content{padding: 0; margin: 0;}
+        #page1{ background: url(images/co/首页背景.jpg) no-repeat center;background-size:100% 100%;}
+        #page1 #p1img{width:40%;margin:5rem auto 0;}
+        #page1 #p1img img{width:100%;}
+        #page2{ background: url(images/co/背景.png) no-repeat center;background-size:100% 100%;position: relative;}
+        #page2 #bottomGreen{z-index:5;width:100%;height:33%; background: url(images/co/icon1.png) no-repeat center;background-size: 100% 100%;position: absolute;bottom: 0;}
+        #page2 .sampleCard{width:100%;height:33%;position: fixed;bottom: 22%;}
+        #page2 .sampleCard img{width: 100%;}
+        #page2 #cologo{width:25%;height:9%;position: fixed;left:37.5%;bottom: 28.8%;z-index: 10;}
+        #page2 #cologo img{width: 100%;}
+        #page3 .sampleCard{width:100%;height:34%;position: fixed;bottom: 0;}
+        #page3 .sampleCard img{width: 100%;margin-top: 300%;}
+        #page3 #touxiang{width:100%;height:66%; background: url(images/co/touxiang.png) no-repeat center;background-size: 100% 100%;position: relative;display: none;}
+        #page3 #touxiang #buttonDiv{height: 20%;position: absolute;bottom: 0;opacity: 0.4;}
+        #page3 #touxiang #buttonDiv div{}
+        #page3 #touxiang #buttonDiv a{height: 100%;width: 100%;}
+        #page3 #touxiang #buttonDiv button{height: 100%;width: 100%;}
+        #page4{ background: url(images/co/背景.png) no-repeat center;background-size:100% 100%;}
+        #page4 div[data-role='header']{height:7%;background: rgb(52,143,100);color:#fff;}
+        #page4 div[data-role='main']{height:83%;background: rgb(6,122,67);opacity: 0.5;}
+        #page4 textarea{background: rgb(6,122,67);color:#fff;resize:none;height:100%;min-height:100%;border: none;}
+        #page4 div[data-role='footer']{height:10%;opacity: 0;}
+        #page5{ background: url(images/co/背景.png) no-repeat center;background-size:100% 100%;position: relative;}
+        #page5 img{width: 45%;margin: 25% 0 0 27.5%;}
+        #page5 p{width:100%;margin: 0 auto;text-align: center;font-size: 1.3rem;}
+        #page5 #buttons{width: 100%;height: 10%;position: absolute;bottom: 20%;}
+        #page5 #buttons button{height: 100%;width: 30%;color: #fff;background: rgb(6,122,67);}
+        #page5 #buttons button.active{background: rgb(8,179,97);width: 60%;}
+
+        .ui-icon-co-phone {background:url('images/co/icon4.png') no-repeat 15% 50%;background-size: auto 50%;}
+        .ui-icon-co-edit {background:url('images/co/icon5.png') no-repeat 15% 50%;background-size: auto 50%;}
+    </style>
+    <script>
+        (function () {
+            // initializes touch and scroll events
+            var supportTouch = $.support.touch,
+                scrollEvent = "touchmove scroll",
+                touchStartEvent = supportTouch ? "touchstart" : "mousedown",
+                touchStopEvent = supportTouch ? "touchend" : "mouseup",
+                touchMoveEvent = supportTouch ? "touchmove" : "mousemove";
+
+            // handles swipe up and swipe down
+            $.event.special.swipeupdown = {
+                setup: function () {
+                    var thisObject = this;
+                    var $this = $(thisObject);
+
+                    $this.bind(touchStartEvent, function (event) {
+                        var data = event.originalEvent.touches ?
+                                event.originalEvent.touches[0] :
+                                event,
+                            start = {
+                                time: (new Date).getTime(),
+                                coords: [data.pageX, data.pageY],
+                                origin: $(event.target)
+                            },
+                            stop;
+
+                        function moveHandler(event) {
+                            if (!start) {
+                                return;
+                            }
+
+                            var data = event.originalEvent.touches ?
+                                event.originalEvent.touches[0] :
+                                event;
+                            stop = {
+                                time: (new Date).getTime(),
+                                coords: [data.pageX, data.pageY]
+                            };
+
+                            // prevent scrolling
+                            if (Math.abs(start.coords[1] - stop.coords[1]) > 10) {
+                                event.preventDefault();
+                            }
+                        }
+
+                        $this
+                            .bind(touchMoveEvent, moveHandler)
+                            .one(touchStopEvent, function (event) {
+                                $this.unbind(touchMoveEvent, moveHandler);
+                                if (start && stop) {
+                                    if (stop.time - start.time < 1000 &&
+                                        Math.abs(start.coords[1] - stop.coords[1]) > 30 &&
+                                        Math.abs(start.coords[0] - stop.coords[0]) < 75) {
+                                        start.origin
+                                            .trigger("swipeupdown")
+                                            .trigger(start.coords[1] > stop.coords[1] ? "swipeup" : "swipedown");
+                                    }
+                                }
+                                start = stop = undefined;
+                            });
+                    });
+                }
+            };
+
+            //Adds the events to the jQuery events special collection
+            $.each({
+                swipedown: "swipeupdown",
+                swipeup: "swipeupdown"
+            }, function (event, sourceEvent) {
+                $.event.special[event] = {
+                    setup: function () {
+                        $(this).bind(sourceEvent, $.noop);
+                    }
+                };
+            });
+
+        })();
+    </script>
+</head>
+<body>
+    <div class="musicswitch"></div>
+    <img src="images/co/icon3.png" alt="" class="arrow-up pt-page-moveIconUp" />
+    <div data-role="page" id="page1">
+        <div data-role="main" class="ui-content">
+            <div id="p1img">
+                <img src="images/co/VI 1.png" />
+            </div>
+        </div>
+    </div>
+    <div data-role="page" id="page2">
+        <div data-role="main" class="ui-content">
+            <div id="bottomGreen"></div>
+            <div class="sampleCard">
+                <img src="images/co/cardshow3.png" />
+            </div>
+            <div id="cologo">
+                <img src="images/co/icon2.png" />
+            </div>
+        </div>
+    </div>
+    <div data-role="page" id="page3">
+        <div data-role="main" class="ui-content">
+            <div id="touxiang">
+                <div id="buttonDiv">
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <button data-role="button" class="ui-btn ui-icon-co-phone ui-btn-icon-left  ui-nodisc-icon">拨打电话</button>
+                        </div>
+                        <div class="ui-block-b">
+                            <button data-role="button" class="ui-btn ui-icon-co-edit ui-btn-icon-left  ui-nodisc-icon">添至通讯录</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sampleCard">
+                <img src="images/co/cardshow3.png" />
+            </div>
+        </div>
+    </div>
+    <div data-role="page" id="page4">
+        <div data-role="header">
+            <h1>公司介绍</h1>
+        </div>
+        <div data-role="main" class="ui-content">
+            <textarea>深圳市通印网投资有限公司成立于</textarea>
+        </div>
+        <div data-role="footer">
+        </div>
+    </div>
+    <div data-role="page" id="page5">
+        <div data-role="main" class="ui-content">
+            <img src="images/co/icon6.png" />
+            <br />&nbsp;
+            <p>扫描二维码查看我的名片</p>
+            <div id="buttons">
+                <button data-inline="true">我要制作名片</button>
+                <button data-inline="true" class="active">CardOnly</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.body.addEventListener('touchstart', function(){ });
+        $(document).on("pagecreate", "#page1", function () {
+            $('#page1').on('swipeup', function () {
+                $.mobile.pageContainer.pagecontainer("change", "#page2", { transition: "slideup" });
+                //$.mobile.changePage("#page2");
+            });
+        });
+        $(document).on("pagecreate", "#page2", function () {
+            $('#page2').on('swipeup', function (e) {
+                $('#page2 .sampleCard').animate({bottom: '100%'}, 2000, function(){
+                    $.mobile.pageContainer.pagecontainer("change", "#page3", { transition: "slideup" });
+                });
+                $('#page2 #cologo').animate({bottom: '80%',opacity:'0'}, 2000);
+            });
+        });
+        $(document).on("pageshow", "#page2", function () {
+            $('#page2 #cologo').css({bottom:'28.8%', opacity:'1'});
+            $('#page2 .sampleCard').css({bottom: '22%'});
+        });
+        $(document).on("pagecreate", "#page3", function () {
+            $('#page3').on('swipeup', function () {
+                $.mobile.pageContainer.pagecontainer("change", "#page4", { transition: "slideup" });
+            });
+        });
+        $(document).on("pagebeforeshow", "#page3", function () {
+            $('#page3 #touxiang').css({display: 'none'});
+            $('#page3 .sampleCard img').css({'margin-top':'300%'});
+        });
+        $(document).on("pageshow", "#page3", function () {
+            $('#page3 #touxiang').fadeIn(3000);
+            $('#page3 .sampleCard img').animate({'margin-top':'0'},2000);
+        });
+        $(document).on("pagecreate", "#page4", function () {
+            $('#page4').on('swipeup', function () {
+                $.mobile.pageContainer.pagecontainer("change", "#page5", { transition: "slideup" });
+            });
+        });
+        $(document).on("pagecreate", "#page5", function () {
+            $('#page5 button').bind('tap', function(){
+                console.log($(this).text());
+                $('#page5 button').removeClass('active');
+                $(this).addClass('active');
+            });
+        });
+    </script>
+</body>
+</html>
