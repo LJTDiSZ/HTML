@@ -1,0 +1,11 @@
+﻿BEGIN:VCARD
+N:郭晓晖
+TITLE:学习与发展高级总监 顺丰大学负责人
+ADR;WORK:中国广东省深圳市南山区白石路与滨海大道交汇处软件产业基地一栋B座一楼
+EMAIL:guoxiao@sf-express.com
+URL:http://t.cn/RGkprh0
+ORG:人力资源部
+TEL;CELL:13828877053
+TEL;WORK;VOICE:0755-33338288
+NOTE:个人主页：http://t.cn/RGkprh0
+END:VCARD

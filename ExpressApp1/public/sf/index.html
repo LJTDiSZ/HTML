@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content=" initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="css/common.css?random=2015051801" media="screen" type="text/css">
+</head>
+<body>
+    <div class="loading-wrap" style="display: block;">
+        <i class="loading eleCircle"></i>
+        <span class="loading-text">加载中...</span>
+    </div>
+
+    <div class="container">
+        <div class="user-box">
+            <div id="saveQrCode"></div>
+            <div class="part p0-line-1"></div>
+            <div class="part p0-line-2"></div>
+            <h1 class="part p0-user-name" id="name"></h1>
+            <p class="part p0-user-from" id="title"></p>
+            <ul class="part p0-user-info">
+                <li><label>移动电话</label><div class="con" id="phone"></div></li>
+                <li><label>工作电话</label><div class="con" id="tel"></div></li>
+                <li><label>工作地址</label><div class="con" id="address"></div></li>
+                <!-- <li><label>电子邮件</label><div class="con" id="email"></div></li> -->
+                <li>
+                    <label>个人主页</label><div class="con" id="url"></div>
+                </li>
+            </ul>
+        </div>
+
+        <div class="wrapper">
+            <ul class="list" id="appList"></ul>
+        </div>
+        <img id="hideVcardImg" style="display:none;">
+    </div>
+
+    <div class="pop-dialog" id="popDialog">
+        <p class="part code-tips"><strong>长按，选择 识别图中二维码</strong></p>
+        <div class="part code-wrap" id="qrCodeTouchDiv"><div class="code"><img id="qrcodeImg" alt="qrcode" /></div></div>
+        <a class="part btn btn-button" onclick="hidePop('#popDialog');showPop('#printDiv','');return false;" href="javscript:void(0);">返回</a>
+    </div>
+    <script src="js/zepto.min.js"></script>
+    <script src="js/head.min.js"></script>
+    <script type="text/javascript" src="js/apps.js?random=2015051801"></script>
+
+    <script type="text/javascript" src="js/common.js?random=2015051801"></script>
+    <script>
+    $(document).ready(function() {
+        var content = getRequestParam("content");
+        head.load("js/index.js","css/p.css",
+        function() {
+        	qrCodeInit(content);
+            $(".loading-wrap").css("display", "none");
+        });
+
+        //$('#qrCodeTouchDiv').bind("click touchstart", function (event) {
+           // removeNode('printDiv');
+        //});
+        //$('#qrCodeTouchDiv').bind("click touchend", function (event) {
+           // addNode();
+      //  });
+    });
+
+    function removeNode(nodeId){
+        $("#"+nodeId).remove();
+    }
+
+    function addNode(){
+        $("#"+nodeId).append('<div class="part print" id="printDiv"></div>');
+    }
+
+    function qrCodeInit(content){
+        $.ajax({
+            type: "post",
+            url: "service/qrcode/parase",
+            data:{"content":content},
+            dataType:"json",
+            success: function (data) {
+                var qrcode = data.res;
+                setValue("address",qrcode.address);
+                setValue("name",qrcode.name);
+                setValue("title",qrcode.company + "</br>" + qrcode.title);
+                setValue("phone",qrcode.phone);
+                setValue("tel",qrcode.tel);
+                setValue("url",'<a href="'+qrcode.url+'">'+qrcode.url+'</a>');
+
+                var qrCodeUrl = qrcode.qrCodeUrl;
+                //主要是为了预先加载
+                $("#hideVcardImg").attr("src",qrCodeUrl);
+                $("#saveQrCode").html('<a class="part btn btn-button" id="btn-showPop" onclick=showPop("#popDialog","'+qrCodeUrl+'") href="javscript:void(0);">保存到通讯录</a>');
+
+                var apps = qrcode.apps;
+                init(qrcode.apps);
+                var userInfoHeight = $(".p0-user-info").height();
+                $(".user-box").height(userInfoHeight + 125);
+                showAnimate();
+            }
+        });
+    }
+
+    function setValue(id,value){
+		if(value == undefined || value == ""){
+			if(id == "name" || id ==""){
+				$("#"+id).remove();
+				$(".user-box").remove();
+				showAnimate();
+			}else{
+				$("#"+id).parent().remove();
+			}
+		} else{
+			$("#"+id).html(value);
+		}
+    }
+
+    function init(selectApps){
+        var appsCount = apps.length;
+        for(var key in apps){
+            if(selectApps && selectApps != ""){
+                var flg = false;
+                for(var selectKey in selectApps.split(",")){
+                    if(selectApps.split(",")[selectKey] == apps[key].code){
+                        flg = true;
+                        break;
+                    }
+                }
+                if(!flg) continue;
+            }
+            //查看是否是ios系统，如果是ios系统直接跳转到appstore下载
+            var isIphone = isIos();
+            var code = apps[key].code;
+            var name = apps[key].name;
+            var desc = apps[key].desc;
+            var logo = apps[key].logo;
+            var hasWx = apps[key].address.hasWx;
+            var hasAppDownLoad = apps[key].address.hasAppDownLoad;
+            var downLoadUrl = apps[key].address.yingyongbao;
+            if(isIphone){
+                downLoadUrl =  apps[key].address.ios;
+            }
+            var wx = apps[key].address.wx;
+            var vcard = apps[key].address.vcard;
+            var currentCount = parseInt(key) + 1;
+            var html = '<li class="item">'+
+            '<div class="main">'+
+                '<div class="deal-card">'+
+                    '<div class="deal-img"><img class="logo" src="'+logo+'"></div>'+
+                    '<div class="deal-con">'+
+                        '<h3>'+name+'</h3> '+
+                        '<p>'+desc+'</p>';
+
+                if(hasWx && hasAppDownLoad){
+                html += '<div class="bottom">'+
+                    '<span class="col"><a class="btn btn-primary-a" onclick=showPop("#popDialog","'+vcard+'") href="javscript:void(0);">关注公众号</a></span> '+
+                    '<span class="col"><a class="btn btn-primary-b" href="'+downLoadUrl+'">下载应用</a></span>'+
+                    '</div> ';
+                }else if(hasWx){
+                html += '<div class="bottom">'+
+                    '<span class="col-1"><a class="btn btn-primary-a" onclick=showPop("#popDialog","'+vcard+'") href="javscript:void(0);">关注公众号</a></span> '+
+                    '</div> ';
+                }else if(hasAppDownLoad){
+                html += '<div class="bottom">'+
+                    '<span class="col-1"><a class="btn btn-primary-b" href="'+downLoadUrl+'">下载应用</a></span>'+
+                    '</div> ';
+                }
+                html +=  '</div>'+
+                    '</div> '+
+                '</div> ';
+
+            html += '</li>';
+                $("#appList").append(html);
+        }
+    }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,270 @@
+html {
+	font-family:sans-serif;
+	-ms-text-size-adjust:100%;
+	-webkit-text-size-adjust:100%
+}
+body {
+	margin:0
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, nav, section, summary {
+	display:block
+}
+audio, canvas, progress, video {
+	display:inline-block;
+	vertical-align:baseline
+}
+audio:not([controls]) {
+display:none;
+height:0
+}
+[hidden], template {
+display:none
+}
+a {
+	background:0 0
+}
+a:active, a:hover {
+	outline:0
+}
+abbr[title] {
+	border-bottom:1px dotted
+}
+b, strong {
+	font-weight:700
+}
+dfn {
+	font-style:italic
+}
+h1 {
+	font-size:2em;
+	margin:.67em 0
+}
+mark {
+	background:#ff0;
+	color:#000
+}
+small {
+	font-size:80%
+}
+sub, sup {
+	font-size:75%;
+	line-height:0;
+	position:relative;
+	vertical-align:baseline
+}
+sup {
+	top:-.5em
+}
+sub {
+	bottom:-.25em
+}
+img {
+	border:0;
+	width:100%;
+}
+svg:not(:root) {
+overflow:hidden
+}
+figure {
+	margin:1em 40px
+}
+hr {
+	-moz-box-sizing:content-box;
+	box-sizing:content-box;
+	height:0
+}
+pre {
+	overflow:auto
+}
+code, kbd, pre, samp {
+	font-family:monospace, monospace;
+	font-size:1em
+}
+button, input, optgroup, select, textarea {
+	color:inherit;
+	font:inherit;
+	margin:0
+}
+button {
+	overflow:visible
+}
+button, select {
+	text-transform:none
+}
+button, html input[type=button], input[type=reset], input[type=submit] {
+	-webkit-appearance:button;
+	cursor:pointer
+}
+button[disabled], html input[disabled] {
+	cursor:default
+}
+button::-moz-focus-inner, input::-moz-focus-inner {
+border:0;
+padding:0
+}
+input {
+	line-height:normal
+}
+input[type=checkbox], input[type=radio] {
+	box-sizing:border-box;
+	padding:0
+}
+input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button {
+height:auto
+}
+input[type=search] {
+	-webkit-appearance:textfield;
+	-moz-box-sizing:content-box;
+	-webkit-box-sizing:content-box;
+	box-sizing:content-box
+}
+input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {
+-webkit-appearance:none
+}
+fieldset {
+	border:1px solid silver;
+	margin:0 2px;
+	padding:.35em .625em .75em
+}
+legend {
+	border:0;
+	padding:0
+}
+textarea {
+	overflow:auto
+}
+optgroup {
+	font-weight:700
+}
+table {
+	border-collapse:collapse;
+	border-spacing:0
+}
+td, th {
+	padding:0
+}
+ul {
+	list-style:none
+}
+li, ul {
+	margin:0;
+	padding:0
+}
+body {
+	 color:#656565;
+	 background: #fafafa url(img/bg.png) no-repeat 0 0 fixed;
+	 background-size: 100% auto;
+	color:#656565;
+	font-family:"Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei", "黑体", Arial, sans-serif;
+	font-size:0.875rem;
+ 	line-height: 1.5; 	
+}
+a {
+	color:#686868;
+	text-decoration:none;
+	cursor:pointer
+}
+body, html {
+	-webkit-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	box-sizing:border-box;
+	-webkit-touch-callout:none;
+	-webkit-user-select:none;
+	-webkit-overflow-scrolling:touch;
+	-webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+}
+.container {
+	overflow:hidden;
+	position:relative;
+	max-width:750px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: 20px;
+}
+.loading-wrap {
+	width:100%;
+	height:100%;
+	position:fixed;
+	z-index:200;
+	background-color:#f0eee3;
+	left:0;
+	top:0;
+}
+.loading {
+	position:fixed;
+	background-color: rgba(0,0,0,0);
+	border:5px solid #aaa;
+	border-left:5px solid #333;
+	width:30px;
+	height:30px;
+	top:50%;
+	left:50%;
+	margin:-20px 0 0 -20px;
+	border-radius:50%;
+	box-shadow: 0 0 10px #aaa;
+}
+.loading-text {
+	position:fixed;
+	height:30px;
+	width:100%;
+	line-height: 30px;
+	top:50%;
+	left:0;
+	text-align: center;
+	margin-top: 30px;
+	font-size: 0.75rem;
+	color:#999;
+}
+p{
+	margin:0;
+	padding: 0;
+}
+.part {
+	position:absolute;
+	display: inline-block;
+	z-index: 2;
+}
+@-webkit-keyframes eleCircle {
+0% {
+-webkit-transform:rotate(0deg)
+}
+20% {
+-webkit-transform:rotate(72deg)
+}
+40% {
+-webkit-transform:rotate(144deg)
+}
+60% {
+-webkit-transform:rotate(216deg)
+}
+80% {
+-webkit-transform:rotate(288deg)
+}
+100% {
+-webkit-transform:rotate(360deg)
+}
+}
+@keyframes eleCircle {
+0% {
+transform:rotate(0deg)
+}
+20% {
+transform:rotate(72deg)
+}
+40% {
+transform:rotate(144deg)
+}
+60% {
+transform:rotate(216deg)
+}
+80% {
+transform:rotate(288deg)
+}
+100% {
+transform:rotate(360deg)
+}
+}
+.eleCircle {
+	-webkit-animation:eleCircle 1.5s linear infinite;
+	animation:eleCircle 1.5s linear infinite
+}
