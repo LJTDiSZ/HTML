@@ -200,15 +200,44 @@ router.get('/:id/back', function (req, res) {
     //     .quality(100)
     //     .stream('jpeg').pipe(res);
     // });
-    var company = global.dbHelper.getModel('company');
-    company.findOne({ _id: '5715d27e984838e830f07f1f' }, function (error, c) {
-       console.log(c.cname);console.log(c._id);
-       var lgdata = c.logo;
-       var lgbuf = new Buffer(lgdata, 'base64');
-       var gm = require('gm');
-       gm(lgbuf)
-        .quality(100)
-        .stream('jpeg').pipe(res);
+
+    //var company = global.dbHelper.getModel('company');
+    //company.findOne({ _id: '5722cc1404a720b81de36f3a' }, function (error, c) {
+    //   console.log(c.cname);console.log(c._id);
+    //   var lgdata = c.logo;
+    //   var lgbuf = new Buffer(lgdata, 'base64');
+    //   //var gm = require('gm');
+    //   //gm(lgbuf)
+    //   // .quality(100)
+    //    // .stream('jpeg').pipe(res);
+
+    //    //res.writeHead(200, { 'Content-Type': 'image/jpeg' });
+    //    //res.end(lgdata);
+
+    //    res.contentType('image/jpeg');
+    //    res.end(lgdata);
+    //});
+
+
+    var company = global.dbHelper.getModel('companyDesign');
+    company.findOne({ _id: req.params.id }, function (error, c) {
+        console.log(c.companyId); console.log(c._id);
+        var lgdata = c.fore.file;
+        var lgsdata = c.fore.sampleFile;
+        var lgbuf = new Buffer(lgdata, 'base64');
+        var lgsbuf = new Buffer(lgsdata, 'base64');
+        var gm = require('gm');
+        //gm(lgbuf, "1.jpg")
+        //    .quality(100)
+        //    .stream('jpeg').pipe(res);
+        gm(lgsbuf, '1.jpg').size(function (err, value) {
+            if (value) {
+                console.log(value);
+            }
+            console.log(this);
+            this.quality(100).stream('jpeg').pipe(res);
+        });
+        console.log("done.");
     });
 
     //var Canvas = require('canvas'), Image = Canvas.Image, canvas = new Canvas(200, 200), ctx = canvas.getContext('2d');

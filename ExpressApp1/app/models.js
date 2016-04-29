@@ -322,5 +322,34 @@ module.exports = {
                 default: Date.now()
             }
         }
+    },
+    companyDesign: {
+
+        companyId: String, // link to companyId, one company could have multi templates
+
+        status: String, // active, obsoleted, ...
+
+        fore: {
+            file: Buffer, // company template fore w/o margin
+            sampleFile: Buffer,  // company complete sample fore w/o margin
+            marginFile: Buffer  // company template fore w/ 3mm margin
+        },
+
+        back: {
+            file: Buffer, // company template fore w/o margin
+            sampleFile: Buffer,  // company complete sample fore w/o margin
+            marginFile: Buffer  // company template fore w/ 3mm margin
+        },
+
+        meta: {
+            createAt: {
+                type: Date,
+                default: Date.now()
+            },
+            updateAt: {
+                type: Date,
+                default: Date.now()
+            }
+        }
     }
 };
