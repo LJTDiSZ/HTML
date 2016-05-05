@@ -286,4 +286,33 @@ router.get('/:id/back', function (req, res) {
     //    .stream('jpeg').pipe(res);
 });
 
+router.get('/1/pdf', function (req, res) {
+    var iconv = require('iconv-lite');
+    var textsample = "This 中华民国 is a 中文董事长text..";
+    //var textsample = iconv.encode("This 中华民国 is a 中文董事长text..", "utf8");
+    var outputFile = "eademo.pdf";
+    var PDFDoc = require('fzcs-pdfkit-fontkit');
+    var doc = new PDFDoc({margin: 20,size:[400,400]});
+    doc.pipe(fs.createWriteStream(outputFile));
+    // doc.pipe(res);
+
+    doc.font('public/fonts/msfonts/msyh.ttf').text(textsample);
+    doc.font('public/fonts/msfonts/simhei.ttf').text(textsample);
+    doc.font('public/fonts/msfonts/simkai.ttf').text(textsample);
+    doc.font('public/fonts/msfonts/simfang.ttf').text(textsample);
+    doc.font('public/fonts/msfonts/simsun.ttc','SimSun').text(textsample);
+    doc.font('public/fonts/msfonts/simsun.ttc','NSimSun').text(textsample);
+    doc.font('public/fonts/msfonts/mingliu.ttc','PMingLiU').text(textsample);
+    doc.font('public/fonts/downloads/FZDaBiaoSong-B06S.ttf').text(textsample);
+    doc.font('public/fonts/downloads/FZZongYi-M05S.ttf').text(textsample);
+    doc.font('public/fonts/downloads/STXinwei.ttf').text(textsample);
+    doc.font('public/fonts/downloads/FZXiHei I-Z08S.ttf').text(textsample);
+    doc.registerFont("XS", 'public/fonts/downloads/方正硬笔行书简体.ttf');
+    doc.font('XS').text(textsample);
+    doc.end();
+
+    // res.sendFile(outputFile, { root: './' });
+    res.end("finished!");
+});
+
 module.exports = router;
