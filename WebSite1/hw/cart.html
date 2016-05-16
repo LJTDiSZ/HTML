@@ -1,0 +1,888 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Content-Language" content="zh-cn" />
+    <script>
+var domainMain = 'http://www.vmall.com';
+var domainWap = 'http://m.vmall.com';
+var domainCart = 'http://cart.vmall.com';
+var domainRemark = 'http://remark.vmall.com';
+var domainShoppingConfig = 'http://addr.vmall.com';
+var imagePath = 'http://res.vmallres.com/20160509/images';
+var domainAccount = 'http://www.vmall.com';
+var isUseAccount = 'false';
+var upBindPhoneAddr = 'http://hwid1.vmall.com:8080/oauth2/userCenter/bindAccount/bindMobileAccount_1.jsp?lang=zh-cn&amp;themeName=cloudTheme&amp;reqClientType=26';
+    </script>
+    <script>
+(function(){
+	try
+	{
+		cookieGet=function(a){var f=null;if(document.cookie&&document.cookie!=""){var d=document.cookie.split(";");for(var c=0;c<d.length;c++){var b=(d[c]||"").replace(/^(\s|\u00A0)+|(\s|\u00A0)+$/g,"");if(b.substring(0,a.length+1)==(a+"=")){var e=function(i){i=i.replace(/\+/g," ");var h='()<>@,;:\\"/[]?={}';for(var g=0;g<h.length;g++){if(i.indexOf(h.charAt(g))!=-1){if(i.startWith('"')){i=i.substring(1)}if(i.endWith('"')){i=i.substring(0,i.length-1)}break}}return decodeURIComponent(i)};f=e(b.substring(a.length+1));break}}}return f};
+		var uri = location.href;
+		//增加产品详情页判断
+		var prodReg=/\/\d+\.html/;
+		var isProDetail =prodReg.test(uri);
+		if(uri == domainMain || uri == (domainMain + "/index.html") || uri == (domainMain + "/")||isProDetail) {
+			if(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+				var redirectWap = cookieGet("redirectWap");
+
+				if(!redirectWap == "1" && !isProDetail) {
+					window.location.href = domainWap;
+				}else if(!redirectWap == "1" && isProDetail)
+				{
+					var wapUri =domainWap+uri.substring(uri.indexOf("/product"));
+					window.location.href=wapUri;
+				}
+			}
+		}
+	}
+	catch (err){}
+})();
+    </script>
+    <title>购物车华为商城</title>
+    <link rel="shortcut icon" href="http://www.vmall.com/favicon.ico" />
+    <link href="http://res.vmallres.com/20160509/css/echannel/ec.core.min.css?20160307" rel="stylesheet" type="text/css">
+
+    <link href="http://res.vmallres.com/20160509/css/order/main.min.css?20160125" rel="stylesheet" type="text/css">
+    <script src="http://res.vmallres.com/20160509/js/common/jsapi.js?20141025" namespace="ec"></script>
+    <script src="http://res.vmallres.com/20160509/js/common/base/jquery-1.4.4.min.js"></script>
+    <script src="http://res.vmallres.com/20160509/js/common/ec.core.js?20141025"></script>
+    <script src="http://res.vmallres.com/20160509/js/echannel/ec.business.js?20150824"></script>
+    <!--[if lt IE 9]><script src="http://res.vmallres.com/20160509/js/common/html5shiv.js"></script> <![endif]-->
+</head>
+
+
+
+<body>
+    <div class="top-banner" id="top-banner-block"></div>
+    <!-- 20130605-qq-彩贝-start -->
+    <div class="qq-caibei-bar hide" id="caibeiMsg">
+        <div class="layout">
+            <div class="qq-caibei-bar-tips" id="HeadShow"></div>
+            <div class="qq-caibei-bar-userInfo" id="ShowMsg"></div>
+        </div>
+    </div>
+    <!-- 20130605-qq-彩贝-end -->
+
+    <div class="shortcut">
+        <div class="layout">
+            <div class="s-sub">
+                <ul>
+                    <li class="s-hw"><a href="http://consumer.huawei.com/cn/" target="_blank">华为官网</a></li>
+                    <li class="s-honor"><a href="http://www.honor.cn/" target="_blank">荣耀官网</a></li>
+                    <!--
+                    <li class="s-emui"><a href="http://emui.huawei.com/cn/" target="_blank">EMUI</a></li>
+                    <li class="s-appstore"><a href="http://appstore.huawei.com/" target="_blank">应用市场</a></li>
+                    <li class="s-cloud"><a href="http://cloud.huawei.com/cn/contact" target="_blank">云服务</a></li>
+                    <li class="s-developer"><a href="http://developer.huawei.com/" target="_blank">开发者联盟</a></li>
+                    -->
+                    <li class="s-appsoft">
+                        <div class="s-dropdown">
+                            <div class="h">
+                                <a href="http://emui.huawei.com/appsoft/" target="_blank">软件应用</a>
+                                <s></s>
+                            </div>
+                            <div class="b">
+                                <p><a href="http://emui.huawei.com/cn/" target="_blank">EMUI</a></p>
+                                <p><a href="http://appstore.huawei.com/" target="_blank">应用市场</a></p>
+                                <p><a href="http://cloud.huawei.com" target="_blank">云服务</a></p>
+                                <p><a href="http://developer.huawei.com/" target="_blank">开发者联盟</a></p>
+                            </div>
+                        </div>
+
+                    <li class="s-club"><a href="http://club.huawei.com" target="_blank">花粉俱乐部</a></li>
+                    <li class="s-sr"><a href="javascript:;" onclick="showSelectRegion()">Select Region</a></li>
+                </ul>
+            </div>
+            <div class="s-main">
+                <ul>
+                    <li class="s-login" id="unlogin_status">
+                        <script>document.write('<a href="https://hwid1.vmall.com/casserver/remoteLogin?loginChannel=26000000&reqClientType=26&loginUrl=http%3A%2F%2Fhwid1.vmall.com%3A8080%2Foauth2%2Fportal%2Flogin.jsp&service=http%3A%2F%2Fwww.vmall.com%2Faccount%2Fcaslogin%3Furl%3D'+encodeURIComponent(encodeURIComponent(window.location.href))+'" rel="nofollow">登录</a>');</script>
+                        &nbsp;&nbsp;&nbsp;<a href="https://hwid1.vmall.com/oauth2/portal/regbymail.jsp?service=http://www.vmall.com/account/caslogin&loginChannel=26000000&reqClientType=26" rel="nofollow">注册</a>
+                    </li>
+                    <li class="s-user hide" id="login_status">
+                        <!--
+                            ie6下鼠标悬停追加ClassName： hover
+                            示例：[ s-dropdown hover ]
+                        -->
+                        <div class="s-dropdown">
+                            <div class="h">
+                                <a href="http://www.vmall.com/member?t=1462811821640timestamp" id="customer_name" rel="nofollow" timeType="timestamp" class="link-user"></a>
+                                <em class="vip-state" id="vip-info">
+                                    <a class="link-noAct" href="http://www.vmall.com/member/account" id="vip-inActive" title="请完善个人信息，即刻享受会员特权">去激活</a>
+                                    <a href="http://www.vmall.com/member/point" title="V0" id="vip-Active"><i class="icon-vip-level-0"></i>&nbsp;</a>
+                                    <a title="实名认证" id="authentication" href="/authmember/accesstoken"></a>
+                                </em>
+                                <s></s>
+                            </div>
+                            <div class="b">
+                                <p><a href="https://hwid1.vmall.com/oauth2/userCenter/hwAccount?reqClientType=26&loginChannel=26000000&themeName=cloudTheme" target="_blank" id="user-center">我的华为帐号</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a href="http://www.vmall.com/account/logout">退出</a></p>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="s-myOrders">
+                        <a href="http://www.vmall.com/member/order?t=1462811821640timestamp" rel="nofollow" timeType="timestamp">我的订单</a>
+                    </li>
+                    <li class="s-promo"><a href="http://www.vmall.com/priority" rel="nofollow">V码(优购码)</a></li>
+                    <li class="s-hwep hide" id="preferential"></li>
+                    <li class="s-mobile"><a href="http://www.vmall.com/appdownload" target="_blank">手机版</a></li>
+                    <li class="s-sitemap">
+                        <div class="s-dropdown ">
+                            <div class="h">
+                                <a href="javascript:;">网站导航</a>
+                                <s></s>
+                            </div>
+                            <div class="b">
+                                <p><a href="http://www.vmall.com/help/index.html">帮助中心</a></p>
+                                <p><a href="http://consumer.huawei.com/minisite/HiSuite_cn/" target="_blank">PC软件</a></p>
+                                <p><a href="http://vmall.118100.cn" target="_blank">数字音乐</a></p>
+                                <p><a href="http://www.hwtrip.com/" target="_blank">爱旅</a></p>
+                                <p><a href="http://dbank.vmall.com/" target="_blank">华为网盘</a></p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <textarea id="selectRegion-tips" style="display: none;">
+        <!-- 20151105-全球语言弹出框-width:910px-start -->
+        <div class="box-content"><div class="box-lan-choose"><dl><dt>Asia Pacific</dt><dd class="box-button"><a class="box-choose" href="http://www.vmall.hk/">香港</a><a class="box-choose" href="http://www.vmall.my/">Malaysia</a></dd></dl><dl class="box-lan-choose-area"><dt>The United States and Latin America</dt><dd class="box-button"><a class="box-choose" href="https://store.hihonor.com/us">United States</a><a class="box-choose" href="http://www.honor.mx/">México</a></dd></dl><dl class="box-lan-choose-area"><dt>Europe</dt><dd class="box-button"><a class="box-choose" href="http://www.vmall.ru/">Россия</a><a class="box-choose" href="https://www.vmall.eu/be/">België</a><a class="box-choose" href="https://www.vmall.eu/fr/">France</a><a class="box-choose" href="https://www.vmall.eu/de/">Deutschland</a><a class="box-choose" href="https://www.vmall.eu/it/">Italia</a><a class="box-choose" href="https://www.vmall.eu/nl/">Nederland</a><a class="box-choose" href="https://www.vmall.eu/pt/">Portugal</a><a class="box-choose" href="https://www.vmall.eu/es/">España</a><a class="box-choose" href="https://www.vmall.eu/ch/">Schweiz</a><a class="box-choose" href="https://www.vmall.eu/uk/">UK</a></dd></dl><dl class="box-lan-choose-area"><dt>Middle East</dt><dd class="box-button"><a href="http://www.vmall.hk/" target="_self" textvalue="Saudi Arabia"></a><a class="box-choose" href="http://www.honorarabia.com/uae/">United Arab Emirates</a><a class="box-choose" href="http://www.honorarabia.com/ksa/">Saudi Arabia</a></dd></dl></div></div>
+        <!-- 20151105-全球语言弹出框-width:910px-end -->
+    </textarea>
+    <script src="http://res.vmallres.com/20160509/js/echannel/base.min.js?20151008"></script>
+    <script>
+ec.mediaPath = "http://res.vmallres.com/pimages/";
+//document.write('<script src="/account/status?'+(new Date()).getTime()+'"></s' + 'cript>');
+    </script>
+    <script>
+ec.load("ec.box" , {loadType : "lazy"});
+/**
+*功能：给鼠标移动到s-dropdown上面的时候，记得给他多添加一个hover类样式
+*目的是兼容ie6
+*@author 李峰
+*/
+$(function(){
+	$(".s-dropdown").hover(function(){
+		$(this).addClass("hover");
+	},function(){
+		$(this).removeClass("hover");
+	});
+});
+
+//显示全球导航选择层
+function showSelectRegion()
+{
+    var box = new ec.box($("#selectRegion-tips").val(),{
+			boxid : "region-select-box",
+			boxclass : "ol_box_4",
+			title : "Please select your country or region.",
+			width : 940,
+			showButton : false,
+			autoPosition:false,
+			onopen: function(box){
+			},
+			onok : function(box){
+			},
+			oncancel : function(box){
+				box.close();
+				$(".ol_box_mask").remove();
+			},
+			onclose : function(box){
+				$(".ol_box_mask").remove();
+			}
+		});
+
+		box.open();
+
+				$(".box-title").css("font-size","28px").css("font-weight","normal");
+				$("#region-select-box").css("height","auto");
+				$(".ol_box_mask").click(function(){box.close();});
+
+				$(".box-header").unbind("mousemove");
+				$(".box-header").unbind("mousedown");
+
+				var divTop=document.getElementById("region-select-box").offsetTop;
+				$("#region-select-box").mousedown(function (e) {
+					var e=e||window.event;
+					var region = document.getElementById("region-select-box");
+
+					var leftX = e.clientX - region.offsetLeft;
+					var topY = e.clientY - region.offsetTop;
+					$("#region-select-box").mousemove(function (event) {
+					 var e=event||window.event;
+					  var left=	e.clientX - leftX;
+					  var top=e.clientY - topY;
+
+					  if(e.clientX - leftX<20-region.offsetWidth){
+					  left=20-region.offsetWidth;
+					  }
+					  if(e.clientY - topY<20-region.offsetHeight){
+					  top=20-region.offsetHeight;
+					  }
+
+					 if(e.clientY - topY+20>=$(window).height()){
+					  top=$(window).height() - 20;
+					  }
+					  if(e.clientX - leftX+20>=$(window).width()){
+					  left=$(window).width() - 20;
+					  }
+					  $("#region-select-box").css({"left": left, "top": top});
+					  divTop=top;
+
+					});
+				});
+				$("#region-select-box").mouseup(function () {
+				$("#region-select-box").unbind("mousemove");
+				});
+            $(window).scroll(function () {
+                $("#region-select-box").offset({ top: divTop });
+            });
+}
+
+    </script>
+
+    <!--头部 -->
+    <div class="order-header">
+        <div class="g">
+            <div class="fl">
+                <div class="logo"><a href="http://www.vmall.com/index.html" title="华为商城"><img src="http://res.vmallres.com/images/echannel/newLogo.png" alt="华为商城" /></a></div>
+            </div>
+            <div class="fr">
+                <!--步骤条-三步骤 -->
+                <div class="progress-area progress-area-3">
+                    <!--我的购物车 -->
+                    <div id="progress-cart" class="progress-sc-area hide">我的购物车</div>
+                    <!--核对订单 -->
+                    <div id="progress-confirm" class="progress-co-area hide">填写核对订单信息</div>
+                    <!--成功提交订单 -->
+                    <div id="progress-submit" class="progress-sso-area hide">成功提交订单</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>ec.code.addService({showService : true , showTools : true});</script>
+
+    <textarea class="hide" id="ec-binding-phone">
+        <div id="ec-binding-phone-1" class="ec-binding-phone-box hide">
+            <!-- 20141011-绑定安全手机号提示-start -->
+            <div class="safetyPhone-prompt-area">
+                <div class="h">
+                    <i></i>
+                </div>
+                <div class="b">
+                    <p>为了给您提供更好的服务，建议您将登录的邮箱帐号进行手机号码绑定，绑定后邮箱帐号和绑定的手机号码都可以作为登录帐号，<em style="font-color:red;">不绑定将不能提交订单。</em></p>
+                </div>
+            </div>
+            <div class="box-custom-button">
+                <a class="box-button-style-3" href="javascript:;" id="ec-binding-phone-url-1"><span>立即绑定</span></a></a>
+            </div>
+            <!-- 20141011-绑定安全手机号提示-end -->
+        </div>
+        <div id="ec-binding-phone-2" class="ec-binding-phone-box hide">
+            <!-- 20141424-绑定安全手机号提示-start -->
+            <div class="safetyPhone-prompt-area">
+                <div class="h">
+                    <i></i>
+                </div>
+                <div class="b">
+                    <p>请您在新打开的页面中完成绑定安全手机号操作。</p>
+                    <p>完成绑定后请根据您的情况点击下面的按钮。</p>
+                </div>
+            </div>
+            <div class="box-custom-button">
+                <a class="box-button-style-3" href="javascript:;" onclick="ec.binding.resetShow()"><span>绑定成功</span></a><a class="box-change box-button-style-3" href="javascript:;" target="_blank" id="ec-binding-phone-url-2"><span>重新绑定</span></a>
+            </div>
+            <!-- 20141424-绑定安全手机号提示-end -->
+        </div>
+        <div id="ec-binding-phone-3" class="ec-binding-phone-box hide">
+            <!-- 20141424-安全手机号绑定提示失败-start -->
+            <div class="box-prompt-error-area">
+                <div class="h">
+                    <i></i>
+                </div>
+                <div class="b">
+                    <p class="tal f12">对不起，您未成功绑定手机号。</p>
+                    <p class="tal f12 black">为了您在商城正常购物、保护您的权益，请您绑定一个手机号码以享受华为商城的所有服务。</p>
+                </div>
+            </div>
+            <div class="box-custom-button">
+                <a href="javascript:;" class="box-button-style-3" onclick="ec.binding.showOk()" id="ec-binding-phone-url-3"><span>立即绑定</span></a>
+            </div>
+            <!-- 20141424-安全手机号绑定提示失败-end -->
+        </div>
+        <div id="ec-binding-phone-4" class="ec-binding-phone-box hide">
+            <!-- 20150824-手机号绑定未绑定-start -->
+            <div class="safetyPhone-prompt-area">
+                <div class="h">
+                    <i></i>
+                </div>
+                <div class="b">
+                    <p class="tal f12">为了给您提供更好的服务，建议您将登录的邮箱帐号进行手机号码绑定，绑定后邮箱帐号和绑定的手机号码都可以作为登录帐号；<em style="font-color:red;">自</em><em id="bindEndDate4State4" style="font-color:red;"></em><em style="font-color:red;">号起，若不绑定将不能提交订单。</em></p>
+                </div>
+            </div>
+            <div>&nbsp;</div>
+            <div class="box-custom-button">
+                <a class="box-change box-button-style-3" href="javascript:;" id="ec-binding-phone-url-4"><span>立即绑定</span></a>
+                <a class="box-button-style-1" href="javascript:;" onclick="ec.binding.closeState4();"><span>下次再说</span></a>
+            </div>
+            <!-- 20150824-安全手机号绑定提示失败-end -->
+        </div>
+        <div id="ec-binding-phone-5" class="ec-binding-phone-box hide">
+            <!-- 20141424-安全手机号绑定提示失败-start -->
+            <div class="box-prompt-error-area">
+                <div class="h">
+                    <i></i>
+                </div>
+                <div class="a">
+                    <p class="tal f12">您输入的手机已被注册，你可以选择使用手机号重新登录或者重新绑定手机！</p>
+                </div>
+            </div>
+            <div>&nbsp;</div>
+            <div class="box-custom-button">
+                <a class="box-button-style-3" href="http://www.vmall.com/account/login" id="ec-binding-phone-reLogin-5"><span>重新登录</span></a>')
+                <a class="box-change box-button-style-3" href="javascript:;" id="ec-binding-phone-url-5"><span>重新绑定</span></a>
+            </div>
+            <!-- 20141424-安全手机号绑定提示失败-end -->
+        </div>
+    </textarea>
+    <script>$("#progress-cart").show();</script>
+
+    <script>window._to = { start: new Date() };</script>
+    <script>document.body.className = "wide sc";</script>
+    <div class="layout">
+        <!-- 20131223-购物车-start -->
+        <div class="sc-list">
+            <!-- 20131223-购物车-商品列表-start -->
+            <div class="sc-pro-list">
+
+                <!-- 20131223-订单-商品-标题-start -->
+                <div class="sc-pro-title-area">
+                    <div class="h">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th class="tr-check">
+                                        <input id="checkAll-top" type="checkbox" class="vam" autocomplete="off" checked />
+                                    </th>
+                                    <th class="tr-pro">商品</th>
+                                    <th class="tr-price">单价<em>（元）</em></th>
+                                    <th class="tr-quantity">数量</th>
+                                    <th class="tr-subtotal">小计<em>（元）</em></th>
+                                    <th class="tr-operate">操作</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <!-- 20131223-订单-商品-标题-end -->
+            </div>
+            <!--购物车-商品列表 end -->
+            <!--购物车-空数据 -->
+            <div id="cart-empty-msg" class="sc-empty-area hide">
+                亲，您购物车里还没有物品哦，快去逛逛吧！
+            </div>
+            <!-- 购物车列表 End-->
+        </div>
+        <div class="hr-35"></div>
+        <!--商品删除记录-20121011 -->
+        <div id="pro-recover-area" class="pro-delete-area hide">
+            <div class="h clearfix">
+                <h3>已删除商品</h3>
+                <table border="0" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <th class="tr-pro">商品</th>
+                            <th class="tr-quantity">数量</th>
+                            <th class="tr-subtotal">小计<em>（元）</em></th>
+                            <th class="tr-operate">操作</th>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="b">
+                <div class="pro-delete-item">
+                    <table border="0" cellpadding="0" cellspacing="0">
+                        <tbody id="pro-recover-tb"></tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div id="pro-delete-shop-start" class="f button-pro-delete-expand hide"><a href="javascript:;">更多已删除商品</h3><i></i><s></s><b></b></a></div>
+            <div id="pro-delete-shop-end" class="f button-pro-delete-shrink hide"><a href="javascript:;">收起已删除商品</h3><i></i><s></s><b></b></a></div>
+        </div>
+        <!--删除记录结束 -->
+        <div class="hr-25"></div>
+        <!--热门推荐-20121011 -->
+        <div id="pro-recommend-area" class="pro-scroller-area hide">
+            <div class="h">
+                <h3>您可能感兴趣的商品</h3>
+            </div>
+            <div class="b">
+                <!--左边滚动按钮className：pro-scroller-back 不可点击className：pro-scroller-back-disabled ；右边滚动按钮className：pro-scroller-forward 不可点击className：pro-scroller-forward-disabled -->
+                <a id="cart-img-prev" class="pro-scroller-back-disabled" href="javascript:;" onclick="ec.cart.slider.prev(this)"></a>
+                <div class="pro-list">
+                    <!--ul的宽度等于li宽度*N -->
+                    <ul style="width:1158px;" id="pro-recommend-list"></ul>
+                </div>
+                <a id="cart-img-next" class="pro-scroller-forward" href="javascript:;" onclick="ec.cart.slider.next(this)"></a>
+            </div>
+        </div>
+        <!--热门推荐结束 -->
+        <!-- 购物车主体 End　-->
+    </div>
+    <div class="hr-75"></div>
+
+    <textarea id="product-list-html" class="hide">
+        <!--#macro product-list data-->
+        <!--#var context=data.context-->
+        <!--#var mediaPath=data.mediaPath-->
+        <!--#list data.bundlerList as b-->
+        <div class="sc-pro-area selected" id="order-pro-bundle-{#b.bundleId}">
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <!--#var rows=b.skuList.length-->
+                    <!--#var giftLen=0-->
+                    <!--#var lst_i=1-->
+                    <!--#list b.skuList as lst-->
+                    <!--#if (lst.giftList)-->
+                    <!--#var giftLen=giftLen+lst.giftList.length-->
+                    <!--/#if-->
+                    <!--/#list-->
+                    <!--#list b.skuList as lst-->
+                    <tr class="sc-pro-item">
+                        <!--#if (lst_i==1)-->
+                        <td rowspan="{#rows+giftLen}" class="tr-check">
+                            <input id="box-bundle-{#b.bundleId}" class="checkbox" type="checkbox" name="bundleIds" onclick="ec.shoppingCart.check(this);" value="{#b.bundleId}" data-type="{#b.productType}" checked />
+                            <p class="timerpromo-{#b.bundleId} hide"></p>
+                        </td>
+                        <!--/#if-->
+
+                        <td class="tr-pro">
+                            <div class="pro-area clearfix" id="skuId-{#lst.skuId}">
+                                <p class="p-img">
+                                    <!--#var skuId='#'+lst.skuId;-->
+                                    <a title="{#lst.prdSkuName?html}" target="_blank" href="{#context}/product/{#lst.id}.html{#skuId}" seed="cart-item-name">
+                                        <img alt="{#lst.prdSkuName?html}" src="{#mediaPath}{#lst.photoPath}78_78_{#lst.photoName}" />
+                                    </a>
+                                </p>
+                                <p class="p-name">
+                                    <b>[套餐]</b>
+                                    <a title="{#lst.prdSkuName?html}" target="_blank" href="{#context}/product/{#lst.id}.html{#skuId}" seed="cart-item-name">{#lst.prdSkuName?html}</a>
+                                </p>
+                                <p class="p-sku">
+                                    <em class="p-spite-sku">{#lst.skuAttrValues?html}</em>
+                                </p>
+                                <!--#if (lst.shopName && lst.shopId != 1)-->
+                                <p class="p-explain">此商品由{#lst.shopName?html}发货</p>
+                                <!--/#if-->
+                                <p class="limitstock-{#lst.skuId} hide"></p>
+                                <p class="understock-{#lst.skuId} hide"></p>
+                                <input type="checkbox" name="skuIds" class="hide" value="{#lst.skuId}">
+                            </div>
+                        </td>
+
+                        <td class="tr-price">
+                            <s>原价:&yen;{#lst.skuPrice.toFixed(2)}</s>
+                            <span>现价:&yen;{#lst.preferentialPrice.toFixed(2)}</span>
+                        </td>
+
+                        <!--#if (lst_i==1)-->
+                        <td class="tr-quantity" rowspan="{#rows+giftLen}">
+                            <div class="sc-stock-area">
+                                <div class="stock-area">
+                                    <input id="quantity-bundle-{#b.bundleId}" type="text" class="shop-quantity textbox vam" value="{#b.quantity}" data-skuId="{#b.bundleId}" data-type="{#b.productType}" seed="cart-item-num" />
+                                </div>
+                                <!--#if (9 == b.productType)-->
+                                <p class="ngb-normalLimitstock-{#b.bundleId} hide"></p>
+                                <!--/#if-->
+                            </div>
+                        </td>
+
+                        <td rowspan="{#rows+giftLen}" class="tr-subtotal">
+                            <b>&yen;{#b.totalBundlePrice.toFixed(2)}</b>
+                            <span><i>省</i><em>&yen;{#b.preferentialPrice.toFixed(2)}</em></span>
+                        </td>
+
+                        <td rowspan="{#rows+giftLen}" class="tr-operate">
+                            <a href="javascript:;" class="icon-sc-del" title="删除" onclick="ec.shoppingCart.del(this , {#b.bundleId}, {#b.productType})" seed="cart-item-del">删除</a>
+                        </td>
+                        <!--/#if-->
+                    </tr>
+                    <!--#var lst_i=lst_i+1-->
+                    <!--/#list-->
+                    <!--#list b.skuList as lst-->
+                    <!--#if (giftLen > 0)-->
+                    <!--#list lst.giftList as gif-->
+                    <!--#var skuId='#'+gif.skuId;-->
+                    <tr class="sc-pro-gift-item">
+                        <td class="tr-pro">
+                            <div class="pro-area clearfix">
+                                <p class="p-img">
+                                    <a title="{#gif.prdSkuName}" href="{#context}/product/{#gif.id}.html{#skuId}">
+                                        <img alt="{#gif.prdSkuName}" src="{#mediaPath}{#gif.photoPath}78_78_{#gif.photoName}" />
+                                    </a>
+                                    <input type="checkbox" name="skuIds" class="hide" value="{#gif.skuId}">
+                                </p>
+                                <p class="p-name">
+                                    <b>[配]</b>
+                                    <a title="{#gif.prdSkuName}" href="{#context}/product/{#gif.id}.html{#skuId}">{#gif.prdSkuName}</a>
+                                </p>
+                                <p class="understock-{#gif.skuId} hide"></p>
+                            </div>
+                        </td>
+                        <td class="tr-price">
+                            <s>原价:{#gif.skuPrice.toFixed(2)}</s>
+                            <span>现价:&yen;0.00</span>
+                        </td>
+                    </tr>
+                    <!--/#list-->
+                    <!--/#if-->
+                    <!--/#list-->
+                </tbody>
+            </table>
+        </div>
+        <!--/#list-->
+        <!--#list data.productList as lst-->
+        <!--#var skuId = "#" + lst.skuId; -->
+        <div class="sc-pro-area selected" id="order-pro-{#lst.skuId}">
+            <table border="0" cellpadding="0" cellspacing="0">
+                <tbody>
+                    <tr class="sc-pro-item">
+                        <td rowspan="{#lst.giftList.length+lst.extendList.length + lst.accidentList.length + 1}" class="tr-check">
+                            <input id="box-{#lst.skuId}" class="checkbox" type="checkbox" name="skuIds" onclick="ec.shoppingCart.check(this);" value="{#lst.skuId}" data-type="{#lst.productType}" checked />
+                            <p class="timerpromo-{#lst.skuId} hide"></p>
+                        </td>
+                        <td class="tr-pro">
+                            <div class="pro-area clearfix">
+                                <p class="p-img">
+                                    <a title="{#lst.prdSkuName?html}" target="_blank" href="{#context}/product/{#lst.id}.html{#skuId}" seed="cart-item-name">
+                                        <img alt="{#lst.prdSkuName?html}" src="{#mediaPath}{#lst.photoPath}78_78_{#lst.photoName}" />
+                                    </a>
+                                </p>
+                                <p class="p-name">
+                                    <a title="{#lst.prdSkuName?html}" target="_blank" href="{#context}/product/{#lst.id}.html{#skuId}" seed="cart-item-name">{#lst.prdSkuName?html}</a>
+                                </p>
+                                <p class="p-sku">
+                                    <em class="p-spite-sku">{#lst.skuAttrValues?html}</em>
+                                </p>
+                                <!--#if (lst.shopName && lst.shopId != 1)-->
+                                <p class="p-explain">此商品由{#lst.shopName?html}发货</p>
+                                <!--/#if-->
+                                <p class="understock-{#lst.skuId} hide"></p>
+                            </div>
+                        </td>
+                        <td class="tr-price">
+                            <!--#if (lst.skuPrice != lst.preferentialPrice)-->
+                            <s>原价:&yen;{#lst.skuPrice.toFixed(2)}</s>
+                            <span>现价:&yen;{#lst.preferentialPrice.toFixed(2)}</span>
+                            <!--#else-->
+                            <span>&yen;{#lst.skuPrice.toFixed(2)}</span>
+                            <!--/#if-->
+                        </td>
+                        <td class="tr-quantity" rowspan="{#lst.giftList.length+lst.extendList.length + lst.accidentList.length + 1}">
+                            <div class="sc-stock-area">
+                                <div class="stock-area">
+                                    <input id="quantity-{#lst.skuId}" type="text" class="shop-quantity textbox vam" value="{#lst.quantity}" data-skuId="{#lst.skuId}" data-type="{#lst.productType}" seed="cart-item-num" />
+                                </div>
+                                <!--#if (8 == lst.productType)-->
+                                <p class="ngs-normalLimitstock-{#lst.skuId} hide normalLimitstock-{#lst.skuId}"></p>
+                                <!--#else-->
+                                <p class="normalLimitstock-{#lst.skuId} hide"></p>
+                                <!--/#if-->
+                            </div>
+                        </td>
+
+                        <td rowspan="{#lst.giftList.length + 1}" class="tr-subtotal">
+                            <b>&yen;{#(lst.preferentialPrice * lst.quantity).toFixed(2)}</b>
+                            <!--#if (lst.skuPrice != lst.preferentialPrice)-->
+                            <span><i>省</i><em>&yen; {#((lst.skuPrice - lst.preferentialPrice) * lst.quantity).toFixed(2)}</em></span>
+                            <!--/#if-->
+                        </td>
+                        <td rowspan="{#lst.giftList.length + 1}" class="tr-operate">
+                            <a href="javascript:;" class="icon-sc-del" title="删除" onclick="ec.shoppingCart.del(this , {#lst.skuId},{#lst.productType})" seed="cart-item-del">删除</a>
+                        </td>
+                    </tr>
+                    <!--#list lst.giftList as gif-->
+                    <!--#var skuId='#'+gif.skuId;-->
+                    <tr class="sc-pro-gift-item">
+                        <td class="tr-pro">
+                            <div class="pro-area clearfix">
+                                <p class="p-img">
+                                    <a title="{#gif.prdSkuName}" href="{#context}/product/{#gif.id}.html{#skuId}">
+                                        <img alt="{#gif.prdSkuName}" src="{#mediaPath}{#gif.photoPath}78_78_{#gif.photoName}" />
+                                    </a>
+                                    <input type="checkbox" name="skuIds" class="hide" value="{#gif.skuId}">
+                                </p>
+                                <p class="p-name">
+                                    <b>[配]</b>
+                                    <a title="{#gif.prdSkuName}" href="{#context}/product/{#gif.id}.html{#skuId}">{#gif.prdSkuName}</a>
+                                </p>
+                                <p class="understock-{#gif.skuId} hide"></p>
+                            </div>
+                        </td>
+                        <!--td class="tr-span-3">{#lst.quantity * gif.quantity}<p class="limitstock-{#gif.skuId} hide"></p></td-->
+                        <td class="tr-price">
+                            <s>原价:&yen;{#gif.skuPrice.toFixed(2)}</s>
+                            <span>现价:&yen;0.00</span>
+                        </td>
+                    </tr>
+                    <!--/#list-->
+                    <!--#if (lst.extendList)-->
+                    <!--#list lst.extendList as yb-->
+                    <!--#var ybSkuId='#'+yb.skuId;-->
+                    <tr class="sc-pro-gift-item">
+                        <td class="tr-pro">
+                            <div class="pro-area clearfix">
+                                <p class="p-img">
+                                    <a title="{#yb.prdSkuName}" target="_blank" href="{#context}/product/{#yb.id}.html{#ybSkuId}">
+                                        <img alt="{#yb.prdSkuName}" src="{#mediaPath}{#yb.photoPath}78_78_{#yb.photoName}" />
+                                    </a>
+                                </p>
+                                <p class="p-name">
+                                    <b>[延保]</b>
+                                    <a title="{#yb.prdSkuName}" target="_blank" href="{#context}/product/{#yb.id}.html{#ybSkuId}">{#yb.prdSkuName}</a>
+                                </p>
+                                <p class="p-sku"><em></em></p>
+                                <input type="checkbox" name="extendIds" class="hide" value="{#yb.skuId}">
+                            </div>
+                        </td>
+                        <!--td class="tr-span-3">{#yb.quantity}</td-->
+                        <td class="tr-price">
+                            <s>原价:&yen;{#yb.skuPrice.toFixed(2)}</s>
+                            <span>现价:&yen;{#yb.skuPrice.toFixed(2)}</span>
+                        </td>
+                        <td class="tr-subtotal"><b>&yen;{#(yb.skuPrice * lst.quantity).toFixed(2)}</b></td>
+                        <td class="tr-operate">
+                            <a href="javascript:;" class="icon-sc-del" title="删除" onclick="ec.shoppingCart.del(this, {#yb.skuId}, 6, {#yb.mainSkuId})" seed="cart-item-del">删除</a>
+                        </td>
+                    </tr>
+                    <!--/#list-->
+                    <!--/#if-->
+                    <!--#if (lst.accidentList)-->
+                    <!--#list lst.accidentList as ya-->
+                    <!--#var yaSkuId='#'+ya.skuId;-->
+                    <tr class="sc-pro-gift-item">
+                        <td class="tr-pro">
+                            <div class="pro-area clearfix">
+                                <p class="p-img">
+                                    <a title="{#ya.prdSkuName}" target="_blank" href="{#context}/product/{#ya.id}.html{#yaSkuId}">
+                                        <img alt="{#ya.prdSkuName}" src="{#mediaPath}{#ya.photoPath}78_78_{#ya.photoName}" />
+                                    </a>
+                                </p>
+                                <p class="p-name">
+                                    <b>[意外保]</b>
+                                    <a title="{#ya.prdSkuName}" target="_blank" href="{#context}/product/{#ya.id}.html{#yaSkuId}">{#ya.prdSkuName}</a>
+                                </p>
+                                <p class="p-sku"><em></em></p>
+                                <input type="checkbox" name="accidentIds" class="hide" value="{#ya.skuId}">
+                            </div>
+                        </td>
+                        <!--td class="tr-span-3">{#ya.quantity}</td-->
+                        <td class="tr-price">
+                            <s>原价:&yen;{#ya.skuPrice.toFixed(2)}</s>
+                            <span>现价:&yen;{#ya.skuPrice.toFixed(2)}</span>
+                        </td>
+                        <td class="tr-subtotal"><b>&yen;{#(ya.skuPrice * lst.quantity).toFixed(2)}</b></td>
+                        <td class="tr-operate">
+                            <a href="javascript:;" class="icon-sc-del" title="删除" onclick="ec.shoppingCart.del(this, {#ya.skuId}, 7, {#ya.mainSkuId})" seed="cart-item-del">删除</a>
+                        </td>
+                    </tr>
+                    <!--/#list-->
+                    <!--/#if-->
+                </tbody>
+            </table>
+        </div>
+        <!--/#list-->
+        <!--/#macro-->
+    </textarea>
+
+    <script src="http://res.vmallres.com/20160509/js/cart/shoppingCart.min.js?v=20160413"></script>
+    <!--口号-20121025 -->
+    <div class="slogan">
+        <ul>
+            <li class="s1"><i></i>500强企业&nbsp;品质保证</li>
+            <li class="s2"><i></i>7天退货&nbsp;15天换货</li>
+            <!-- <li class="s3"><i></i>99元起免运费</li> -->
+            <li class="s3">
+                <i></i>
+                <span>99元起免运费</span>
+            </li>
+            <li class="s4"><i></i>448家维修网点&nbsp;全国联保</li>
+        </ul>
+    </div><!--口号-end -->
+    <!--服务-20121025 -->
+    <div class="service">
+        <dl class="s1">
+            <dt><i></i>帮助中心</dt>
+            <dd>
+                <ol>
+                    <li><a target="_blank" href="http://www.vmall.com/help/faq-790.html">购物指南</a></li>
+                    <li><a target="_blank" href="http://www.vmall.com/help/faq-814.html">配送方式</a></li>
+                    <li><a target="_blank" href="http://www.vmall.com/help/faq-828.html">支付方式</a></li>
+                    <li><a target="_blank" href="http://www.vmall.com/help/category-16.html">常见问题</a></li>
+                </ol>
+            </dd>
+        </dl>
+        <dl class="s2">
+            <dt><i></i>售后服务</dt>
+            <dd>
+                <ol>
+                    <li><a target="_blank" href="http://www.vmall.com/help/faq-833.html">保修政策</a></li>
+                    <li><a target="_blank" href="http://www.vmall.com/help/faq-834.html">退换货政策</a></li>
+                    <li><a target="_blank" href="http://www.vmall.com/help/faq-835.html">退换货流程</a></li>
+                    <li><a target="_blank" href="http://consumer.huawei.com/cn/support/warranty-query/index.htm">保修状态查询</a></li>
+                </ol>
+            </dd>
+        </dl>
+        <dl class="s3">
+            <dt><i></i>技术支持</dt>
+            <dd>
+                <ol>
+                    <li><a target="_blank" href="http://consumer.huawei.com/cn/support/service-center/index.htm">售后网点</a></li>
+                    <li><a target="_blank" href="http://consumer.huawei.com/cn/support/reservation/index.htm">预约维修</a></li>
+                    <li><a target="_blank" href="http://consumer.huawei.com/cn/support/express-repair/index.htm">手机寄修服务</a></li>
+                    <li><a target="_blank" href="http://app.hicloud.com/">软件下载</a></li>
+                </ol>
+            </dd>
+        </dl>
+        <dl class="s4">
+            <dt><i></i>关于商城</dt>
+            <dd>
+                <ol>
+                    <li><a target="_blank" href="http://www.vmall.com/help/faq-934.html">公司介绍</a></li>
+                    <li><a target="_blank" href="http://www.vmall.com/help/faq-939.html">华为商城简介</a></li>
+                    <li><a target="_blank" href="http://www.vmall.com/help/index.html">联系客服</a></li>
+                </ol>
+            </dd>
+        </dl>
+        <dl class="s5">
+            <dt><i></i>关注我们</dt>
+            <dd>
+                <ol>
+                    <li><a class="sina" rel="nofollow" href="http://weibo.com/shophuawei" target="_blank">新浪微博</a></li>
+                    <li><a class="qq" rel="nofollow" href="http://t.qq.com/shophuawei" target="_blank">腾讯微博</a></li>
+                    <li><a class="huafen" href="http://club.huawei.com" target="_blank">花粉社区</a></li>
+                    <li><a href="http://www.vmall.com/appdownload" target="_blank">商城手机版</a></li>
+                </ol>
+            </dd>
+        </dl>
+    </div>
+    <!--服务-end -->
+    <!--确认对话框-->
+    <div id="ec_ui_confirm" class="popup-area popup-define-area hide">
+        <div class="b">
+            <p id="ec_ui_confirm_msg"></p>
+            <div class="popup-button-area"><a id="ec_ui_confirm_yes" href="javascript:;" class="button-action-yes" title="是"><span>是</span></a><a id="ec_ui_confirm_no" href="javascript:;" class="button-action-no" title="否"><span>否</span></a></div>
+        </div>
+        <div class="f"><s class="icon-arrow-down"></s></div>
+    </div>
+
+    <!--新确认对话框-->
+    <div id="ec_ui_confirm_new" class="popup-area-new hide">
+        <div class="b">
+            <p id="ec_ui_confirm_new_msg"></p>
+            <div class="popup-button-area"><a id="ec_ui_confirm_new_yes" href="javascript:;" class="box-button-style-1" title="是"><span>是</span></a><a id="ec_ui_confirm_new_no" href="javascript:;" class="box-button-style-1" title="否"><span>否</span></a></div>
+        </div>
+        <div class="f"><s class="icon-arrow-down-new"></s></div>
+    </div>
+
+    <!--提示对话框-->
+    <div id="ec_ui_tips" class="popup-area popup-define-area hide">
+        <div class="b">
+            <p id="ec_ui_tips_msg" class="tac"></p>
+            <div class="popup-button-area tac"><a id="ec_ui_tips_yes" href="javascript:;" class="button-action-yes" title="确定"><span>确定</span></a></div>
+        </div>
+        <div class="f"><s class="icon-arrow-down"></s></div>
+    </div>
+
+    <!--在线客服-->
+    <div class="hungBar" id="tools-nav">
+        <a title="返回顶部" class="hungBar-top" href="#" id="hungBar-top">返回顶部</a>
+        <a id="tools-nav-survery" title="意见反馈" class="hungBar-feedback hide" href="javascript:;" onclick="ec.survery.open();">意见反馈</a>
+        <a id="tools-nav-service-qq" title="QQ客服" class="hungBar-olcs-qq hide" href="http://wpa.qq.com/msgrd?V=1&Uin=4000886888" target="_blank">QQ客服</a>
+        <a id="tools-nav-service-robotim" href="javascript:;" title="在线客服" class="hungBar-olcs-web hide" target="_blank">在线客服</a>
+
+        <!--意见反馈box-->
+        <div id="survery-box" class="form-feedback-area hide">
+            <div class="h">
+                <a class="form-feedback-close" title="关闭" onclick="ec.survery.close();return false;" href="javascript:;"></a>
+            </div>
+            <div class="b">
+                <div class="form-edit-area">
+                    <form onsubmit="return ec.survery.submit(this);" autocomplete="off">
+                        <div class="form-edit-table">
+                            <table cellspacing="0" cellpadding="0" border="0">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <b>疑问类型：</b>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <select id="type" name="type">
+                                                <option>请选择疑问类型</option>
+                                                <option>商品质量（手机、平板等软、硬件质量）</option>
+                                                <option>商品缺货</option>
+                                                <option>物流发货（发货快慢、发错货、送件人态度等）</option>
+                                                <option>售后服务（服务网点、维修、退换货、客服）</option>
+                                                <option>网站问题（商城功能失效、不好用等）</option>
+                                                <option>其他问题</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td><b>您的问题或建议：</b><span id="errMsg"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><textarea class="textarea" type="textarea" name="content" id="surveryContent"></textarea></td>
+                                    </tr>
+                                    <tr>
+                                        <td>您的联系方式：</td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="text" class="text" name="contact" id="surveryContact"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><div class="fl"><input type="text" name="code" id="surveryVerify" class="verify vam" maxlength="4">&nbsp;&nbsp;<img id="surveryVerifyImg" onclick="ec.survery.reloadCode()" class="vam" alt="验证码">&nbsp;&nbsp;&nbsp;&nbsp;<span class="vam"><a onclick="ec.survery.reloadCode();" href="javascript:;" class="u">看不清，换一张</a></span></div><div class="fr"><input type="submit" value="" class="button-action-submit-3"></div></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div id="globleParameter" class="hide" context="" stylePath="http://res.vmallres.com/20160509/css" scriptPath="http://res.vmallres.com/20160509/js" imagePath="http://res.vmallres.com/20160509/images" mediaPath="http://res.vmallres.com/pimages/"></div>
+    <!--底部 -->
+
+    <footer class="footer">
+        <!-- 20130902-底部-友情链接-start -->
+        <div class="footer-otherLink">
+            <p>热门<a href="http://www.vmall.com/list-36" target="_blank">华为手机</a>：<span style="line-height:1.5;"> <a href="http://www.vmall.com/product/3325.html" target="_blank">华为P9</a> | <a href="http://www.vmall.com/product/2647.html" target="_blank">华为Mate8</a> | <a href="http://www.vmall.com/product/2366.html" target="_blank" textvalue="华为Mate S">华为Mate S</a> | <a href="http://www.vmall.com/product/2172.html" target="_blank">荣耀7</a> | <a href="http://www.vmall.com/product/1896.html" target="_blank">华为P8</a> | <a href="http://www.vmall.com/product/2324.html" target="_blank">荣耀7i</a> | <a href="http://www.vmall.com/product/2519.html" target="_blank">荣耀畅玩5X</a> | </span><a href="http://www.vmall.com/product/1372.html" target="_blank" textvalue="Ascend Mate 7" style="line-height:1.5;">Ascend Mate7</a><span style="line-height:1.5;"> | </span><span style="line-height:1.5;"><a href="http://www.vmall.com/product/1946.html" target="_blank">荣耀畅玩4C</a> | <a href="http://www.vmall.com/product/1612.html" target="_blank">荣耀6 Plus</a> | <a href="http://www.vmall.com/product/2225.html" target="_blank">荣耀4A</a> | <a href="http://www.vmall.com/product/2270.html" target="_blank">华为麦芒4</a> | </span><a href="http://www.vmall.com/product/1817.html" target="_blank" style="line-height:1.5;">荣耀X2</a><span style="line-height:1.5;"> </span><span style="line-height:1.5;">|</span><span style="line-height:1.5;"> </span><a href="http://www.vmall.com/product/1182.html" target="_blank" style="line-height:1.5;">荣耀6</a><span style="line-height:1.5;"> | </span><a href="http://www.vmall.com/product/1494.html" target="_blank" style="line-height:1.5;">荣耀畅玩4X</a><span style="line-height:1.5;"> | <a href="http://www.vmall.com/recycle" target="_blank">以旧换新</a> |</span></p><p><br /></p>
+        </div>
+        <div class="footer-warrant-area"><p><a title="隐私政策" target="_blank" href="http://www.vmall.com/help/faq-2635.html">隐私政策</a>  <a title="服务协议" target="_blank" href="http://www.vmall.com/help/faq-778.html">服务协议</a>        Copyright © 2012-2016  VMALL.COM   版权所有  保留一切权利</p><p><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=32011402010009"><img style="width:20px;height:20px;float:none;" src="http://res.vmallres.com/pimages//template/content/2016/20160226162651249.png" title="公安备案" height="20" hspace="0" border="0" vspace="0" width="20" /><span style="font-size:15px;font-family:宋体"><span style="font-size:12px;font-family:arial,helvetica,sans-serif;"> 苏公网安备</span><span style="font-size:12px;font-family:arial,helvetica,sans-serif;"> 32011402010009号</span></span></a> | 苏ICP备09062682号-9 | 增值电信业务经营许可证：苏B2-20130048 | <a target="_blank" href="http://res.vmallres.com/certificate/wwwz.jpg">网络文化经营许可证：苏网文[2012]0401-019号</a></p><p><br /><a target="_blank" href="http://res.vmallres.com/certificate/wwwz.jpg"></a></p><p><a target="_blank" href="http://www.jsgsj.gov.cn:60103/businessCheck/verifKey.do?serial=320100913201147770231720001001-SAIC_SHOW_32000020160129102316602&amp;signData=MEUCIQDjstcg6fPylz+uES4LNTcBpBVlZujS8l5erIgXiDGw1QIgfHZFK11kZ1vB2enLCwvaslyfE1fztpB19AEK4hlwibo="><img src="http://res.vmallres.com/pimages//template/content/2016/20160226162415360.png" style="float:none;width:90px;height:32px;" title="电子营业执照" height="32" hspace="0" border="0" vspace="0" width="90" /></a>   <a target="_blank" href="https://ss.knet.cn/verifyseal.dll?sn=e13010932010038497pwz6000000&amp;trustKey=dn&amp;trustValue=vmall.com"><img style="width:90px;height:32px;float:none;" src="http://res.vmallres.com/pimages//template/content/2016/20160226162521265.png" title="可信网站" height="32" hspace="0" border="0" vspace="0" width="90" /></a>   <a target="_blank" href="https://search.szfw.org/cert/l/CX20121017001773002082"><img style="width:90px;height:32px;float:none;" src="http://res.vmallres.com/pimages//template/content/2016/20160226162531395.png" title="诚信网站" height="32" hspace="0" border="0" vspace="0" width="90" /></a></p></div><!--授权结束 -->
+        <script>
+//客服工具
+//ec.code.addService({showService : true , showTools : true});
+ec.code.addAnalytics({
+  baidu : true,
+  google : false,
+  hicloud : true,
+  cnzz : false,
+  suning : false,
+  dmp:true
+});</script>
+    </footer>
+
+
+</body>
+</html>

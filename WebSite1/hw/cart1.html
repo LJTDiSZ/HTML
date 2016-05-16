@@ -1,0 +1,128 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="css/mycart.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+    <div class="layout">
+        <div class="sc-list">
+            <div class="sc-pro-list">
+                <div class="sc-pro-title-area">
+                    <div class="h">
+                        <table border="0" cellpadding="0" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th class="tr-check">
+                                        <input id="checkAll-top" type="checkbox" class="vam" autocomplete="off" checked />
+                                    </th>
+                                    <th class="tr-pro">商品</th>
+                                    <th class="tr-price">单价<em>（元）</em></th>
+                                    <th class="tr-quantity">数量</th>
+                                    <th class="tr-subtotal">小计<em>（元）</em></th>
+                                    <th class="tr-operate">操作</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+                <form id="cart-form" autocomplete="off" method="get">
+                    <input type="hidden" name="state" value="1" />
+
+                    <span id="cart-list">
+                        <div class="sc-pro-area selected" id="order-pro-1">
+                            <table border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr class="sc-pro-item">
+                                        <td rowspan="1" class="tr-check">
+                                            <input id="box-1" class="checkbox" type="checkbox" name="skuIds" onclick="ec.shoppingCart.check(this);" value="1" data-type="card" checked />
+                                            <p class="timerpromo-1 hide"></p>
+                                        </td>
+                                        <td class="tr-pro">
+                                            <div class="pro-area clearfix">
+                                                <p class="p-img">
+                                                    <a title="{#lst.prdSkuName?html}" target="_blank" href="{#context}/product/{#lst.id}.html{#skuId}" seed="cart-item-name">
+                                                        <img alt="{#lst.prdSkuName?html}" src="{#mediaPath}{#lst.photoPath}78_78_{#lst.photoName}" />
+                                                    </a>
+                                                </p>
+                                                <p class="p-name">
+                                                    <a title="{#lst.prdSkuName?html}" target="_blank" href="{#context}/product/{#lst.id}.html{#skuId}" seed="cart-item-name">{#lst.prdSkuName?html}</a>
+                                                </p>
+                                                <p class="p-sku">
+                                                    <em class="p-spite-sku">{#lst.skuAttrValues?html}</em>
+                                                </p>
+                                                <!--#if (lst.shopName && lst.shopId != 1)-->
+                                                <p class="p-explain">此商品由{#lst.shopName?html}发货</p>
+                                                <!--/#if-->
+                                                <p class="understock-{#lst.skuId} hide"></p>
+                                            </div>
+                                        </td>
+                                        <td class="tr-price">
+                                            <span>&yen;2345.67</span>
+                                        </td>
+                                        <td class="tr-quantity" rowspan="1">
+                                            <div class="sc-stock-area">
+                                                <div class="stock-area">
+                                                    <input id="quantity-1" type="text" class="shop-quantity textbox vam" value="3" data-skuId="1" data-type="card" seed="cart-item-num" />
+                                                    <a href="javascript:;" class="icon-minus-3 vam" title="减"><span>-</span></a>
+                                                    <a href="javascript:;" class="icon-plus-3 vam" title="加"><span>+</span></a>
+                                                </div>
+                                            </div>
+                                        </td>
+
+                                        <td rowspan="1" class="tr-subtotal">
+                                            <b>&yen;21345.8</b>
+                                        </td>
+                                        <td rowspan="1" class="tr-operate">
+                                            <a href="javascript:;" class="icon-sc-del" title="删除" onclick="ec.shoppingCart.del(this , 1,'card')" seed="cart-item-del">删除</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </span>
+
+                    <div class="hr-20"></div>
+                    <div id="cart-total-area" class="sc-total-area clearfix">
+                        <div class="sc-total-control">
+                            <input id="checkAll-buttom" type="checkbox" name="" class="vam" autocomplete="off" checked />
+                            <label class="vam" for="checkAll-buttom">全选</label>
+                            <a class="vam" href="javascript:;" seed="cart-all-del">删除选中商品</a>
+                        </div>
+                        <div class="sc-total-price">
+                            <table border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                    <tr><th>总计金额：</th><td id="sc-cartInfo-totalOriginalPrice">&yen;388.78</td></tr>
+                                    <tr><th>共节省：</th><td id="sc-cartInfo-minusPrice">&yen;345</td></tr>
+                                    <tr><th><em>合计(不含运费)：<em></th><td><b id="sc-cartInfo-totalPrice">&yen;34567<b></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="hr-25"></div>
+                    <div class="sc-action-area clearfix">
+                        <a class="button-style-4 button-go-shopping-3" href="' + domainMain + '">继续购物</a>
+                        <a class="button-style-1 button-go-checkout-2" href="javascript:;" seed="cart-pay">去结算</a>
+                        <div class="sc-action-tips hide" id="sc-action-tips">
+                            <div class="tips-style-1 tips-area">
+                                <i></i>
+                                <div class="tips-text">
+                                    <p id="tips-text-p">\u8d2d\u7269\u8f66\u4e2d\u6709\u5e93\u5b58\u4e0d\u8db3\u5546\u54c1\uff0c\u8bf7\u5904\u7406\u540e\u7ed3\u7b97</p>
+                                </div>
+                                <s></s>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+            <div id="cart-empty-msg" class="sc-empty-area hide">
+                亲，您购物车里还没有物品哦，快去逛逛吧！
+            </div>
+        </div>
+    </div>
+    <div class="hr-35"></div>
+</body>
+</html>
