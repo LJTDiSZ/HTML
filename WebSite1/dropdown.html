@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>DropDown</title>
+	<meta charset="utf-8" />
+    <style>
+        /* Dropdown Button */
+        .dropbtn {background-color: #4CAF50;color: white;padding: 16px;font-size: 16px;border: none;cursor: pointer;}
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {position: relative;display: inline-block;}
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {display: none;position: absolute;background-color: #f9f9f9;min-width: 100px;box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);}
+        /* Links inside the dropdown */
+        .dropdown-content a {color: black;padding: 5px 5px;text-decoration: none;display: block;}
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {background-color: #f1f1f1}
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {display: block;}
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+        ul {list-style-type: none;margin: 0;padding: 0;overflow: hidden;background-color: #333;}
+        li {float: left;}
+        li a, .dropbtn {display: inline-block;color: white;text-align: center;padding: 14px 16px;text-decoration: none;}
+        li a:hover, .dropdown:hover .dropbtn {background-color: red;}
+        li.dropdown {display: inline-block;position:inherit;}
+
+        .dropdown .arrow {font-size:11px;line-height:0%;}
+
+        /*.dropdown-content .selected:before{content:url(images/yes.png) "↗"; display:inline-block;}*/
+        .dropdown-content a span{display:inline-block;width:30px; height:16px;}
+        .dropdown-content a span img{display: none;height:100%;}
+        .dropdown-content a.selected span img{display: inherit;}
+    </style>
+</head>
+<body>
+    <div class="dropdown">
+        <div class="dropbtn">Dropdown<span class="arrow">&nbsp;&nbsp;&#9660;</span></div>
+        <div class="dropdown-content">
+            <a href="javascript:;"><span><img src="images/yes.png" /></span>Link 1</a>
+            <a href="javascript:;" class="selected"><span><img src="images/yes.png" /></span>Link 2</a>
+            <a href="javascript:;"><span><img src="images/yes.png" /></span>Link 3</a>
+        </div>
+    </div>
+    <div class="dropdown">
+        <button class="dropbtn">Left<span class="arrow">&nbsp;&nbsp;&#9660;</span></button>
+        <div class="dropdown-content" style="left:0;">
+            <a href="javascript:;" class="selected"><span><img src="images/yes.png" /></span>Link 1</a>
+            <a href="javascript:;"><span><img src="images/yes.png" /></span>Link 2</a>
+            <a href="javascript:;"><span><img src="images/yes.png" /></span>Link 3</a>
+        </div>
+    </div>
+    <div class="dropdown" style="float:right;">
+        <button class="dropbtn">Right<span class="arrow">&nbsp;&nbsp;&#9660;</span></button>
+        <div class="dropdown-content" style="right:0;">
+            <a href="javascript:;"><span><img src="images/yes.png" /></span>Link 1</a>
+            <a href="javascript:;"><span><img src="images/yes.png" /></span>Link 2</a>
+            <a href="javascript:;" class="selected"><span><img src="images/yes.png" /></span>Link 3</a>
+        </div>
+    </div>
+    <ul>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="#news">News</a></li>
+        <li class="dropdown">
+            <a href="#" class="dropbtn">Dropdown<span class="arrow">&nbsp;&nbsp;&#9660;</span></a>
+            <div class="dropdown-content">
+                <a href="javascript:;" class="selected"><span><img src="images/yes.png" /></span>Link 1</a>
+                <a href="javascript:;"><span><img src="images/yes.png" /></span>Link 2</a>
+                <a href="javascript:;"><span><img src="images/yes.png" /></span>Link 3</a>
+            </div>
+        </li>
+    </ul>
+    <script src="scripts/jquery-2.2.1.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.dropdown-content a').click(function () {
+                $(this).toggleClass('selected');
+            });
+        });
+    </script>
+</body>
+</html>
