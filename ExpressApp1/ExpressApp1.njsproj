@@ -34,6 +34,12 @@
     <Compile Include="app\dbHelper.js" />
     <Compile Include="app\models.js" />
     <Compile Include="app_local.js" />
+    <Compile Include="lib\alipay.js" />
+    <Compile Include="lib\alipay_core.function.js" />
+    <Compile Include="lib\alipay_md5.function.js" />
+    <Compile Include="lib\alipay_notify.class.js" />
+    <Compile Include="lib\alipay_submit.class.js" />
+    <Compile Include="lib\index.js" />
     <Compile Include="public\js\admin.js" />
     <Compile Include="public\js\angular.min.js" />
     <Compile Include="public\js\app.js" />
@@ -84,6 +90,7 @@
     <Compile Include="public\sf\js\head.min.js" />
     <Compile Include="public\sf\js\index.js" />
     <Compile Include="public\sf\js\zepto.min.js" />
+    <Compile Include="routes\alipay.js" />
     <Compile Include="routes\card.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\users.js" />
@@ -963,6 +970,7 @@
   <ItemGroup>
     <Folder Include="bin\" />
     <Folder Include="app\" />
+    <Folder Include="lib\" />
     <Folder Include="public\" />
     <Folder Include="public\fonts\" />
     <Folder Include="public\fonts\downloads\" />
