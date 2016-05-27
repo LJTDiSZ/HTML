@@ -10,6 +10,8 @@ var moment = require('moment');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+var alipay = require('./lib');
+
 var app = express();
 
 var dbURL = 'mongodb://localhost:27017/cards';
@@ -37,6 +39,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 app.use('/card', require('./routes/card'));
+app.use('/alipayc', require('./routes/alipay'));
+
+alipay.route(app);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
